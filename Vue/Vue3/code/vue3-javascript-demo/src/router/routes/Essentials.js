@@ -34,6 +34,14 @@ const Essentials = [
     component: () => import("@/views/Essentials/ComputedProperties/ComputedProperties.vue"),
   },
   /**
+   * Class and Style Bindings
+   */
+  {
+    path: "/Essentials/ClassStyleBindings/ClassStyleBindings",
+    name: "Essentials-ClassStyleBindings-ClassStyleBindings",
+    component: () => import("@/views/Essentials/ClassStyleBindings/ClassStyleBindings.vue"),
+  },
+  /**
    * Components Basic
    */
   {
