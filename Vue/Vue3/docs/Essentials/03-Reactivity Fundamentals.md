@@ -270,10 +270,12 @@ const object = { foo: ref(1) }
 ```
 渲染的结果会是一个 `[object Object]`，因为 `object.foo` 是一个 ref 对象。我们可以通过将 foo 改成顶层属性来解决这个问题：
 
-js
+```js
 const { foo } = object
-template
+```
+```template
 {{ foo + 1 }}
+```
 现在渲染结果将是 `2`。
 
 需要注意的是，如果一个 ref 是文本插值（即一个 `{{ }}` 符号）计算的最终值，它也将被解包。因此下面的渲染结果将为 `1`：
