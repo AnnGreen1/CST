@@ -55,7 +55,9 @@ const Essentials = [
     path: "/Essentials/ConditionalRendering/ConditionalRendering",
     name: "Essentials-ConditionalRendering-ConditionalRendering",
     component: () =>
-      import("@/views/Essentials/ConditionalRendering/ConditionalRendering.vue"),
+      import(
+        "@/views/Essentials/ConditionalRendering/ConditionalRendering.vue"
+      ),
   },
   /**
    * List Rendering
@@ -90,14 +92,12 @@ const Essentials = [
   {
     path: "/Essentials/Watchers/Watchers",
     name: "Essentials-Watchers-Watchers",
-    component: () =>
-      import("@/views/Essentials/Watchers/Watchers.vue"),
+    component: () => import("@/views/Essentials/Watchers/Watchers.vue"),
   },
   {
     path: "/Essentials/Watchers/watchEffect",
     name: "Essentials-Watchers-watchEffect",
-    component: () =>
-      import("@/views/Essentials/Watchers/watchEffect.vue"),
+    component: () => import("@/views/Essentials/Watchers/watchEffect.vue"),
   },
   /**
    * Components Basic
