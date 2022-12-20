@@ -67,6 +67,9 @@ items.forEach((item, index) => {
 ### `v-for` 与对象
 你也可以使用 `v-for` 来遍历一个对象的所有属性。遍历的顺序会基于对该对象调用 `Object.keys()` 的返回值来决定。
 
+<font color=hotpink>tips</font>
+`Object.keys()` 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和正常循环遍历该对象时返回的顺序一致。
+
 ```js
 const myObject = reactive({
   title: 'How to do lists in Vue',

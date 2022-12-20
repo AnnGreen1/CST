@@ -92,11 +92,17 @@ function warn(message, event) {
 为解决这一问题，Vue 为 `v-on` 提供了**事件修饰符**。修饰符是用 `.` 表示的指令后缀，包含以下这些：
 
 - `.stop`
+防止事件冒泡，等同于JavaScript中的event.`stopPropagation()`
 - `.prevent`
+防止执行预设的行为，等同于JavaScript中的`event.preventDefault()`
 - `.self`
+将事件绑定到自身，只有自身才能触发
 - `.capture`
+捕获冒泡
 - `.once`
+只触发一次
 - `.passive`
+不阻止事件的默认行为
 ```html
 <!-- 单击事件将停止传递 -->
 <a @click.stop="doThis"></a>
