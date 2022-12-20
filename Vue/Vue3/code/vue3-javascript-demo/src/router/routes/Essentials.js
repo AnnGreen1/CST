@@ -76,6 +76,15 @@ const Essentials = [
       import("@/views/Essentials/EventHandling/EventHandling.vue"),
   },
   /**
+   * Form Input Bindings
+   */
+  {
+    path: "/Essentials/FormInputBindings/FormInputBindings",
+    name: "Essentials-FormInputBindings-FormInputBindings",
+    component: () =>
+      import("@/views/Essentials/FormInputBindings/FormInputBindings.vue"),
+  },
+  /**
    * Components Basic
    */
   {
