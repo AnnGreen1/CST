@@ -29,7 +29,7 @@ setTimeout(() => {
 
 ### 生命周期图示
 下面是实例生命周期的图表。你现在并不需要完全理解图中的所有内容，但以后它将是一个有用的参考。
-![](https://cn.vuejs.org/assets/lifecycle.16e4c08e.png)   
-组件生命周期图示
+![组件生命周期图示](https://cn.vuejs.org/assets/lifecycle.16e4c08e.png)   
+
 
 有关所有生命周期钩子及其各自用例的详细信息，请参考[生命周期钩子 API 索引]()。

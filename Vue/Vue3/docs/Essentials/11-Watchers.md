@@ -169,7 +169,7 @@ watchEffect(async () => {
 
 如果想在侦听器回调中能访问被 Vue 更新**之后**的 DOM，你需要指明 `flush: 'post'` 选项：
 
-js
+```js
 watch(source, callback, {
   flush: 'post'
 })
@@ -185,12 +185,13 @@ import { watchPostEffect } from 'vue'
 watchPostEffect(() => {
   /* 在 Vue 更新后执行 */
 })
-停止侦听器#
-在 setup() 或 <script setup> 中用同步语句创建的侦听器，会自动绑定到宿主组件实例上，并且会在宿主组件卸载时自动停止。因此，在大多数情况下，你无需关心怎么停止一个侦听器。
+```
+### 停止侦听器
+在 `setup()` 或 `<script setup>` 中用同步语句创建的侦听器，会自动绑定到宿主组件实例上，并且会在宿主组件卸载时自动停止。因此，在大多数情况下，你无需关心怎么停止一个侦听器。
 
 一个关键点是，侦听器必须用同步语句创建：如果用异步回调创建一个侦听器，那么它不会绑定到当前组件上，你必须手动停止它，以防内存泄漏。如下方这个例子：
 
-vue
+```js
 <script setup>
 import { watchEffect } from 'vue'
 
@@ -202,16 +203,18 @@ setTimeout(() => {
   watchEffect(() => {})
 }, 100)
 </script>
-要手动停止一个侦听器，请调用 watch 或 watchEffect 返回的函数：
+```
+要手动停止一个侦听器，请调用 `watch` 或 `watchEffect` 返回的函数：
 
-js
+```js
 const unwatch = watchEffect(() => {})
 
 // ...当该侦听器不再需要时
 unwatch()
+```
 注意，需要异步创建侦听器的情况很少，请尽可能选择同步创建。如果需要等待一些异步数据，你可以使用条件式的侦听逻辑：
 
-js
+```js
 // 需要异步请求得到的数据
 const data = ref(null)
 
@@ -220,3 +223,4 @@ watchEffect(() => {
     // 数据加载后执行某些操作...
   }
 })
+```

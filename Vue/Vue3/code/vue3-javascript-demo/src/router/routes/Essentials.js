@@ -85,6 +85,21 @@ const Essentials = [
       import("@/views/Essentials/FormInputBindings/FormInputBindings.vue"),
   },
   /**
+   * Watchers
+   */
+  {
+    path: "/Essentials/Watchers/Watchers",
+    name: "Essentials-Watchers-Watchers",
+    component: () =>
+      import("@/views/Essentials/Watchers/Watchers.vue"),
+  },
+  {
+    path: "/Essentials/Watchers/watchEffect",
+    name: "Essentials-Watchers-watchEffect",
+    component: () =>
+      import("@/views/Essentials/Watchers/watchEffect.vue"),
+  },
+  /**
    * Components Basic
    */
   {

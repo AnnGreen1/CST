@@ -203,7 +203,7 @@
 - `<figure>`New	figure 标签用于对元素进行组合。
 ### Audio/Video	 
 - `<audio>`New	定义声音，比如音乐或其他音频流。
-- `<source>`New	定义media元素 ( `<video>` 和 - `<audio>`)的媒体资源。media
+- `<source>`New	定义media元素 ( `<video>` 和  `<audio>`)的媒体资源。
 - `<track>`New	为媒体( `<video>` 和  `<audio>`)元素定义外部文本轨道。
 - `<video>`New	定义一个音频或者视频
 ### 链接	 
