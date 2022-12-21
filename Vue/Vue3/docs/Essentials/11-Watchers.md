@@ -177,9 +177,10 @@ watch(source, callback, {
 watchEffect(callback, {
   flush: 'post'
 })
-后置刷新的 watchEffect() 有个更方便的别名 watchPostEffect()：
+```
+后置刷新的 `watchEffect()` 有个更方便的别名 `watchPostEffect()`：
 
-js
+```js
 import { watchPostEffect } from 'vue'
 
 watchPostEffect(() => {
@@ -189,7 +190,7 @@ watchPostEffect(() => {
 ### 停止侦听器
 在 `setup()` 或 `<script setup>` 中用同步语句创建的侦听器，会自动绑定到宿主组件实例上，并且会在宿主组件卸载时自动停止。因此，在大多数情况下，你无需关心怎么停止一个侦听器。
 
-一个关键点是，侦听器必须用同步语句创建：如果用异步回调创建一个侦听器，那么它不会绑定到当前组件上，你必须手动停止它，以防内存泄漏。如下方这个例子：
+一个关键点是，侦听器必须用**同步**语句创建：如果用异步回调创建一个侦听器，那么它不会绑定到当前组件上，你必须手动停止它，以防内存泄漏。如下方这个例子：
 
 ```js
 <script setup>
