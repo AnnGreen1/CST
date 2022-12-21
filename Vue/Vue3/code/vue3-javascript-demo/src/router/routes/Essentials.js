@@ -100,12 +100,20 @@ const Essentials = [
     component: () => import("@/views/Essentials/Watchers/watchEffect.vue"),
   },
   /**
+   * TemplateRefs
+   */
+  {
+    path: "/Essentials/TemplateRefs/TemplateRefs",
+    name: "Essentials-TemplateRefs-TemplateRefs",
+    component: () => import("@/views/Essentials/TemplateRefs/TemplateRefs.vue"),
+  },
+  /**
    * Components Basic
    */
   {
-    path: "/Essentials",
-    name: "Essentials",
-    component: () => import("@/views/Essentials/Essentials.vue"),
+    path: "/Essentials/ComponentsBasic/ButtonGroup",
+    name: "Essentials-ComponentsBasic-ButtonGroup",
+    component: () => import("@/views/Essentials/ComponentsBasic/ButtonGroup.vue"),
   },
 ];
 export default Essentials;

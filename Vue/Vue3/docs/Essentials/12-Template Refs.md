@@ -10,7 +10,7 @@
 ### 访问模板引用
 为了通过组合式 API 获得该模板引用，我们需要声明一个同名的 ref：
 
-```js
+```html
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -60,7 +60,7 @@ watchEffect(() => {
 
 当在 `v-for` 中使用模板引用时，对应的 ref 中包含的值是一个数组，它将在元素被挂载后包含对应整个列表的所有元素：
 
-```js
+```html
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -98,7 +98,7 @@ onMounted(() => console.log(itemRefs.value))
 
 模板引用也可以被用在一个子组件上。这种情况下引用中获得的值是组件实例：
 
-```js
+```html
 <script setup>
 import { ref, onMounted } from 'vue'
 import Child from './Child.vue'
@@ -133,4 +133,4 @@ defineExpose({
 ```
 当父组件通过模板引用获取到了该组件的实例时，得到的实例类型为 `{ a: number, b: number }` (ref 都会自动解包，和一般的实例一样)。
 
-TypeScript 用户请参考：为组件的模板引用标注类型 
+TypeScript 用户请参考：[为组件的模板引用标注类型]() 
