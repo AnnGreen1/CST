@@ -20,5 +20,13 @@ const ComponentsInDepth = [
     name: "ComponentsInDepth-Props-Props",
     component: () => import("@/views/Props/Props.vue"),
   },
+  /**
+   * Events
+   */
+  {
+    path: "/ComponentsInDepth/Events/Events",
+    name: "ComponentsInDepth-Events-Events",
+    component: () => import("@/views/Events/Events.vue"),
+  },
 ];
 export default ComponentsInDepth;
