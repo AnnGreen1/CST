@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 
 import commonroute from './routes/commonroute'
 import Essentials from './routes/Essentials'
+import ComponentsInDepth from './routes/ComponentsInDepth'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,7 +27,8 @@ const router = createRouter({
       component: () => import('../views/JavascriptAxios.vue')
     },
     ...commonroute,
-    ...Essentials
+    ...Essentials,
+    ...ComponentsInDepth
   ]
 })
 
