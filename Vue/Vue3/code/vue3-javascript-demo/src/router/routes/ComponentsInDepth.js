@@ -29,9 +29,9 @@ const ComponentsInDepth = [
    * Events
    */
   {
-    path: "/ComponentsInDepth/Events/Events",
-    name: "ComponentsInDepth-Events-Events",
-    component: () => import("@/views/Events/Events.vue"),
+    path: "/ComponentsInDepth/Events/Parent",
+    name: "ComponentsInDepth-Events-Parent",
+    component: () => import("@/views/ComponentsInDepth/Events/Parent.vue"),
   },
 ];
 export default ComponentsInDepth;
