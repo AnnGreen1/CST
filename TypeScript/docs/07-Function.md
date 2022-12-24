@@ -1,127 +1,91 @@
-TypeScript 函数
+# 函数
 函数是一组一起执行一个任务的语句。
 
 您可以把代码划分到不同的函数中。如何划分代码到不同的函数中是由您来决定的，但在逻辑上，划分通常是根据每个函数执行一个特定的任务来进行的。
 
 函数声明告诉编译器函数的名称、返回类型和参数。函数定义提供了函数的实际主体。
 
-函数定义
+### 函数定义
 函数就是包裹在花括号中的代码块，前面使用了关键词 function：
 
-语法格式如下所示：
-
+```ts
 function function_name()
 {
     // 执行代码
 }
-实例
-TypeScript
+```
+```TypeScript
 function () {   
     // 函数定义
     console.log("调用函数") 
 }
-调用函数
+```
+### 调用函数
 函数只有通过调用才可以执行函数内的代码。
 
-语法格式如下所示：
-
+```ts
 function_name()
-实例
-TypeScript
+```
+```TypeScript
 function test() {   // 函数定义
     console.log("调用函数") 
 } 
 test()              // 调用函数
-函数返回值
+```
+### 函数返回值
 有时，我们会希望函数将执行的结果返回到调用它的地方。
 
 通过使用 return 语句就可以实现。
 
 在使用 return 语句时，函数会停止执行，并返回指定的值。
 
-语法格式如下所示：
-
+```s
 function function_name():return_type { 
     // 语句
     return value; 
 }
-return_type 是返回值的类型。
+```
+- return_type 是返回值的类型。
+- return 关键词后跟着要返回的结果。
+- 一般情况下，一个函数只有一个 return 语句。
+- 返回值的类型需要与函数定义的返回类型(return_type)一致。
 
-return 关键词后跟着要返回的结果。
-
-一般情况下，一个函数只有一个 return 语句。
-
-返回值的类型需要与函数定义的返回类型(return_type)一致。
-
-实例
-TypeScript
-// 函数定义
-function greet():string { // 返回一个字符串
-    return "Hello World" 
-} 
- 
-function caller() { 
-    var msg = greet() // 调用 greet() 函数 
-    console.log(msg) 
-} 
- 
-// 调用函数
-caller()
-实例中定义了函数 greet()，返回值的类型为 string。
-
-greet() 函数通过 return 语句返回给调用它的地方，即变量 msg，之后输出该返回值。。
-
-编译以上代码，得到以下 JavaScript 代码：
-
-JavaScript
-// 函数定义
-function greet() {
-    return "Hello World";
-}
-function caller() {
-    var msg = greet(); // 调用 greet() 函数 
-    console.log(msg);
-}
-// 调用函数
-caller();
-带参数函数
+### 带参数函数
 在调用函数时，您可以向其传递值，这些值被称为参数。
 
 这些参数可以在函数中使用。
 
-您可以向函数发送多个参数，每个参数使用逗号 , 分隔：
-
-语法格式如下所示：
-
+您可以向函数发送多个参数，每个参数使用逗号 `,` 分隔：
+```ts
 function func_name( param1 [:datatype], param2 [:datatype]) {   
 }
-param1、param2 为参数名。
+```
+- param1、param2 为参数名。
 
-datatype 为参数类型。
+- datatype 为参数类型。
 
-实例
-TypeScript
+
+```TypeScript
 function add(x: number, y: number): number {
     return x + y;
 }
 console.log(add(1,2))
-实例中定义了函数 add()，返回值的类型为 number。
+```
+- 实例中定义了函数 add()，返回值的类型为 number。
 
-add() 函数中定义了两个 number 类型的参数，函数内将两个参数相加并返回。
+- add() 函数中定义了两个 number 类型的参数，函数内将两个参数相加并返回。
 
 编译以上代码，得到以下 JavaScript 代码：
 
-JavaScript
+```JavaScript
 function add(x, y) {
     return x + y;
 }
 console.log(add(1, 2));
-输出结果为：
-
-3
-可选参数和默认参数
-可选参数
-在 TypeScript 函数里，如果我们定义了参数，则我们必须传入这些参数，除非将这些参数设置为可选，可选参数使用问号标识 ？。
+```
+### 可选参数和默认参数
+#### 可选参数
+在 TypeScript 函数里，如果我们定义了参数，则我们必须传入这些参数，除非将这些参数设置为可选，可选参数使用问号标识 `?`。
 
 实例
 
