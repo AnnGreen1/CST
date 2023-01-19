@@ -11,3 +11,6 @@ Nodejs
 jQuery
 Uniapp
 小程序
+nuxt.js
+next.js
+Babel

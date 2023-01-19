@@ -2,24 +2,24 @@
 (Sort by Alphabetically)
 
 
-- `<!--...-->`	定义注释
-- `<!DOCTYPE>`	定义文档类型
-- `<a>`	        定义超文本链接
-- `<abbr>`      定义缩写
-- `<acronym>`	定义只取首字母的缩写，不支持HTML5
-- `<address>`	定义文档作者或拥有者的联系信息
-- `<applet>`	HTML5中不赞成使用。定义嵌入的 applet。
-- `<area>`	定义图像映射内部的区域
-- `<article>`**<font color=red>New</font>**	定义一个文章区域
-- `<aside>`**<font color=red>New</font>**	定义页面的侧边栏内容
-- `<audio>`**<font color=red>New</font>**	定义音频内容
-- `<b>`	定义文本粗体
-- `<base>`	定义页面中所有链接的默认地址或默认目标。
-- `<basefont>`	HTML5不支持，不赞成使用。定义页面中文本的默认字体、颜色或尺寸。
-- `<bdi>`**<font color=red>New</font>**	允许您设置一段文本，使其脱离其父元素的文本方向设置。
-- `<bdo>`	定义文字方向
-- `<big>`	定义大号文本，HTML5不支持
-- `<blockquote>`	定义长的引用
+01. `<!--...-->`	定义注释
+02. `<!DOCTYPE>`	定义文档类型
+03. `<a>`	        定义超文本链接
+04. `<abbr>`      定义缩写
+05. `<acronym>`	定义只取首字母的缩写，不支持HTML5
+06. `<address>`	定义文档作者或拥有者的联系信息
+07. `<applet>`	HTML5中不赞成使用。定义嵌入的 applet。
+08. `<area>`	定义图像映射内部的区域
+09. `<article>`**<font color=red>New</font>**	定义一个文章区域
+10. `<aside>`**<font color=red>New</font>**	定义页面的侧边栏内容
+11. `<audio>`**<font color=red>New</font>**	定义音频内容
+12. `<b>`	定义文本粗体
+13. `<base>`	定义页面中所有链接的默认地址或默认目标。
+14. `<basefont>`	HTML5不支持，不赞成使用。定义页面中文本的默认字体、颜色或尺寸。
+15. `<bdi>`**<font color=red>New</font>**	允许您设置一段文本，使其脱离其父元素的文本方向设置。
+16. `<bdo>`	定义文字方向
+17. `<big>`	定义大号文本，HTML5不支持
+18. `<blockquote>`	定义长的引用
 - `<body>`	定义文档的主体
 - `<br>`	定义换行
 - `<button>`	定义一个点击按钮
