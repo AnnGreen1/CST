@@ -20,14 +20,14 @@
 16. `<bdo>`	定义文字方向
 17. `<big>`	定义大号文本，HTML5不支持
 18. `<blockquote>`	定义长的引用
-- `<body>`	定义文档的主体
-- `<br>`	定义换行
-- `<button>`	定义一个点击按钮
-- `<canvas>`**<font color=red>New</font>**	定义图形，比如图表和其他图像,标签只是图形容器，您必须使用脚本来绘制图形
-- `<caption>`	定义表格标题
-- `<center>`	HTML5不支持，不赞成使用。定义居中文本。
-- `<cite>`	定义引用(citation)
-- `<code>`	定义计算机代码文本
+19. `<body>`	定义文档的主体
+20. `<br>`	定义换行
+21. `<button>`	定义一个点击按钮
+22. `<canvas>`**<font color=red>New</font>**	定义图形，比如图表和其他图像,标签只是图形容器，您必须使用脚本来绘制图形
+23. `<caption>`	定义表格标题
+24. `<center>`	HTML5不支持，不赞成使用。定义居中文本。
+25. `<cite>`	定义引用(citation)
+26. `<code>`	定义计算机代码文本
 - `<col>`	定义表格中一个或多个列的属性值
 - `<colgroup>`	定义表格中供格式化的列组
 - `<command>`**<font color=red>New</font>**	定义命令按钮，比如单选按钮、复选框或按钮
