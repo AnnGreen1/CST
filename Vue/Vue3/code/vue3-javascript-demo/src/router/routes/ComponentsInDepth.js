@@ -33,5 +33,28 @@ const ComponentsInDepth = [
     name: "ComponentsInDepth-Events-Parent",
     component: () => import("@/views/ComponentsInDepth/Events/Parent.vue"),
   },
+  /**
+   * Fallthrough Attributes
+   */
+  {
+    path: "/ComponentsInDepth/FallthroughAttributes/ClassStyleMerge",
+    name: "ComponentsInDepth-FallthroughAttributes-ClassStyleMerge",
+    component: () => import("@/views/ComponentsInDepth/FallthroughAttributes/ClassStyleMerge.vue"),
+  },
+  {
+    path: "/ComponentsInDepth/FallthroughAttributes/ListenerInheritance",
+    name: "ComponentsInDepth-FallthroughAttributes-ListenerInheritance",
+    component: () => import("@/views/ComponentsInDepth/FallthroughAttributes/ListenerInheritance.vue"),
+  },
+  {
+    path: "/ComponentsInDepth/FallthroughAttributes/NestedComponentInheritance",
+    name: "ComponentsInDepth-FallthroughAttributes-NestedComponentInheritance",
+    component: () => import("@/views/ComponentsInDepth/FallthroughAttributes/NestedComponentInheritance.vue"),
+  },
+  {
+    path: "/ComponentsInDepth/FallthroughAttributes/DisablingAttributeInheritance",
+    name: "ComponentsInDepth-FallthroughAttributes-DisablingAttributeInheritance",
+    component: () => import("@/views/ComponentsInDepth/FallthroughAttributes/DisablingAttributeInheritance.vue"),
+  },
 ];
 export default ComponentsInDepth;

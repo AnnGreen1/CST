@@ -14,7 +14,7 @@ const typescript: RouteRecordRaw[] = [
   {
     path: "/typescript/OptionsAPI",
     name: "typescript-OptionsAPI",
-    component: () => import("../../views/TypeScript/OptionsAPI.vue"),
+    component: () => import("../../views/TypeScript/OptionsAPI/OptionsAPI.vue"),
   },
 ];
 
