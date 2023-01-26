@@ -1,4 +1,5 @@
 # 狂神说Java
+[https://www.kuangstudy.com/course?cid=1](https://www.kuangstudy.com/course?cid=1)
 - 01 Java SE
     - 01 聊聊编程这条路
     - 02 预科阶段
@@ -36,8 +37,18 @@
     - ✅05 Maven环境搭建
     - 06 IDEA中的Maven操作
 - 05 SSM框架
+    - 01 MyBatis详解
+    - 02 Spring详解
+    - 03 SpringMVC详解
 - 06 大前端进阶
 - 07 微服务开发
+    - 01 SpringBoot详解
+    - 02 MyBatisPlus详解
+    - 03 SpringBootWeb开发
+    - 04 SpringSecurity详解
+    - 05 Dubbo/Zookeeper初识
+    - 06 SpringCloud Netfix
+    - 07 SpringCloud Alibaba
 - 08 Linux运维
 - 09 常用中间件
 - 10 企业常用第三方技术
