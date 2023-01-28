@@ -18,3 +18,4 @@ Babel
 diff算法
 浏览器扩展开发
 chrome开发者工具高级使用
+Vue Router
