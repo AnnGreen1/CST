@@ -29,3 +29,7 @@ Bootstrap
 Stylus
 rollup
 less
+Angular
+SVG
+webGL
+Swagger
