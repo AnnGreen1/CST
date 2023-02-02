@@ -15,7 +15,7 @@ next.js
 Babel
 diff算法
 浏览器扩展开发
-chrome开发者工具高级使用
+chrome devtools
 Sass
 Hooks
 websocket
@@ -33,3 +33,8 @@ Angular
 SVG
 webGL
 Swagger
+egg.js
+KOA
+AntDesign
+WebAssembly
+Svelte
