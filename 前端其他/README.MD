@@ -38,3 +38,4 @@ KOA
 AntDesign
 WebAssembly
 Svelte
+webGPU

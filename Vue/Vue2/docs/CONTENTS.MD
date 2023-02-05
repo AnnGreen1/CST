@@ -1,5 +1,5 @@
 # Vue2 docs
-
+vuejs/vue: https://github.com/vuejs/vue
 - 基础
     - 安装
     - 介绍

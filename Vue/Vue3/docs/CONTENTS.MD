@@ -1,4 +1,5 @@
 # Vue3 docs
+vuejs/core: https://github.com/vuejs/core
 - ✅开始
     - 简介
     - 快速上手
