@@ -518,8 +518,9 @@ typeof NaN === 'number'; //true
 
 ## 12、如何判断一个对象是不是空对象？
 
-`Object.keys(obj).length === 0-
-`
+```js
+Object.keys(obj).length === 0
+```
 
 ## 13、手写题：获取url参数getUrlParams(url)
 

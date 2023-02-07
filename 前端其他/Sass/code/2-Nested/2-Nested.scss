@@ -1,12 +1,3 @@
-https://sass-lang.com
-https://www.sass.hk/
-
-1、全局安装sass
-```
-npm install -g sass
-```
-2、新建`demo.scss`
-```scss
 nav {
     background : #C39BD3;
     padding : 10px;
@@ -23,8 +14,3 @@ nav {
         } 
     }
 }
-```
-3、命令编译Sass代码
-```
-sass demo.scss demo.css
-```
