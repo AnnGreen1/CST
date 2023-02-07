@@ -298,13 +298,14 @@ div {
 }
 ```
 参数可以是可选的，可选参数的定义和Sass变量的定义形式是一样的：
-
+```scss
 @mixin square($width: 50px) {
   width:$size;
   height:$size;
 }
+```
 我们还可以将 CSS 规则传递给 mixins。这些规则可以在使用 @content 的 mixin 中使用。
-
+```scss
 @mixin hover-not-disabled {
   &:not([disabled]):hover {
     @content;
@@ -316,18 +317,20 @@ div {
     border-color: blue;
   }
 }
-这样mixin中的@content在编译后就会变成border-color: blue;这样写有助于减少&:not([disabled]):hover部分的重复。
+```
+这样`mixin`中的`@content`在编译后就会变成`border-color: blue;`这样写有助于减少&`:not([disabled]):hover`部分的重复。
 
 ### 5. @import 和 @use
 在CSS中我们通常会创建多个CSS文件并在需要时引入：
-
+```html
 <link rel="stylesheet" href="/path/to/css/1"></link>
 <link rel="stylesheet" href="/path/to/css/2"></link> 
 <link rel="stylesheet" href="/path/to/css/3"></link> 
+```
 这样做会使浏览器发出多个HTTP请求，从而在一定程度上降低应用的速度。而Sass会在代码发动到浏览器之前进行代码组合，这样只需要请求一个CSS文件。
 
 下面来看看如何使用 @import 将文件分块并导入到一个父文件中：
-
+```scss
 body {
   padding:0;
   margin:0;
@@ -337,27 +340,33 @@ body, html {
   width:100%;
   min-height:100%;
 }
+```
+```scss
 @import 'normalize';
 
 content {
   max-width:660px;
 }
-假设 normalize.scss 和 styles.scss 都在同一个文件夹中，可以将一个导入另一个，如上所示。在使用@import时，所有变量、mixin 等都可以全局访问，因为一切都是全局的，所以库必须为其所有成员添加前缀以避免命名冲突。因此不建议使用 @import。
+```
+假设 `normalize.scss` 和 `styles.scss` 都在同一个文件夹中，可以将一个导入另一个，如上所示。在使用`@import`时，所有变量、mixin 等都可以全局访问，因为一切都是全局的，所以库必须为其所有成员添加前缀以避免命名冲突。因此不建议使用 @import。
 
 可以使用 @use 来代替，它的基本用法与@import 相同：
-
+```scss
 @use 'normalize';
 
 content {
   max-width:660px;
 }
-使用 @use 导入的文件称为模块。要使用这些模块的 mixin 或变量，必须使用命名空间来调用它们。默认情况下，命名空间是文件名（不带扩展名）。
-
+```
+使用 `@use` 导入的文件称为模块。要使用这些模块的 mixin 或变量，必须使用命名空间来调用它们。默认情况下，命名空间是文件名（不带扩展名）。
+```scss
 $accent-color: #535353;
 @mixin dark-background {
   background-color:#000;
   color:#fff;
 }
+```
+```scss
 @use 'src/colors';
 body {
   color: colors.$accent-color;
@@ -365,17 +374,19 @@ body {
 .dark-region {
   @include colors.dark-background;
 }
+```
 还可以使用 as 来使用自定义命名空间：
-
+```scss
 @use 'src/colors' as c;
 body  {
   color: c.$accent-color;
 }
-当 _ 被添加到 SCSS 文件的文件名前时，解析器知道它是一个部分文件并且它仅用于导入。导入时，_ 部分是可选的。注意，这里使用 src/colors 来导入 src/_colors.scss。
+```
+当 `_` 被添加到 SCSS 文件的文件名前时，解析器知道它是一个部分文件并且它仅用于导入。导入时，_ 部分是可选的。注意，这里使用 `src/colors` 来导入 `src/_colors.scss`。
 
 ### 6. 算术运算符
 在CSS中可以使用calc()进行数学计算，Sass 支持直接使用+、-、/、*、% 操作符对值和变量进行计算：
-
+```scss
 $content-width: 600px;
 content {
   width:$content-width;
@@ -386,9 +397,10 @@ content {
 .outer-content {
   width: $content-width + 60px;
 }
+```
 ### 7. 流程控制
-在 Sass 中有四种类型的流程控制规则：@if /@else、@each、@for 和@while。其中 @if 和 @else 类似于 JavaScript 中的 if 和 else。
-
+在 Sass 中有四种类型的流程控制规则：`@if` /`@else`、`@each`、`@for` 和`@while`。其中 @if 和 @else 类似于 JavaScript 中的 if 和 else。
+```scss
 @mixin theme($is-dark: false) {
   @if $is-dark {
 
@@ -397,8 +409,9 @@ content {
     
   }
 }
-@each 类似于 JavaScript 中的 for of：
-
+```
+`@each` 类似于 JavaScript 中的 `for of`：
+```scss
 $sizes: 40px, 50px, 80px;
 @each $size in $sizes {
   .icon-#{$size} {
@@ -407,20 +420,22 @@ $sizes: 40px, 50px, 80px;
     width: $size;
   }
 }
+```
 注意：#{$size} 表示法用于使用变量制作动态属性名称和选择器，这称为插值。
 
-@for 类似于 JavaScript 中的 for 循环：
-
+`@for` 类似于 JavaScript 中的 `for` 循环：
+```scss
 @for $i from 1 through 4 {
   .bubble-#{$i} {
     transition-delay: .3 * $i;
   }
 }
+```
 @while（不常用）类似于 JavaScript 中的 while 循环。
 
 ### 8. 扩展/继承
-有时需要编写一个仅用于扩展的样式规则。在这种情况下，可以使用占位符选择器，它看起来像以 % 而不是 . 开头的类选择器。
-
+有时需要编写一个仅用于扩展的样式规则。在这种情况下，可以使用占位符选择器，它看起来像以 `%` 而不是 `.` 开头的类选择器。
+```scss
 %flex {
   display: flex;
 }
@@ -449,8 +464,9 @@ div {
     background-color: #d966fb;
   }
 }
+```
 上面的代码编译成CSS之后将是这样的：
-
+```css
 div {
   display: flex;
 }
@@ -469,9 +485,10 @@ div button {
   color: #424242;
   background-color: #d966fb;
 }
+```
 ### 9. 媒体查询
 在Sass中可以这样来使用媒体查询：
-
+```scss
 body {
     article {
         p {
@@ -485,8 +502,9 @@ body {
         }
     }
 }
+```
 编译成的CSS代码如下：
-
+```css
 body article p {
   font-size: 100%;
   color: black;
@@ -498,8 +516,9 @@ body article p {
     font-size: 150%;
   }
 }
+```
 媒体查询是支持嵌套的，并将所有适用的查询与 and 运算符结合起来：
-
+```scss
 p {
     @media (max-width: 768px) {
         font-size: 150%; 
@@ -508,8 +527,9 @@ p {
         }
     }
 }
+````
 编译成的CSS代码如下：
-
+```css
 @media (max-width: 768px) {
   p {
     font-size: 150%;
@@ -521,3 +541,4 @@ p {
     line-height: 75%;
   }
 }
+```
