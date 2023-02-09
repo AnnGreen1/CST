@@ -54,7 +54,7 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
   - 绘图 `canvas`
   - 用于媒介回放的 `video` 和 `audio` 元素
   - 本地离线存储 `localStorage` 、`sessionStorage`
-  - 语义化更好的内容元素，如：`header`、`article`、`nav`、`section`、`foote`r等
+  - 语义化更好的内容元素，如：`header`、`article`、`nav`、`section`、`footer`等
   - 表单控件 `calendar`、`date`、`time`、`email`、`url`、`search` 等
   - 新的技术 `webworker`、`websocket`
   - 新的文档属性 `document.visibilityState`
@@ -112,7 +112,8 @@ HTML5 现在已经不是 SGML 的子集，主要是关于图像、位置、存�
 - 使用 transform 代替 top
 - 不要把节点的属性值放在一个循环里，当成循环里的变量
 - 不要使用 table 布局，可能很小的一个改动会造成整个 table 的重新布局
-- 把 DOM 离线后修改。如：使用 documentFragment 对象在内存里操作 DOM
+- 把 DOM 离线后修改。如：使用 documentFragment 对象在内存里操作 DOM 
+> 什么意思？
 - 不要一条一条的修改样式，可以预先定义好 class，然后修改 DOM 的 className
 - 使用 absolute 或 fixed 使元素脱离文档流
 
@@ -368,6 +369,10 @@ flex 布局，是一种弹性盒布局模型，给子元素提供了空间分布
 
 - `alt`是图片加载失败时显示在网页上的替代文字；`title`是鼠标放在图片上面时显示的文字，是对图片的进一步描述和说明。
 - `alt`是 img 的必要属性；`title`不是。
+
+tips:
+alt：图片不存在时显示的文字
+title：鼠标悬浮在图片上时显示的文字
 - 对于网站 SEO 优先来说，搜索引擎对图片意思的判断，主要是靠`alt`属性，所以在图片`alt`属性中以简要文字说明，同时包含关键字，也是页面优化的一部分。
 
 `懒加载原理`：先设置图片的 `data-set` 属性值（也可以是其他任意的，只要不发生 http 请求就可以，作用是为了存取值）为图片路径，由于不是 `src` 属性，故不会发生 http 请求。然后计算出页面的 scrollTop 的高度和浏览器的高度之和，如果图片距页面顶端距离小于前两者之和，说明图片要显示出来了，这时将 `data-set` 属性替换为 `src` 属性即可。
