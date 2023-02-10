@@ -1,6 +1,6 @@
 # 「offer 来了」1 张思维导图，七大知识板块，保姆级巩固你的 js 知识体系（4.0w 字）
 
-[mp.weixin.qq.com](http://mp.weixin.qq.com/s?__biz=Mzg5MDA4NTUyNA==&mid=2247489949&idx=1&sn=56e989754bd96d8101b76f1fc97d01a6&chksm=cfe35066f894d970fa303835b1c0119c6bb35f8e8e1e507dcf54c22b6c723bf0c997cc3fd832&mpshare=1&scene=1&srcid=1016RJU3yAhPZf8D4x4D53S9&sharer_sharetime=1665884013853&sharer_shareid=b8d5da03cbe546fb54510ac993e581cf#rd)星期一研究室 星期一研究室
+https://juejin.cn/post/7026502510172962829
 
 ## 🧐 前言
 
@@ -1007,23 +1007,23 @@ console.log(res3(1)(2,3)(4)(5));
 **以下给出具体实例：**
 
 ```js
-js (b) //call b
-console.log(a) //undefined
-let a = 'Hello World';
-function b(){
-console.log('call b');
+js(b); //call b
+console.log(a); //undefined
+let a = "Hello World";
+function b() {
+  console.log("call b");
 }
 ```
 
 ```js
-b(); // call b second 
-function b() { 
- console.log('call b fist');
+b(); // call b second
+function b() {
+  console.log("call b fist");
 }
-function b() { 
- console.log('call b second');
+function b() {
+  console.log("call b second");
 }
-var b = 'Hello world';
+var b = "Hello world";
 ```
 
 ## 😜 四、事件
@@ -1088,16 +1088,14 @@ var b = 'Hello world';
 
 ![事件循环与任务队列](./imgs/3.png)
 
-
-
 ### （2）常用的宏任务和微任务
 
 **1）常用的宏任务和微任务有：**
 
-| 名称 | 举例（常用）|
-| ----- | ----- |
+| 名称   | 举例（常用）                                                       |
+| ------ | ------------------------------------------------------------------ |
 | 宏任务 | script、setTimeout 、setInterval 、setImmediate、I/O、UI Rendering |
-| 微任务 | process.nextTick()、Promise |
+| 微任务 | process.nextTick()、Promise                                        |
 
 上诉的 `setTimeout` 和 `setInterval` 等都是任务源，真正进入任务队列的是他们分发的任务。
 
@@ -1108,13 +1106,13 @@ var b = 'Hello world';
 - process.nextTick > Promise
 
 ```js
-for(const macroTask of macroTaskQueue){
- // 2.再执行宏任务
- handleMacroTask();
- for(const microTask of microTaskQueue){
- // 1.先执行微任务
- handleMicroTask();
- }
+for (const macroTask of macroTaskQueue) {
+  // 2.再执行宏任务
+  handleMacroTask();
+  for (const microTask of microTaskQueue) {
+    // 1.先执行微任务
+    handleMicroTask();
+  }
 }
 ```
 
@@ -1153,67 +1151,72 @@ this 绑定四大规则遵循以下顺序：
 
 - **New 绑定**：`new` 调用函数会创建一个全新的对象，并将这个对象绑定到函数调用的 `this` 。`New` 绑定时，如果是 `new` 一个硬绑定函数，那么会用 `new` 新建的对象替换这个硬绑定 `this` 。**具体实现代码如下：**
 
-`function foo(a) { -
- this.a = a; -
-}-
-var bar = new foo(2); -
-console.log(bar.a); //2-
-`
+```js
+function foo(a) {
+  this.a = a;
+}
+var bar = new foo(2);
+console.log(bar.a); //2
+```
 
 ### （2）显式绑定
 
 - **显示绑定**：通过在函数上运行 `call` 和 `apply` ，来显示绑定的 `this` 。**具体实现代码如下：**
 
-`function foo() { -
- console.log(this.a); -
-}-
-var obj = { -
- a: 2 -
-};-
-foo.call(obj); //2-
-`
+```js
+function foo() {
+  console.log(this.a);
+}
+var obj = {
+  a: 2,
+};
+foo.call(obj); //2
+```
 
 - 显示绑定之**硬绑定**
 
-`function foo(something) { -
- console.log(this.a, something); -
- return this.a + something; -
-}-
-function bind(fn, obj) { -
- return function() { -
- return fn.apply(obj, arguments); -
- }; -
-}-
-var obj = { -
- a: 2 -
-}-
-var bar = bind(foo, obj);-
-`
+```js
+function foo(something) {
+  console.log(this.a, something);
+  return this.a + something;
+}
+function bind(fn, obj) {
+  return function () {
+    return fn.apply(obj, arguments);
+  };
+}
+var obj = {
+  a: 2,
+};
+var bar = bind(foo, obj);
+```
 
 ### （3）隐式绑定
 
 - **隐式绑定**：调用位置是否有**上下文对象**，或者是否被某个对象拥有或者包含，那么隐式绑定规则会把函数调用中的 `this` 绑定到这个上下文对象。而且，对象属性链只有上一层或者说最后一层在**调用位置**中起作用。**具体实现代码如下：**
 
-`function foo() { -
- console.log(this.a); -
-}-
-var obj = { -
- a: 2, -
- foo: foo, -
-}-
-obj.foo(); // 2-
-`
+```js
+function foo() {
+  console.log(this.a);
+}
+var obj = {
+  a: 2,
+  foo: foo,
+};
+obj.foo(); // 2
+```
 
 ### （4）默认绑定
 
 - **默认绑定**：没有其他修饰（ `bind` 、 `apply` 、 `call` ），在非严格模式下定义指向**全局对象**，在严格模式下定义指向 `undefined` 。**具体实现代码如下：**
 
-`function foo() { -
- console.log(this.a); -
-}-
-var a = 2; -
-foo(); //undefined-
-`
+```js
+function foo() {
+  console.log(this.a);
+}
+var a = 2;
+foo(); //undefined
+```
 
 ## 3、如果一个构造函数，bind 了一个对象，用这个构造函数创建出的实例会继承这个对象的属性吗？为什么？
 
@@ -1238,27 +1241,27 @@ foo(); //undefined-
 - 当直接调用时，执行 `[[Call]]` 方法，直接执行**函数体**。
 - 箭头函数没有 `[[Construct]]` 方法，**不能被用作构造函数调用**，当使用 `new` 进行函数调用时会报错。
 
-`function foo(){-
-return (a) => {-
-console.log(this.a);-
-}-
+```js
+function foo() {
+  return (a) => {
+    console.log(this.a);
+  };
 }
 
-let obj1 = {-
-a: 2-
+let obj1 = {
+  a: 2,
 };
 
-let obj2 = {-
-a: 3-
+let obj2 = {
+  a: 3,
 };
 
-let bar1 = foo.call(obj1);-
+let bar1 = foo.call(obj1);
 let bar2 = bar1.call(obj2);
 
-console.log(bar1); // object-
+console.log(bar1); // object
 console.log(bar2); // 2 undefind
-
-`
+```
 
 ## 5、了解 this 嘛，apply，call，bind 具体指什么？
 
@@ -1272,145 +1275,142 @@ console.log(bar2); // 2 undefind
 
 `apply` 传入的参数是**数组**形式的，`call` 传入的参数是**按顺序的逐个传入并以逗号隔开**， `bind` 传入的参数既可以是**数组**形式，也可以是**按顺序逐个传入**。**具体方式见下方：**
 
-`apply: -
-Array.prototype.apply(this, [args1, args2]) -
+```js
+apply:
+Array.prototype.apply(this, [args1, args2])
 ES6 之前用来展开数组调用, foo.apply(null, []) ， ES6 之后使用 ... 操作符；
 
-call: -
+call:
 Array.prototype.call(this, args1, args2)。
 
-bind: -
-Array.prototype.bind(this, args1, args2)；-
+bind:
+Array.prototype.bind(this, args1, args2)；
 Array.prototype.bind(this, [args1, args2])。
 
-`
+```
 
 ### （3）手写 apply、call、bind
 
 **apply：**
 
-`// 实现 apply 函数，在函数原型上封装 myApply 函数 , 实现和原生 apply 函数一样的效果
+```js
+// 实现apply函数，在函数原型上封装myApply函数 , 实现和原生apply函数一样的效果
 
-Function.prototype.myApply = function(context){
+Function.prototype.myApply = function (context) {
+  // 存储要转移的目标对象
+  _this = context ? Object(context) : window;
 
-// 存储要转移的目标对象-
-\_this = context ? Object(context) : window;
+  // 在转移this的对象上设定一个独一无二的属性，并将函数赋值给它
+  let key = Symbol("key");
+  _this[key] = this;
 
-// 在转移 this 的对象上设定一个独一无二的属性，并将函数赋值给它-
-let key = Symbol('key');-
-\_this[key] = this;
+  // 将数组里存储的参数拆分开，作为参数调用函数
+  let res = arguments[1] ? _this[key](...arguments[1]) : _this[key]();
 
-// 将数组里存储的参数拆分开，作为参数调用函数-
-let res = arguments[1] ? \_this[key](...arguments[1]) : \_this[key]();
+  // 删除
+  delete _this[key];
 
-// 删除-
-delete \_this[key];
+  // 返回函数返回值
+  return res;
+};
 
-// 返回函数返回值-
-return res;-
+// 测试代码
+let obj = {
+  name: "张三",
+};
+
+function showName(first, second, third) {
+  console.log(first, second, third);
+  console.log(this.name);
 }
 
-// 测试代码-
-let obj = {-
-'name': '张三'-
-}
-
-function showName(first, second, third){-
-console.log(first, second, third);-
-console.log(this.name);-
-}
-
-showName.myApply(obj, [7,8,9]);
-
-`
+showName.myApply(obj, [7, 8, 9]);
+```
 
 **call：**
 
-`// 实现 call 函数，在函数原型上封装 myCall 函数 , 实现和原生 call 函数一样的效果
+```js
+// 实现call函数，在函数原型上封装myCall函数 , 实现和原生call函数一样的效果
 
-Function.prototype.myCall = function(context){
+Function.prototype.myCall = function (context) {
+  // 存储要转移的目标对象
+  let _this = context ? Object(context) : window;
 
-// 存储要转移的目标对象-
-let \_this = context ? Object(context) : window;
+  // 在转移this的对象上设定一个独一无二的属性，并将函数赋值给它
+  let key = Symbol("key");
+  _this[key] = this;
 
-// 在转移 this 的对象上设定一个独一无二的属性，并将函数赋值给它-
-let key = Symbol('key');-
-\_this[key] = this;
+  // 创建空数组，存储多个传入参数
+  let args = [];
 
-// 创建空数组，存储多个传入参数-
-let args = [];
+  // 将所有传入的参数添加到新数组中
+  for (let i = 1; i < arguments.length; i++) {
+    args.push(arguments[i]);
+  }
 
-// 将所有传入的参数添加到新数组中-
-for(let i =1; i < arguments.length; i++){-
-args.push(arguments[i]);-
-}
+  // 将新数组拆开作为多个参数传入，并调用函数
+  let res = _this[key](...args);
 
-// 将新数组拆开作为多个参数传入，并调用函数-
-let res = \_this[key](...args);
+  // 删除
+  delete _this[key];
 
-// 删除-
-delete \_this[key];
+  // 返回函数返回值
+  return res;
+};
 
-// 返回函数返回值-
-return res;-
-}
+let obj = {
+  name: "张三",
+};
 
-let obj = {-
-'name': '张三'-
-}
-
-function showName(first, second, third){-
-console.log(first, second, third);-
-console.log(this.name);-
+function showName(first, second, third) {
+  console.log(first, second, third);
+  console.log(this.name);
 }
 
 showName.myCall(obj, 7, 8, 9);
-
-`
+```
 
 **bind：**
 
-`// 实现 Bind 函数，在函数原型上封装 myBind 函数 , 实现和原生 bind 函数一样的效果
+```js
+// 实现Bind函数，在函数原型上封装myBind函数 , 实现和原生bind函数一样的效果
 
-Function.prototype.myBind = function(context){
+Function.prototype.myBind = function (context) {
+  // 存储要转移的目标对象
+  let _this = context ? Object(context) : window;
 
-// 存储要转移的目标对象-
-let \_this = context ? Object(context) : window;
+  // 在转移this的对象上设定一个独一无二的属性，并将函数赋值给它
+  let key = Symbol("key");
+  _this[key] = this;
 
-// 在转移 this 的对象上设定一个独一无二的属性，并将函数赋值给它-
-let key = Symbol('key');-
-\_this[key] = this;
+  // 创建函数闭包
+  return function () {
+    // 将所有参数先拆分开，再添加到新数组中，以此来支持多参数传入以及数组参数传入的需求
+    let args = [].concat(...arguments);
 
-// 创建函数闭包-
-return function(){
+    // 调用函数
+    let res = _this[key](...args);
 
-// 将所有参数先拆分开，再添加到新数组中，以此来支持多参数传入以及数组参数传入的需求-
-let args = [].concat(...arguments);
+    // 删除
+    delete _this[key];
 
-// 调用函数-
-let res = \_this[key](...args);
+    // 返回函数返回值
+    return res;
+  };
+};
 
-// 删除-
-delete \_this[key];
+// 测试代码
+let obj = {
+  name: "张三",
+};
 
-// 返回函数返回值-
-return res;-
-}-
+function showName(first, second, third) {
+  console.log(first, second, third);
+  console.log(this.name);
 }
 
-// 测试代码-
-let obj = {-
-'name' : '张三'-
-}
-
-function showName(first, second, third){-
-console.log(first, second, third);-
-console.log(this.name);-
-}
-
-showName.myBind(obj)([7,8,9]);
-
-`
+showName.myBind(obj)([7, 8, 9]);
+```
 
 ## 😋 六、Ajax 问题
 
@@ -1425,7 +1425,7 @@ showName.myBind(obj)([7,8,9]);
 - 在 `ajax` 发送请求前加上 `anyAjaxObj.setRequestHeader("If-Modified-Since","0")` 。
 - 在 `ajax` 发送请求前加上 `anyAjaxObj.setRequestHeader("Cache-Control","no-cache")` 。
 - 在 `URL` 后面加上一个随机数：`"fresh=" + Math.random()` 。
-- 在 `URL` 后面加上时间搓：`"nowtime=" + new Date().getTime()` 。
+- 在 `URL` 后面加上时间戳：`"nowtime=" + new Date().getTime()` 。
 
 ## 3、js 单线程
 
@@ -1473,21 +1473,31 @@ showName.myBind(obj)([7,8,9]);
 
 ## 5、js 脚本加载问题，async、defer 问题
 
+async：异步，defer：推迟
+
+- `script` 会阻碍 HTML 解析，只有下载好并执行完脚本才会继续解析 HTML
+- `async script`：解析 HTML 的过程中会进行脚本的异步下载，下载成功后立马执行，因此有可能会阻断 HTML 的解析。多个脚本的执行顺序无法保证。
+- `defer script`：也是异步下载脚步，加载完成后，如果此时 HTML 还没有解析完，浏览器不会暂停解析去执行 JS 代码，而是等待 HTML 解析完毕再执行 JS 代码，如果存在多个 `defer script` 标签，浏览器（IE9 及以下除外）会保证它们按照在 HTML 中出现的顺序执行，不会破坏 JS 脚本之间的依赖关系。
+
+---
+
 - 如果依赖其他脚本和 `DOM` 结果，使用 `defer`。
 - 如果与 `DOM` 和其他脚本依赖不强时，使用 `async`。
 - 总结：依赖性强用 `defer` ，依赖性不强用 `async` 。
 
+建议阅读文章：[图解 script 标签中的 async 和 defer 属性](https://juejin.cn/post/6894629999215640583)
+
 ## 6、关于 window.onload 和 DOMContentLoaded
 
-`window.addEventListener('load', function(){-
-//页面的全部资源加载完才会执行，包括图片、视频等-
+```js
+window.addEventListener("load", function () {
+  //页面的全部资源加载完才会执行，包括图片、视频等
 });
 
-document.addEventListener('DOMContentLoaded', function(){-
-//DOM 渲染完即可执行，此时图片、视频还可能没加载完 -> 尽量选择此方法-
+document.addEventListener("DOMContentLoaded", function () {
+  //DOM 渲染完即可执行，此时图片、视频还可能没加载完 -> 尽量选择此方法
 });
-
-`
+```
 
 > - 关于 DOM 和 BOM 操作的补充 👇
 > - 原文：提升对前端的认知，不得不了解 Web API 的 DOM 和 BOM
@@ -1522,265 +1532,265 @@ document.addEventListener('DOMContentLoaded', function(){-
 
 ## 8、手写题：手写 Ajax 函数
 
-```/*-
- 1. get()方法-
- 参数：url（请求的地址）、data（携带数据）、callback（成功回调函数）、dataType（返回数据类型）-
- 2. post()方法-
- 参数：url（请求的地址）、data（携带数据）、callback（成功回调函数）、dataType（返回数据类型）-
- 3. ajax()方法-
- 参数：obj（对象中包含了各种参数），其中有url、data、dataType、async、type-
+```js
+/*
+	1. get()方法
+	   参数：url（请求的地址）、data（携带数据）、callback（成功回调函数）、dataType（返回数据类型）
+	2. post()方法
+	   参数：url（请求的地址）、data（携带数据）、callback（成功回调函数）、dataType（返回数据类型）
+	3. ajax()方法
+	   参数：obj（对象中包含了各种参数），其中有url、data、dataType、async、type
 */
 
-let $ = {-
- createXHR: function() {-
- if(window.XMLHttpRequest) {-
- return new XMLHttpRequest()-
- } else {-
- return new ActiveXObject()-
- } -
- },-
- get: function(url, data, callback, dataType) {-
- let dataType = dataType.toLowerCase()-
- if(data) {-
- url += '?'-
- Object.keys(data).forEach(key => url += `${key}=${data[key]}&`)-
- url = url.slice(0, -1)-
- }-
- let xhr = this.createXHR()
+let $ = {
+	createXHR: function() {
+		if(window.XMLHttpRequest) {
+			return new XMLHttpRequest()
+		} else {
+			return new ActiveXObject()
+		} 
+	},
+	get: function(url, data, callback, dataType) {
+		let dataType = dataType.toLowerCase()
+		if(data) {
+			url += '?'
+			Object.keys(data).forEach(key => url += `${key}=${data[key]}&`)
+			url = url.slice(0, -1)
+		}
+		let xhr = this.createXHR()
 
- xhr.open('get', url)-
- xhr.send()-
- xhr.onreadystatechange = function() {-
- if(xhr.readyState === 4) {-
- if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {-
- let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText-
- callback(res, xhr.status, xhr)-
- }-
- }-
- }-
- },-
- post: function(url, data, callback, dataType) {-
- let dataType = dataType.toLowerCase()
+		xhr.open('get', url)
+		xhr.send()
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState === 4) {
+				if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+					let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText
+					callback(res, xhr.status, xhr)
+				}
+			}
+		}
+	},
+	post: function(url, data, callback, dataType) {
+		let dataType = dataType.toLowerCase()
 
- let xhr = this.createXHR()
+		let xhr = this.createXHR()
 
- let str = ''-
- if(data) {-
- Object.keys(data).forEach(key => str += `${key}=${data[key]}&`)-
- str = str.slice(0, -1)-
- }-
- xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')-
- xhr.send(str)-
- xhr.onreadystatechange = function() {-
- if(xhr.readyState === 4) {-
- if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {-
- let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText-
- callback(res, xhr.status, xhr)-
- }-
- }-
- }-
- },-
- ajax: function(params) {-
- // 初始化参数-
- let type = params.type ? params.type.toLowerCase() : 'get'-
- let isAsync = params.isAsync ? params.isAsync : 'true'-
- let url = params.url-
- let data = params.data ? params.data : {}-
- let dataType = params.dataType.toLowerCase()
+		let str = ''
+		if(data) {
+			Object.keys(data).forEach(key => str += `${key}=${data[key]}&`)
+			str = str.slice(0, -1)
+		}
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+		xhr.send(str)
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState === 4) {
+				if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+					let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText
+					callback(res, xhr.status, xhr)
+				}
+			}
+		}
+	},
+	ajax: function(params) {
+		// 初始化参数
+		let type = params.type ? params.type.toLowerCase() : 'get'
+		let isAsync = params.isAsync ? params.isAsync : 'true'
+		let url = params.url
+		let data = params.data ? params.data : {}
+		let dataType = params.dataType.toLowerCase()
 
- let xhr = this.createXHR()
+		let xhr = this.createXHR()
+		
+		let str = ''
+		
+		// 拼接字符串
+		Object.keys(data).forEach(key => str += `${key}=${data[key]}&`)
+		str = str.slice(0, -1)
+		
+		if(type === 'get') url += `?${str}`;
 
- let str = ''
+		return new Promise((resolve, reject) => {
+			// 创建请求
+			xhr.open(type, url, isAsync)
 
- // 拼接字符串-
- Object.keys(data).forEach(key => str += `${key}=${data[key]}&`)-
- str = str.slice(0, -1)
+			if(type === 'post') {
+				xhr.setRequestHeader('Content-Type', 'application/x-www-form-rulencoded')
+				xhr.send(str)
+			} else {
+				xhr.send()
+			}
 
- if(type === 'get') url += `?${str}`;
-
- return new Promise((resolve, reject) => {-
- // 创建请求-
- xhr.open(type, url, isAsync)
-
- if(type === 'post') {-
- xhr.setRequestHeader('Content-Type', 'application/x-www-form-rulencoded')-
- xhr.send(str)-
- } else {-
- xhr.send()-
- }
-
- xhr.onreadystatechange = function() {-
- if(xhr.readyState === 4) {-
- if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {-
- let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText-
- resolve(res) // 请求成功，返回数据-
- } else {-
- reject(xhr.status) // 请求失败，返回状态码-
- }-
- }-
- }-
- }) -
- }-
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState === 4) {
+					if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
+						let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText
+						resolve(res) // 请求成功，返回数据
+					} else {
+						reject(xhr.status) // 请求失败，返回状态码
+					}
+				}
+			}
+		})	
+	}
 }
 
-````
+```
 
 ## 9、手写题：手写 Promise 原理
 
-`class MyPromise{-
-constructor(fn){-
-this.resolvedCallbacks = [];-
-this.rejectCallbacks = [];
+```js
+class MyPromise{
+    constructor(fn){
+        this.resolvedCallbacks = [];
+        this.rejectCallbacks = [];
+        
+        // pending 即在等待状态
+        this.state = 'PENDING';
+        this.value = '';
+        
+        fn(this.resolve.bind(this), this.reject.bind(this));
+    }
 
-// pending 即在等待状态-
-this.state = 'PENDING';-
-this.value = '';
+    resolve(value){
+        if(this.state === 'PENDING'){
+            this.state = 'RESOLVED';
+            this.value = value;
 
-fn(this.resolve.bind(this), this.reject.bind(this));-
+            this.resolvedCallbacks.map(cb => cb(value));
+        }
+    }
+
+    reject(value){
+        if(this.state === 'PENDING'){
+            this.state = 'REJECTED';
+            this.value = value;
+
+            this.rejectCallbacks.map(cb => cb(value));
+        }
+    }
+
+    then(onFulfilled, onRejected){
+        if(this.state === 'PENDING'){
+            this.resolvedCallbacks.map(cb => cb(onFulfilled));
+            this.rejectCallbacks.map(cb => cb(onRejected));
+        }
+
+        if(this.state === 'RESOLVED'){
+            onFulfilled(this.value);
+        }
+
+        if(this.state === 'REJECTED'){
+            onRejected(this.value);
+        }
+    }
 }
-
-resolve(value){-
-if(this.state === 'PENDING'){-
-this.state = 'RESOLVED';-
-this.value = value;
-
-this.resolvedCallbacks.map(cb => cb(value));-
-}-
-}
-
-reject(value){-
-if(this.state === 'PENDING'){-
-this.state = 'REJECTED';-
-this.value = value;
-
-this.rejectCallbacks.map(cb => cb(value));-
-}-
-}
-
-then(onFulfilled, onRejected){-
-if(this.state === 'PENDING'){-
-this.resolvedCallbacks.map(cb => cb(onFulfilled));-
-this.rejectCallbacks.map(cb => cb(onRejected));-
-}
-
-if(this.state === 'RESOLVED'){-
-onFulfilled(this.value);-
-}
-
-if(this.state === 'REJECTED'){-
-onRejected(this.value);-
-}-
-}-
-}
-
-`
+```
 
 ## 10、手写题：基于 Promise 手写 Promise.all
 
-`/\*\*-
+```js
+/**
+ * promise的三种状态：
+ * 1.pending：等待状态，比如正在网络请求，或定时器没有到时间；
+ * 2.fulfill：满足状态，当我们主动回调了resolve时，就处于该状态，并且会回调then函数
+ * 3.reject：拒绝状态，当我们主动回调了reject时，就处于该状态，并且会回调catch函数
+ */
+/*----------------------------------------------------------------- */
+// 函数.then()
+// 函数then是Promise中的一个方法，它会在Promise处于fulfill状态时调用触发
+// resolve和reject是默认传入的函数参数
+new Promise((resolve, reject) => {
+    setTimeout(() => {
+        // 在Promise中调用resolve函数，会使Promise变为fulfill状态
+        // resolve函数可以传入一个参数，作为then函数的默认传入参数
+        resolve('成功');
+    }, 1000);
+})
+.then(data => {
+    console.log(data); //结果输出成功
+});
 
-- promise 的三种状态：-
-- 1.pending：等待状态，比如正在网络请求，或定时器没有到时间；-
-- 2.fulfill：满足状态，当我们主动回调了 resolve 时，就处于该状态，并且会回调 then 函数-
-- 3.reject：拒绝状态，当我们主动回调了 reject 时，就处于该状态，并且会回调 catch 函数-
-  _/-
-  /_----------------------------------------------------------------- \*/-
-  // 函数.then()-
-  // 函数 then 是 Promise 中的一个方法，它会在 Promise 处于 fulfill 状态时调用触发-
-  // resolve 和 reject 是默认传入的函数参数-
-  new Promise((resolve, reject) => {-
-  setTimeout(() => {-
-  // 在 Promise 中调用 resolve 函数，会使 Promise 变为 fulfill 状态-
-  // resolve 函数可以传入一个参数，作为 then 函数的默认传入参数-
-  resolve('成功');-
-  }, 1000);-
-  })-
-  .then(data => {-
-  console.log(data); //结果输出成功-
-  });
-
-/_----------------------------------------------------------------- _/-
-// 函数 .catch()-
-// 函数 catch 是 Promise 的一个方法。它会在 Promise 处于 reject 状态时调用触发-
-new Promise((resolve, reject) => {-
-setTimeout(() => {-
-// 在 Promise 调用 reject 函数，会使 Promise 变为 reject 状态-
-// reject 函数可以传入一个参数，作为 catch 函数的默认传入参数-
-reject('失败');-
-}, 1000)-
-})-
-.catch(err => {-
-console.log(err); //结果输出：失败-
+/*----------------------------------------------------------------- */
+// 函数 .catch()
+// 函数catch是Promise的一个方法。它会在Promise处于reject状态时调用触发
+new Promise((resolve, reject) => {
+    setTimeout(() => {
+        // 在Promise调用reject函数，会使Promise变为reject状态
+        // reject函数可以传入一个参数，作为catch函数的默认传入参数
+        reject('失败');
+    }, 1000)
+})
+.catch(err => {
+    console.log(err); //结果输出：失败
 })
 
-/_----------------------------------------------------------------- _/-
-// 函数.finally()-
-// 函数 finally 是 Promise 中的一个方法，它会在 Promise 的最后触发，无论 Promise 处于什么状态-
-new Promise((resolve, reject) => {-
-setTimeout(() => {-
-resolve('成功啦！')-
-},1000)-
-})-
-.then(data => {-
-console.log(data);-
-})-
-.finally(() => {-
-console.log('Promise 结束');-
+/*----------------------------------------------------------------- */
+// 函数.finally()
+// 函数finally是Promise中的一个方法，它会在Promise的最后触发，无论Promise处于什么状态
+new Promise((resolve, reject) => {
+    setTimeout(() => {
+       resolve('成功啦！')
+    },1000)
+})
+.then(data => {
+    console.log(data);
+})
+.finally(() => {
+    console.log('Promise结束');
 })
 
-/_ -
-结果输出：成功啦！-
-Promise 结束-
-_/
+/* 
+    结果输出：成功啦！
+            Promise结束
+*/
 
-/_----------------------------------------------------------------- _/-
-// 函数 all()-
-// 函数 all 是 Promise 中的一个方法，它用于将多个 promise 实例，包装成一个新的 promise 实例-
-Promise.all([-
-new Promise((resolve, reject) => {-
-setTimeout(() => {-
-resolve('我是第一个异步请求的数据');-
-});-
-}, 1000),-
-new Promise((resolve, reject) => {-
-setTimeout(() => {-
-resolve('我是第二个异步请求的数据');-
-}, 1000);-
-})-
-])-
-.then(results => {-
-console.log(results); // ['我是第一个异步请求的数据', '我是第二个异步请求的数据']-
+/*----------------------------------------------------------------- */
+// 函数all()
+// 函数all是Promise中的一个方法，它用于将多个promise实例，包装成一个新的promise实例
+Promise.all([
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('我是第一个异步请求的数据');
+        });
+    }, 1000),
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('我是第二个异步请求的数据');
+        }, 1000);
+    })
+])
+.then(results => {
+    console.log(results); // ['我是第一个异步请求的数据', '我是第二个异步请求的数据']
 })
 
-/_----------------------------------------------------------------- _/-
-// 实际应用-
-let string1 = 'I am';-
-new Promise((resolve, reject) => {-
-setTimeout(() => {-
-let string2 = string1 + 'Monday';-
-resolve(string2);-
-}, 1000);-
-})-
-.then(data => {-
-return new Promise((resolve, reject) => {-
-let string3 = data + 'in CSDN';-
-resolve(string3);-
-})-
-})-
-.then(data => {-
-console.log(data);-
-})-
-.finally(() => {-
-console.log('Promise 结束');-
+/*----------------------------------------------------------------- */
+// 实际应用
+let string1 = 'I am';
+new Promise((resolve, reject) => {
+    setTimeout(() => {
+        let string2 = string1 + 'Monday';
+        resolve(string2);
+    }, 1000);
+})
+.then(data => {
+    return new Promise((resolve, reject) => {
+        let string3 = data + 'in CSDN';
+        resolve(string3);
+    })
+})
+.then(data => {
+    console.log(data);
+})
+.finally(() => {
+    console.log('Promise结束');
 })
 
-/_-
-输出结果：-
-I am Monday in CSDN！-
-Promise 结束-
-_/
-
-`
+/*
+    输出结果：
+    I am Monday in CSDN！
+    Promise结束
+*/
+```
 
 > **详解文章补充（Promise）👇**
 >
@@ -1797,25 +1807,25 @@ _/
 
 通俗来讲，节流是从频繁触发执行变为每隔一段时间才执行一次。
 
-`//封装节流函数，实现节流-
-function throttle(func, delay=500) {-
-let timer = null;-
-let status = false;
+```js
+//封装节流函数，实现节流
+function throttle(func, delay=500) {
+    let timer = null;
+    let status = false;
 
-return function (...args) {
+    return function (...args) {
+        
+        if(status) return;
+        
+        status = true;
 
-if(status) return;
-
-status = true;
-
-timer = setTimeout(() => {-
-func.apply(this, args)-
-status = false-
-}, delay);-
-}-
+        timer = setTimeout(() => {
+            func.apply(this, args)
+            status = false
+        }, delay);
+    }
 }
-
-`
+```
 
 ### （2）手写防抖函数
 
@@ -1823,23 +1833,23 @@ status = false-
 
 通俗来讲，防抖是从频繁触发执行变为最后一次才执行。
 
-`//封装防抖函数，实现防抖-
-function denounce(func, delay=500){-
-let timer = null;-
-return function(...args){
+```js
+//封装防抖函数，实现防抖
+function denounce(func, delay=500){
+    let timer = null;
+    return function(...args){
+        
+        // 如果有值，清除定时器，之后继续执行
+        if(timer){
+            clearTimeout(timer);
+        }
 
-// 如果有值，清除定时器，之后继续执行-
-if(timer){-
-clearTimeout(timer);-
+        timer = setTimeout(() => {
+            func.apply(this, args);
+        },delay);
+    }
 }
-
-timer = setTimeout(() => {-
-func.apply(this, args);-
-},delay);-
-}-
-}
-
-`
+```
 
 > - **详解文章补充（防抖节流）👇**
 > - 原文：关于前端性能优化问题，认识网页加载过程和防抖节流
@@ -1849,35 +1859,35 @@ func.apply(this, args);-
 
 **定义：**
 
-懒加载突出一个“懒”字，懒就是拖延迟的意思，所以“懒加载”说白了就是**延迟加载**，比如我们加载一个页面，这个页面很长很长，长到我们的浏览器可视区域装不下，那么懒加载就是优先加载可视区域的内容，其他部分等进入了可视区域在加载。
+懒加载突出一个“懒”字，懒就是拖延迟的意思，所以“懒加载”说白了就是**延迟加载**，比如我们加载一个页面，这个页面很长很长，长到我们的浏览器可视区域装不下，那么懒加载就是优先加载可视区域的内容，其他部分等进入了可视区域再加载。
 
 **代码实现：**
 
-`let img = document.getElementsByTagName('img'); // 获取 img 标签相关的-
-let num = img.length; // 记录有多少张图片-
+```js
+let img = document.getElementsByTagName('img'); // 获取img标签相关的
+let num = img.length; // 记录有多少张图片
 let count = 0; // 计数器，从第一张图片开始计数
 
 lazyload(); // 首次加载别忘了加载图片
 
-function lazyload() {-
-let viewHeight = document.documentElement.clientHeight; // clientHeight 获取屏幕可视区域的高度-
-let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop; // 滚动条卷去的高度-
-for (let i = 0; i < num; i++) {-
-// 元素现在已经出现在视觉区域中-
-if (img[i].offsetTop < scrollHeight + viewHeight) {-
-// 当 src 不存在时，跳出本轮循环，继续下一轮-
-if (img[i].getAttribute('src') !== 'default.jpg') {-
-continue;-
-} else {-
-// 当 src 属性存在时，获取 src 的值，并将其赋值给 img-
-img[i].src = img[i].getAttribute('data-src');-
-count++;-
-}-
-}-
-}-
+function lazyload() {
+    let viewHeight = document.documentElement.clientHeight; // clientHeight 获取屏幕可视区域的高度
+    let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop; // 滚动条卷去的高度
+    for (let i = 0; i < num; i++) {
+        // 元素现在已经出现在视觉区域中
+        if (img[i].offsetTop < scrollHeight + viewHeight) {
+            // 当src不存在时，跳出本轮循环，继续下一轮
+            if (img[i].getAttribute('src') !== 'default.jpg') {
+                continue;
+            } else {
+                // 当src属性存在时，获取src的值，并将其赋值给img
+                img[i].src = img[i].getAttribute('data-src');
+                count++;
+            }
+        }
+    }
 }
-
-`
+```
 
 > - **详细文章补充 👇**
 > - 原文：原生 js 实现图片懒加载（lazyLoad）
@@ -1891,57 +1901,57 @@ count++;-
 
 `forEach()` 方法对数组的每个元素执行一次给定的函数。原生 `API` 具体解析如下：
 
-`arr.forEach(function(currentValue, currentIndex, arr) {}, thisArg)
+```js
+arr.forEach(function(currentValue, currentIndex, arr) {}, thisArg)
 
-//currentValue 必需。当前元素-
-//currentIndex 可选。当前元素的索引-
-//arr 可选。当前元素所属的数组对象。-
-//thisArg 可选参数。当执行回调函数时，用作 this 的值。
-
-`
+//currentValue  必需。当前元素
+//currentIndex  可选。当前元素的索引
+//arr           可选。当前元素所属的数组对象。
+//thisArg       可选参数。当执行回调函数时，用作 this 的值。
+```
 
 **代码实现：**
 
-`Array.prototype.myForEach = function (fn, thisArg) {-
-if (typeof fn !== 'function') {-
-throw new Error('参数必须为函数');-
-}-
-if (!Array.isArray(this)) {-
-throw new Error('只能对数组使用 forEach 方法');-
-}-
-let arr = this;-
-for (let i = 0; i < arr.length; i++) {-
-fn.call(thisArg, arr[i], i, arr);-
-}-
+```js
+Array.prototype.myForEach = function (fn, thisArg) {
+    if (typeof fn !== 'function') {
+        throw new Error('参数必须为函数');
+    }
+    if (!Array.isArray(this)) {
+        throw new Error('只能对数组使用forEach方法');
+    }
+    let arr = this;
+    for (let i = 0; i < arr.length; i++) {
+        fn.call(thisArg, arr[i], i, arr);
+    }
 }
 
-// 测试-
-let arr = [1, 2, 3, 4, 5];-
-arr.myForEach((item, index) => {-
-console.log(item, index);-
+// 测试
+let arr = [1, 2, 3, 4, 5];
+arr.myForEach((item, index) => {
+    console.log(item, index);
 });
 
-// 测试 thisArg-
-function Counter() {-
-this.sum = 0;-
-this.count = 0;-
+// 测试 thisArg
+function Counter() {
+    this.sum = 0;
+    this.count = 0;
 }
 
-// 因为 thisArg 参数（this）传给了 forEach()，每次调用时，它都被传给 callback 函数，作为它的 this 值-
-Counter.prototype.add = function (array) {-
-array.myForEach(function (entry) {-
-this.sum += entry;-
-++this.count;-
-}, this);-
+// 因为 thisArg 参数（this）传给了forEach()，每次调用时，它都被传给 callback 函数，作为它的 this 值
+Counter.prototype.add = function (array) {
+    array.myForEach(function (entry) {
+        this.sum += entry;
+        ++this.count;
+    }, this);
 }
 
-const obj = new Counter();-
+const obj = new Counter();
 obj.add([2, 5, 9]);
 
-console.log(obj.count); // 3 === (1 + 1 + 1)-
+console.log(obj.count); // 3 === (1 + 1 + 1)
 console.log(obj.sum); // 16 === (2 + 5 + 9)
-
-`
+```
 
 ### （2）map
 
@@ -1949,31 +1959,32 @@ console.log(obj.sum); // 16 === (2 + 5 + 9)
 
 `map` 函数会依次处理数组中的每一个元素，并返回一个新的数组，且对原来的数组不会产生影响。
 
-`array.map(function(currentValue,index,arr){})-
-`
+```js
+array.map(function(currentValue,index,arr){})
+```
 
 **代码实现：**
 
-`Array.prototype.myMap = function (arr, mapCallback) {-
-// 检查参数是否正确-
-if (!Array.isArray(arr) || !Array.length || typeof mapCallback !== 'function') {-
-return [];-
-} else {-
-let result = [];-
-for (let i = 0; len = arr.length; i++) {-
-result.push(mapCallback(arr[i], i, arr));-
-}-
-return result;-
-}-
+```js
+Array.prototype.myMap = function (arr, mapCallback) {
+    // 检查参数是否正确
+    if (!Array.isArray(arr) || !Array.length || typeof mapCallback !== 'function') {
+        return [];
+    } else {
+        let result = [];
+        for (let i = 0; len = arr.length; i++) {
+            result.push(mapCallback(arr[i], i, arr));
+        }
+        return result;
+    }
 }
 
-// 测试-
-let arr = [1, 2, 3, 4, 5];-
-arr.map((item, index) => {-
-console.log(item \* 2);-
+// 测试
+let arr = [1, 2, 3, 4, 5];
+arr.map((item, index) => {
+    console.log(item * 2);
 }); // 2, 4, 6, 8, 10
-
-`
+```
 
 ### （3）filter
 
@@ -1981,33 +1992,34 @@ console.log(item \* 2);-
 
 `filter()` 方法返回**执行结果为 true 的项组成的数组**。
 
-`arr.filter(function(item, index, arr){}, context)-
-`
+```js
+arr.filter(function(item, index, arr){}, context)
+```
 
 **代码实现：**
 
-```Array.prototype.myFilter = function (fn, context) {-
- if (typeof fn !== 'function') {-
- throw new Error(`${fn} is not a function`);-
- }
+```js
+Array.prototype.myFilter = function (fn, context) {
+    if (typeof fn !== 'function') {
+        throw new Error(`${fn} is not a function`);
+    }
 
- let arr = this;-
- let temp = [];
+    let arr = this;
+    let temp = [];
 
- for (let i = 0; i < arr.length; i++) {-
- let result = fn.call(context, arr[i], i, arr);-
- // 判断条件是否为真-
- if (result) {-
- temp.push(arr[i]);-
- }-
- }-
- return temp;-
+    for (let i = 0; i < arr.length; i++) {
+        let result = fn.call(context, arr[i], i, arr);
+        // 判断条件是否为真
+        if (result) {
+            temp.push(arr[i]);
+        }
+    }
+    return temp;
 }
 
-// 测试-
-let arr = [1, 2, 3, 4, 5, 'A', 'B', 'C'];-
+// 测试
+let arr = [1, 2, 3, 4, 5, 'A', 'B', 'C'];
 console.log(arr.myFilter((item) => typeof item === 'string')); // [ 'A', 'B', 'C' ]
-
 ```
 
 ### （4）reduce
@@ -2018,48 +2030,48 @@ console.log(arr.myFilter((item) => typeof item === 'string')); // [ 'A', 'B', 'C
 - 回调函数参数有 4 个值( `res` : 代表累加值， `cur` : 目前值， `index` : 第几个， `arr` ：调用 `reduce` 的数组)
 - 整体返回 `res` 累加值
 
-`arr.reduce((res,cur, index, arr) => res+cur, 0)-
-`
+```js
+arr.reduce((res,cur, index, arr) => res+cur, 0)
+```
 
 **代码实现：**
 
-`/\*\*-
+```js
+/**
+ * 
+ * @param {fn} callback res→代表累加值，cur→目前值，index→第几个，arr→调用reduce的数组
+ * @param {*} initialValue 初始化参数(可选)
+ */
 
-- -
-- @param {fn} callback res→ 代表累加值，cur→ 目前值，index→ 第几个，arr→ 调用 reduce 的数组-
-- @param {_} initialValue 初始化参数(可选)-
-  _/
-
-Array.prototype.myReduce = function (cb, initValue) {-
-if (!Array.isArray(this)) {-
-throw new TypeError("not a array");-
-}-
-// 数组为空，并且有初始值，报错-
-if (this.length === 0 && arguments.length < 2) {-
-throw new TypeError('Reduce of empty array with no initial value');-
-}-
-let arr = this;-
-let res = null;-
-// 判断有没有初始值-
-if (arguments.length > 1) {-
-res = initValue;-
-} else {-
-res = arr.splice(0, 1)[0]; //没有就取第一个值-
-}-
-arr.forEach((item, index) => {-
-res = cb(res, item, index, arr); // cb 每次执行完都会返回一个新的 res 值，覆盖之前的 res-
-})-
-return res;-
+Array.prototype.myReduce = function (cb, initValue) {
+    if (!Array.isArray(this)) {
+        throw new TypeError("not a array");
+    }
+    // 数组为空，并且有初始值，报错
+    if (this.length === 0 && arguments.length < 2) {
+        throw new TypeError('Reduce of empty array with no initial value');
+    }
+    let arr = this;
+    let res = null;
+    // 判断有没有初始值
+    if (arguments.length > 1) {
+        res = initValue;
+    } else {
+        res = arr.splice(0, 1)[0]; //没有就取第一个值
+    }
+    arr.forEach((item, index) => {
+        res = cb(res, item, index, arr); // cb 每次执行完都会返回一个新的 res值，覆盖之前的 res
+    })
+    return res;
 };
 
-// 测试结果-
-let arr = [1, 2, 3, 4];-
-let result = arr.myReduce((res, cur) => {-
-return res + cur;-
-})-
+// 测试结果
+let arr = [1, 2, 3, 4];
+let result = arr.myReduce((res, cur) => {
+    return res + cur;
+})
 console.log(result); // 10
-
-`
+```
 
 ## 3、其余手写题
 
@@ -2067,27 +2079,28 @@ console.log(result); // 10
 
 `JSONP` 的原理：`JSONP` 的出现使得 `script` 标签不受**同源策略**约束，用来进行跨域请求，优点是**兼容性好**，缺点就是**只能用于 `GET` 请求**。
 
-```const jsonp = ({ url, params, callbackName }) => {-
- const generateUrl = () => {-
- let dataSrc = '';-
- for (let key in params) {-
- if (params.hasOwnProperty(key)) {-
- dataSrc += `${key}=${params[key]}&`;-
- }-
- }-
- dataSrc += `callback=${callbackName}`;-
- return `${url}?${dataSrc}`;-
- }-
- return new Promise((resolve, reject) => {-
- const scriptElement = document.createElement('script')-
- scriptElement.src = generateUrl()-
- document.body.appendChild(scriptElement)-
- window[callbackName] = data => {-
- resolve(data)-
- document.removeChild(scriptElement)-
- }-
- })-
-}-
+```js
+const jsonp = ({ url, params, callbackName }) => {
+    const generateUrl = () => {
+        let dataSrc = '';
+        for (let key in params) {
+            if (params.hasOwnProperty(key)) {
+                dataSrc += `${key}=${params[key]}&`;
+            }
+        }
+        dataSrc += `callback=${callbackName}`;
+        return `${url}?${dataSrc}`;
+    }
+    return new Promise((resolve, reject) => {
+        const scriptElement = document.createElement('script')
+        scriptElement.src = generateUrl()
+        document.body.appendChild(scriptElement)
+        window[callbackName] = data => {
+            resolve(data)
+            document.removeChild(scriptElement)
+        }
+    })
+}
 ```
 
 ### （2）Object.create
@@ -2096,74 +2109,58 @@ console.log(result); // 10
 
 `Object.creat(object[,propertiesObject])` ，用于创建一个新对象，且这个新对象继承 `object` 的属性。第二个参数 `propertyObject` 也是对象，是一个可选参数，它旨在为新创建的对象指定**属性对象**。该属性对象可能包含以下值：
 
-属性
-
-说明
-
-configurable
-
-表示新创建的对象是否是可配置的，即对象的属性是否可以被删除或修改，默认 false
-
-enumerable
-
-对象属性是否可枚举的，即是否可以枚举，默认 false
-
-writable
-
-对象是否可写，是否或以为对象添加新属性，默认 false
-
-get
-
-对象 getter 函数，默认 undefined
-
-set
-
-对象 setter 函数，默认 undefined
+| 属性 | 说明 |
+| ----- | ----- |
+| configurable | 表示新创建的对象是否是可配置的，即对象的属性是否可以被删除或修改，默认 false |
+| enumerable | 对象属性是否可枚举的，即是否可以枚举，默认 false |
+| writable | 对象是否可写，是否或以为对象添加新属性，默认 false |
+| get | 对象 getter 函数，默认 undefined |
+| set | 对象 setter 函数，默认 undefined |
 
 **代码实现：**
 
-```/**-
- * -
- * @param {*} proto 新创建对象的原型对象-
- * @param {*} propertyObject 要定义其可枚举属性或修改的属性描述符的对象-
- * @returns -
- */-
-Object.create2 = function (proto, propertyObject = undefined) {-
- if (typeof proto !== 'object' && typeof proto !== 'function') {-
- throw new TypeError('Object prototype may only be an Object or null.')-
- }-
- // 创建一个空的构造函数 F-
- function F() { }-
- // F 原型指向 proto-
- F.prototype = proto-
- // 创建 F 的实例-
- const obj = new F()-
- // propertiesObject有值则调用 Object.defineProperties-
- if (propertyObject != undefined) {-
- Object.defineProperties(obj, propertyObject)-
- }-
- if (proto === null) {-
- // 创建一个没有原型对象的对象，Object.create(null)-
- obj.__proto__ = null-
- }-
- // 返回 这个 obj-
- return obj-
+```js
+/**
+ * 
+ * @param {*} proto 新创建对象的原型对象
+ * @param {*} propertyObject 要定义其可枚举属性或修改的属性描述符的对象
+ * @returns 
+ */
+Object.create2 = function (proto, propertyObject = undefined) {
+    if (typeof proto !== 'object' && typeof proto !== 'function') {
+        throw new TypeError('Object prototype may only be an Object or null.')
+    }
+    // 创建一个空的构造函数 F
+    function F() { }
+    // F 原型指向 proto
+    F.prototype = proto
+    // 创建 F 的实例
+    const obj = new F()
+    // propertiesObject有值则调用 Object.defineProperties
+    if (propertyObject != undefined) {
+        Object.defineProperties(obj, propertyObject)
+    }
+    if (proto === null) {
+        // 创建一个没有原型对象的对象，Object.create(null)
+        obj.__proto__ = null
+    }
+    // 返回 这个 obj
+    return obj
 }
 
-const person = {-
- name: 'monday',-
- printIntroduction: function() {-
- console.log(`My name is ${this.name}, and my age is ${this.age}`);-
- }-
+const person = {
+    name: 'monday',
+    printIntroduction: function() {
+        console.log(`My name is ${this.name}, and my age is ${this.age}`);
+    }
 };
 
 const me = Object.create2(person);
 
-me.name = 'Tuesday'; -
-me.age = 18;
+me.name = 'Tuesday'; 
+me.age = 18; 
 
 me.printIntroduction();
-
 ```
 
 ### （3）Object.assign
@@ -2174,24 +2171,25 @@ me.printIntroduction();
 
 **代码实现：**
 
-`Object.assign2 = function (target, ...source) {-
-if (target == null) {-
-throw new TypeError('Cannot convert undefined or null to object');-
-}-
-let res = Object(target);-
-source.forEach(function (obj) {-
-if (obj != null) {-
-for (let key in obj) {-
-if (obj.hasOwnProperty(key)) {-
-res[key] = obj[key];-
-}-
-}-
-}-
-})-
-return res;-
+```js
+Object.assign2 = function (target, ...source) {
+    if (target == null) {
+        throw new TypeError('Cannot convert undefined or null to object');
+    }
+    let res = Object(target);
+    source.forEach(function (obj) {
+        if (obj != null) {
+            for (let key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    res[key] = obj[key];
+                }
+            }
+        }
+    })
+    return res;
 }
 
-const target = { a: 1, b: 2 };-
+const target = { a: 1, b: 2 };
 const source = { b: 4, c: 5 };
 
 const returnedTarget = Object.assign2(target, source);
@@ -2199,50 +2197,49 @@ const returnedTarget = Object.assign2(target, source);
 console.log(target); // { a: 1, b: 4, c: 5 }
 
 console.log(returnedTarget); // { a: 1, b: 4, c: 5 }
-
-`
+```
 
 ### （4）手写发布订阅
 
 **代码实现：**
 
-```class Subject {-
- constructor(name) {-
- this.name = name; // 被观察者的名字-
- this.message = '今天是晴天'; // 存放一个值-
- this.observers = []; // 存放所有观察者-
- }
+```js
+class Subject {
+    constructor(name) {
+        this.name = name; // 被观察者的名字
+        this.message = '今天是晴天'; // 存放一个值
+        this.observers = []; // 存放所有观察者
+    }
 
- on(observer) {-
- this.observers.push(observer);-
- }
+    on(observer) {
+        this.observers.push(observer);
+    }
 
- triggle(data) {-
- this.message = data;-
- this.observers.forEach(item => item.update(data));-
- }-
+    triggle(data) {
+        this.message = data;
+        this.observers.forEach(item => item.update(data));
+    }
 }
 
-class Observer {-
- constructor(name) {-
- this.name = name;-
- }-
- update(newDate) {-
- console.log(`我是观察者${this.name}: ${newDate}`);-
- }-
+class Observer {
+    constructor(name) {
+        this.name = name;
+    }
+    update(newDate) {
+        console.log(`我是观察者${this.name}: ${newDate}`);
+    }
 }
 
-// 测试代码-
+// 测试代码
 let subject = new Subject('message');
 
-let o1 = new Observer('小红');-
+let o1 = new Observer('小红');
 let o2 = new Observer('小明');
 
-subject.on(o1); // 我是观察者小红: 明天会下雨-
+subject.on(o1); // 我是观察者小红: 明天会下雨
 subject.on(o2); // 我是观察者小明: 明天会下雨
 
 subject.triggle('明天会下雨');
-
 ```
 
 ## 😉 八、结束语
@@ -2261,21 +2258,9 @@ subject.triggle('明天会下雨');
 
 ## （：更新地址
 
-[offer 来了面试专栏](https://mp.weixin.qq.com/mp/appmsgalbum?__biz=Mzg5MDA4NTUyNA==&action=getalbum&album_id=2093167816085389313#wechat_redirect)👉https://juejin.cn/column/7007991853089849351
+👉[offer 来了面试专栏](https://juejin.cn/column/7007991853089849351)
 
 ## （：番外篇
 
 - 如果您觉得这篇文章有帮助到您的的话不妨点赞支持一下哟~~😉
 - 以上就是本文的全部内容！我们下期见！👋👋👋
-
-END
-
-![图片](<https://cubox.pro/c/filters:no_upscale()?imageUrl=https%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F9hfT9fvicAyCV6h6L6JiaSZa8qT57cxibwDv43vLR207GYcpmIBgIicgkMzL1GpUmB5ibqlR6WrqMeoECKxakyMmxMQ%2F640%3Fwx_fmt%3Dpng>)
-
-![图片](<https://cubox.pro/c/filters:no_upscale()?imageUrl=https%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_png%2F9hfT9fvicAyCZAL3S35WbSfSqialCnU5A3ppotic1eWVmR9n1VsGjApvuVMuicdq85icS3SIy6mz2HFbSiaZ8IZXrHfg%2F640%3Fwx_fmt%3Dpng>)
-
-![图片](<https://cubox.pro/c/filters:no_upscale()?imageUrl=https%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_gif%2F9hfT9fvicAyCV6h6L6JiaSZa8qT57cxibwD5uRaNCDS8s7CZ509pVjERGZzwaDIV4cOXv8dYCXiclia8jtwUC8j9w3g%2F640%3Fwx_fmt%3Dgif>)
-
-点个“**在看**”不失联
-
-[查看原网页: mp.weixin.qq.com](http://mp.weixin.qq.com/s?__biz=Mzg5MDA4NTUyNA==&mid=2247489949&idx=1&sn=56e989754bd96d8101b76f1fc97d01a6&chksm=cfe35066f894d970fa303835b1c0119c6bb35f8e8e1e507dcf54c22b6c723bf0c997cc3fd832&mpshare=1&scene=1&srcid=1016RJU3yAhPZf8D4x4D53S9&sharer_sharetime=1665884013853&sharer_shareid=b8d5da03cbe546fb54510ac993e581cf#rd)
