@@ -848,7 +848,12 @@ fn() // Sunshin_Lin
 
 ### 45\. 如何将 JS 日期转换为ISO标准
 
-    vardate=newDate();varn=date.toISOString();console.log(n);//YYYY-MM-DDTHH:mm:ss.sssZ
+```js
+var date = new Date();
+var n = date.toISOString();
+console.log(n);
+// YYYY-MM-DDTHH:mm:ss.sssZ
+```
 
 ### 46、如何在JS中编码和解码 URL
 
