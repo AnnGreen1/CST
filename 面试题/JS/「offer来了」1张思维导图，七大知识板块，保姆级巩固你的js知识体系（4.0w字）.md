@@ -198,12 +198,12 @@ tips：简而言之就是计算机不能用二进制精确存储所有数，比�
 
 ```js
 <script type="text/javascript">
-  let str = new String("hello world") //console.log(str instanceof String); →
-  true str = "hello world" //console.log(str instanceof String); → false let num
-  = new Number(44) //console.log(num instanceof Number); → true- num = 44
-  //console.log(num instanceof Number); → false let bool = new Boolean(true)
-  //console.log(bool instanceof Boolean); → true- bool = true //console.log(bool
-  instanceof Boolean); → false
+  let str = new String("hello world") //console.log(str instanceof String); → true 
+  str = "hello world" //console.log(str instanceof String); → false 
+  let num = new Number(44) //console.log(num instanceof Number); → true
+  num = 44 //console.log(num instanceof Number); → false 
+  let bool = new Boolean(true) //console.log(bool instanceof Boolean); → true
+  bool = true //console.log(bool instanceof Boolean); → false
 </script>
 ```
 
@@ -230,8 +230,10 @@ tips：简而言之就是计算机不能用二进制精确存储所有数，比�
 
 ```js
 <script type="text/javascript">
-  let str; console.log(typeof str, str === undefined); //'undefined', true let
-  str2 = null; console.log(typeof str2, str2 === null); // 'object', true
+  let str; 
+  console.log(typeof str, str === undefined); //'undefined', true 
+  let str2 = null; 
+  console.log(typeof str2, str2 === null); // 'object', true
 </script>
 ```
 
