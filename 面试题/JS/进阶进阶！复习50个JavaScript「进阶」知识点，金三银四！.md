@@ -332,9 +332,9 @@ export default to
 
 ### 21、Object.defineProperty(target, key, options)，options可传什么参数？
 
-* `value`：给target\[key\]设置初始值
-* `get`：调用target\[key\]时触发
-* `set`：设置target\[key\]时触发
+* `value`：给target[key]设置初始值
+* `get`：调用target[key]时触发
+* `set`：设置target[key]时触发
 * `writable`：默认false，为true时此属性才能被赋值运算符修改
 * `enumerable`：默认false，为true时此属性才能被枚举
 * `configurable`：默认为false，为true时此属性的描述符才能被修改，才能被删除

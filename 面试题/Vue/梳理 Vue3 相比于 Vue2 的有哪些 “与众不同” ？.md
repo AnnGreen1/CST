@@ -1,6 +1,5 @@
 # 梳理 Vue3 相比于 Vue2 的有哪些 “与众不同” ？
 
-[mp.weixin.qq.com](https://mp.weixin.qq.com/s/qDyeo866cr_QaGNq_ap9KA)半夜挑灯 半夜挑灯
 
 > 作者：花哨
 >
@@ -57,7 +56,7 @@ onMounted(() => {
 
 ### 多根节点
 
-Vue3 支持了多根节点组件，也就是`fragment`。
+Vue3 支持了多根节点组件，也就是`fragment`（片段）。
 
 Vue2 中，编写页面的时候，我们需要去将组件包裹在`<div>`中，否则报错警告。
 
@@ -106,7 +105,7 @@ Vue3 提供`Suspense`组件，允许程序在等待异步组件时渲染兜底�
 
 ### Teleport
 
-Vue3 提供`Teleport`组件可将部分 DOM 移动到 Vue app 之外的位置。比如项目中常见的`Dialog`组件。
+Vue3 提供`Teleport`（空间移动）组件可将部分 DOM 移动到 Vue app 之外的位置。比如项目中常见的`Dialog`组件。
 
 ```html
 <button @click="dialogVisible = true">点击</button>
@@ -174,7 +173,7 @@ Vue2 响应式原理基础是`Object.defineProperty`；Vue3 响应式原理基�
 
 #### Object.defineProperty
 
-基本用法：直接在一个对象上定义新的属性或修改现有的属性，并返回对象。-
+基本用法：直接在一个对象上定义新的属性或修改现有的属性，并返回对象。
 **Tips：**`writable`和`value`与`getter`和`setter`不共存。
 
 ```js
