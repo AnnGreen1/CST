@@ -56,5 +56,13 @@ const ComponentsInDepth = [
     name: "ComponentsInDepth-FallthroughAttributes-DisablingAttributeInheritance",
     component: () => import("@/views/ComponentsInDepth/FallthroughAttributes/DisablingAttributeInheritance.vue"),
   },
+  /**
+   * Slots
+   */
+  {
+    path: "/ComponentsInDepth/Slots/Slots",
+    name: "ComponentsInDepth-Slots-Slots",
+    component: () => import("@/views/ComponentsInDepth/Slots/Slots.vue"),
+  },
 ];
 export default ComponentsInDepth;
