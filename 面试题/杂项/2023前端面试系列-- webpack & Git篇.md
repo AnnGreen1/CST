@@ -1,6 +1,6 @@
 # 2023前端面试系列-- webpack & Git篇
 
-[juejin.cn](https://juejin.cn/post/7196630860811075642)庸人自扰的庸人
+https://juejin.cn/post/7196630860811075642
 
 ## 前言
 
@@ -19,7 +19,7 @@
 
 `webpack` 是一个用于现代 JavaScript 应用程序的**静态模块打包工具**。我们可以使用`webpack`管理模块。因为在`webpack`看来，项目中的所有资源皆为模块，通过分析模块间的依赖关系，在其内部构建出一个依赖图，最终编绎输出模块为 HTML、JavaScript、CSS 以及各种静态文件（图片、字体等），让我们的开发过程更加高效。
 
-![image.png](https://image.cubox.pro/article/2023020810322219064/69414.jpg) `webpack`的主要作用如下：
+![image.png](./imgs/10.webp) `webpack`的主要作用如下：
 
 *   `模块打包`。可以将不同模块的文件打包整合在一起，并且保证它们之间的引用正确，执行有序。利用打包我们就可以在开发的时候根据我们自己的业务自由划分文件模块，保证项目结构的清晰和可读性。
 *   `编译兼容`。在前端的“上古时期”，手写一堆浏览器兼容代码一直是令前端工程师头皮发麻的事情，而在今天这个问题被大大的弱化了，通过`webpack`的`Loader`机制，不仅仅可以帮助我们对代码做`polyfill`，还可以编译转换诸如`.less`，`.vue`，`.jsx`这类在浏览器无法识别的格式文件，让我们在开发的时候可以使用新特性和新语法做开发，提高开发效率。
@@ -63,7 +63,7 @@
 *   `file-loader`：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件 (处理图片和字体)
 *   `url-loader`：与 `file-loader` 类似，区别是用户可以设置一个阈值，大于阈值会交给 `file-loader` 处理，小于阈值时返回文件 base64 形式编码 (处理图片和字体)
 
-[更多loader，点击此处查看官方文档](https://link.juejin.cn/?target=https%3A%2F%2Fwww.webpackjs.com%2Floaders%2F "https://www.webpackjs.com/loaders/")
+[更多loader，点击此处查看官方文档](https://www.webpackjs.com/loaders/)
 
 ### 常见的plugin有哪些？
 
@@ -75,7 +75,7 @@
 *   `mini-css-extract-plugin`: 分离样式文件，CSS 提取为独立文件，支持按需加载 (替代extract-text-webpack-plugin)
 *   `clean-webpack-plugin`: 目录清理
 
-[更多plugin，点击此处查看官方文档](https://link.juejin.cn/?target=https%3A%2F%2Fwww.webpackjs.com%2Fplugins%2F "https://www.webpackjs.com/plugins/")
+[更多plugin，点击此处查看官方文档](https://www.webpackjs.com/plugins/)
 
 ### loader和plugin的区别？
 
@@ -96,13 +96,14 @@
 ### 如何提高webpack的构建速度？
 
 1.  代码压缩
-    *   JS压缩-
+    *   JS压缩
         `webpack 4.0`默认在生产环境的时候是支持代码压缩的，即`mode=production`模式下。 实际上`webpack 4.0`默认是使用`terser-webpack-plugin`这个压缩插件，在此之前是使用 `uglifyjs-webpack-plugin`，两者的区别是后者对 ES6 的压缩不是很好，同时我们可以开启 `parallel`参数，使用多进程压缩，加快压缩。
-    *   CSS压缩-
+    *   CSS压缩
         CSS 压缩通常是去除无用的空格等，因为很难去修改选择器、属性的名称、值等。可以使用另外一个插件：`css-minimizer-webpack-plugin`。
-    *   HTML压缩-
+    *   HTML压缩
         使用`HtmlWebpackPlugin`插件来生成 HTML 的模板时候，通过配置属性`minify`进行 html 优化。
-        
+
+        ```js
             module.exports = {
                 plugin:[
                     new HtmlwebpackPlugin({
@@ -114,32 +115,42 @@
                     })
                 ]
             }
-            复制代码
-2.  图片压缩-
+        ```
+
+2.  图片压缩
     配置`image-webpack-loader`
-3.  Tree Shaking-
+3.  Tree Shaking
     `Tree Shaking`是一个术语，在计算机中表示消除死代码，依赖于ES Module的静态语法分析（不执行任何的代码，可以明确知道模块的依赖关系）。 在`webpack`实现`Tree shaking`有两种方案：
-    *   usedExports：通过标记某些函数是否被使用，之后通过 `Terser` 来进行优化的-
-        
+    *   usedExports：通过标记某些函数是否被使用，之后通过 `Terser` 来进行优化的
+
+        ```js
             module.exports = {
                 ...
                 optimization:{
                     usedExports
                 }
             }
-            复制代码使用之后，没被用上的代码在`webpack`打包中会加入`unused harmony export mul`注释，用来告知`Terser`在优化时，可以删除掉这段代码。
+        ```
+            
+        使用之后，没被用上的代码在`webpack`打包中会加入`unused harmony export mul`注释，用来告知`Terser`在优化时，可以删除掉这段代码。
+
     *   sideEffects：跳过整个模块/文件，直接查看该文件是否有副作用-
         `sideEffects`用于告知`webpack compiler`哪些模块时有副作用，配置方法是在`package.json`中设置`sideEffects`属性。如果`sideEffects`设置为`false`，就是告知`webpack`可以安全的删除未用到的`exports`。如果有些文件需要保留，可以设置为数组的形式，如：
-        
+        ```js
             "sideEffecis":[
                 "./src/util/format.js",
                 "*.css" // 所有的css文件
             ]
-            复制代码
-4.  缩小打包域-
+        ```
+4.  缩小打包域
     排除`webpack`不需要解析的模块，即在使用`loader`的时候，在尽量少的模块中去使用。可以借助 `include`和`exclude`这两个参数，规定`loader`只在那些模块应用和在哪些模块不应用。
+5.  减少ES6转为ES5的冗余代码
+使用bable-plugin-transform-runtime插件
 
-更多优化构建速度方式，推荐阅读：[浅谈 webpack 性能优化（内附 webpack 学习笔记）](https://link.juejin.cn/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F139498741 "https://zhuanlan.zhihu.com/p/139498741")
+6.  提取公共代码
+通过配置CommonsChunkPlugin插件，将多个页面的公共代码抽离成单独的文件
+
+更多优化构建速度方式，推荐阅读：[浅谈 webpack 性能优化（内附 webpack 学习笔记）](https://zhuanlan.zhihu.com/p/139498741)
 
 ## Git
 
@@ -147,7 +158,7 @@
 
 *   初始化一个仓库：git init
 *   查看分支：git branch
-*   将已修改或未跟踪的文件添加到暂存区：git add \[file\] 或 git add .
+*   将已修改或未跟踪的文件添加到暂存区：git add [file] 或 git add .
 *   提交至本地仓库：git commit -m "提及记录xxxx"
 *   本地分支推送至远程分支：git push
 *   查看当前工作目录和暂存区的状态: git status
@@ -166,7 +177,7 @@
 
 `git merge`和`git rebase`两个命令都⽤于从⼀个分⽀获取内容并合并到当前分⽀。
 
-不同点：-
+不同点：
 
 1.  `git merge`会⾃动创建⼀个新的`commit`，如果合并时遇到冲突的话，只需要修改后重新`commit`。-
     
@@ -183,7 +194,7 @@
 *   缺点：因为合并而产生的代码问题，就不容易定位，因为会重写提交历史信息-
     
 
-场景：-
+场景：
 
 *   当需要保留详细的合并信息，建议使⽤`git merge`, 尤其是要合并到`master`上
 *   当发现⾃⼰修改某个功能时提交比较频繁，并觉得过多的合并记录信息对自己来说没有必要，那么可尝试使用`git rebase`
@@ -198,15 +209,13 @@ GitFlow重点解决的是由于源代码在开发过程中的各种冲突导致�
 *   `release`：发布分支，发布的时候用，一般测试时候发现的 bug 在该分支进行修复。从`develop`分支建立，完成后合并回`develop`与`master`分支。
 *   `hotfix`：紧急修复线上bug使用，必须从`master`分支建立，完成后合并回`develop`与`master`分支。
 
-如果有合作开发经验，且开发过程规范的话，这部分问题不大，描述一下日常的开发流程即可。不了解的话，推荐阅读：[从零开始，学会Git和Gitflow工作流](https://juejin.cn/post/6844903517811900424 "https://juejin.cn/post/6844903517811900424")
+如果有合作开发经验，且开发过程规范的话，这部分问题不大，描述一下日常的开发流程即可。不了解的话，推荐阅读：[从零开始，学会Git和Gitflow工作流](https://juejin.cn/post/6844903517811900424)
 
 ## 后记
 
-webpack 基础内容推荐阅读：[带你深度解锁Webpack系列(基础篇)](https://juejin.cn/post/6844904079219490830 "https://juejin.cn/post/6844904079219490830")
+webpack 基础内容推荐阅读：[带你深度解锁Webpack系列(基础篇)](https://juejin.cn/post/6844904079219490830)
 
 **参考链接：**
 
 *   [「吐血整理」再来一打Webpack面试题](https://juejin.cn/post/6844904094281236487 "https://juejin.cn/post/6844904094281236487")
 *   [浅谈 webpack 性能优化（内附 webpack 学习笔记）](https://link.juejin.cn/?target=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F139498741 "https://zhuanlan.zhihu.com/p/139498741")
-
-[查看原网页: juejin.cn](https://juejin.cn/post/7196630860811075642)
