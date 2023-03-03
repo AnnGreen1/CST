@@ -9,7 +9,7 @@ const state = reactive({ count: 0 })
 ```
 响应式对象其实是 [JavaScript Proxy](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Proxy)，其行为表现与一般对象相似。不同之处在于 Vue 能够跟踪对响应式对象属性的访问与更改操作。如果你对这其中的细节感到好奇，我们在 [深入响应式系统]() 一章中会进行解释，但我们推荐你先读完这里的主要指南。
 
-TypeScript 用户请参阅：[为响应式对象标注类型]() 
+TypeScript 用户请参阅：[为响应式对象标注类型]() <sup>TS</sup>
 
 要在组件模板中使用响应式状态，需要在 `setup()` 函数中定义并返回。
 

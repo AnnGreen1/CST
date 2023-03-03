@@ -9,13 +9,14 @@
 ### 创建一个 Vue 应用
 ##### 前提条件
 
-熟悉命令行
-已安装 16.0 或更高版本的 Node.js
+- 熟悉命令行
+- 已安装 16.0 或更高版本的 [Node.js](https://nodejs.org/)
+
 在本节中，我们将介绍如何在本地搭建 Vue 单页应用。创建的项目将使用基于 Vite 的构建设置，并允许我们使用 Vue 的单文件组件 (SFC)。
 
 确保你安装了最新版本的 Node.js，然后在命令行中运行以下命令 (不要带上 > 符号)：
 ```
-npm init vue@latest
+> npm init vue@latest
 ```
 这一指令将会安装并执行 create-vue，它是 Vue 官方的项目脚手架工具。你将会看到一些诸如 TypeScript 和测试支持之类的可选功能提示：
 ```
@@ -32,11 +33,11 @@ npm init vue@latest
 Scaffolding project in ./<your-project-name>...
 Done.
 ```
-如果不确定是否要开启某个功能，你可以直接按下回车键选择 No。在项目被创建后，通过以下步骤安装依赖并启动开发服务器：
+如果不确定是否要开启某个功能，你可以直接按下回车键选择 `No`。在项目被创建后，通过以下步骤安装依赖并启动开发服务器：
 ```
-cd <your-project-name>
-npm install
-npm run dev
+> cd <your-project-name>
+> npm install
+> npm run dev
 ```
 你现在应该已经运行起来了你的第一个 Vue 项目！请注意，生成的项目中的示例组件使用的是组合式 API 和 `<script setup>`，而非选项式 API。下面是一些补充提示：
 

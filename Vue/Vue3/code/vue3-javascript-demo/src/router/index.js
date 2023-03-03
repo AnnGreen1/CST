@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import commonroute from './routes/commonroute'
 import Essentials from './routes/Essentials'
 import ComponentsInDepth from './routes/ComponentsInDepth'
+import Dev from './routes/Dev'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +29,8 @@ const router = createRouter({
     },
     ...commonroute,
     ...Essentials,
-    ...ComponentsInDepth
+    ...ComponentsInDepth,
+    ...Dev
   ]
 })
 
