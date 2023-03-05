@@ -1,6 +1,6 @@
 # 熬夜总结 50 个 Vue 知识点，全都会你就是神！！！
 
-作者：Sunshine_Lin-
+作者：Sunshine_Lin
 
 https://juejin.cn/post/6984210440276410399
 
