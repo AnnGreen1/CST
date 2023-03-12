@@ -376,12 +376,13 @@ let error1 = (): never => {
 ![image.png](./imgs/7.webp)
 
 tips：
+
 ```typescript
 enum numberType {
-    A,
-    B,
-    C = 7,
-    D
+  A,
+  B,
+  C = 7,
+  D,
 }
 
 let num = numberType.A;
@@ -389,10 +390,10 @@ let num1 = numberType[0];
 let num2 = numberType[7];
 let num3 = numberType[8];
 
-console.log(num) // 0
-console.log(num1) // A
-console.log(num2) // C
-console.log(num3) // D
+console.log(num); // 0
+console.log(num1); // A
+console.log(num2); // C
+console.log(num3); // D
 ```
 
 ### 字符串枚举
@@ -405,77 +406,81 @@ console.log(num3) // D
 
 除了`数字类型`和`字符串类型`之外，还有一种特殊的类型，那就是**常量枚举**，也就是通过`const`去定义`enum`，但这种类型不会编译成任何 `JS`,只会编译对应的值
 
-![image.png](<https://cubox.pro/c/filters:no_upscale()?valid=false&imageUrl=https%3A%2F%2Fp9-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2F160ac2e75cab457d99093ce48c34756a%7Etplv-k3u1fbpfcp-zoom-in-crop-mark%3A4536%3A0%3A0%3A0.awebp%3F>)
+![image.png](./imgs/9.webp)
 
 ### 异构枚举
 
 包含了 `数字类型` 和 `字符串类型` 的混合，反向映射一样的道理
 
-![image.png](<https://cubox.pro/c/filters:no_upscale()?valid=false&imageUrl=https%3A%2F%2Fp9-juejin.byteimg.com%2Ftos-cn-i-k3u1fbpfcp%2F7d5f1433ab2c48bebc65ca5f8ace0da4%7Etplv-k3u1fbpfcp-zoom-in-crop-mark%3A4536%3A0%3A0%3A0.awebp%3F>)
+![image.png](./imgs/10.webp)
 
 ## 类型推论
 
 我们在学完这些基础类型，我们是不是每个类型都要去写字段是什么类型呢？其实不是，在`TS`中如果不设置类型，并且不进行赋值时，将会推论为**any**类型，如果进行赋值就会默认为类型
 
-        let a; // 推断为any
-        let str = '小杜杜'; // 推断为string
-        let num = 13; // 推断为number
-        let flag = false; // 推断为boolean
+```typescript
+let a; // 推断为any
+let str = "小杜杜"; // 推断为string
+let num = 13; // 推断为number
+let flag = false; // 推断为boolean
 
-        str = true // error Type 'boolean' is not assignable to type 'string'.(2322)
-        num = 'Domesy' // error
-        flag = 7 // error
-    复制代码
+str = true; // error Type 'boolean' is not assignable to type 'string'.(2322)
+num = "Domesy"; // error
+flag = 7; // error
+```
 
 ## 字面量类型
 
 **字面量类型**：在`TS`中，我们可以指定参数的类型是什么，目前支持`字符串`、`数字`、`布尔`三种类型。比如说我定义了 `str 的类型是 '小杜杜'` 那么 str 的值只能是**小杜杜**
 
-        let str:'小杜杜'
-        let num: 1 | 2 | 3 = 1
-        let flag:true
+```typescript
+let str: "小杜杜";
+let num: 1 | 2 | 3 = 1;
+let flag: true;
 
-        str = '小杜杜' //ok
-        str = 'Donmesy' // error
+str = "小杜杜"; //ok
+str = "Donmesy"; // error
 
-        num = 2 //ok
-        num = 7 // error
+num = 2; //ok
+num = 7; // error
 
-        flag = true // ok
-        flag = false // error
-    复制代码
+flag = true; // ok
+flag = false; // error
+```
 
 ## 交叉类型（&）
 
 **交叉类型**：将多个类型合并为一个类型，使用`&`符号连接，如：
 
-        type AProps = { a: string }
-        type BProps = { b: number }
+```typescript
+type AProps = { a: string };
+type BProps = { b: number };
 
-        type allProps = AProps & BProps
+type allProps = AProps & BProps;
 
-        const Info: allProps = {
-            a: '小杜杜',
-            b: 7
-        }
-    复制代码
+const Info: allProps = {
+  a: "小杜杜",
+  b: 7,
+};
+```
 
 ### 同名基础属性合并
 
 我们可以看到`交叉类型`是结合两个属性的属性值，那么我们现在有个问题，要是两个属性都有相同的属性值，那么此时总的类型会怎么样，先看看下面的案列：
 
-        type AProps = { a: string, c: number }
-        type BProps = { b: number, c: string }
+```typescript
+type AProps = { a: string; c: number };
+type BProps = { b: number; c: string };
 
-        type allProps = AProps & BProps
+type allProps = AProps & BProps;
 
-        const Info: allProps = {
-            a: '小杜杜',
-            b: 7,
-            c:  1, // error (property) c: never
-            c:  'Domesy', // error (property) c: never
-        }
-    复制代码
+const Info: allProps = {
+  a: "小杜杜",
+  b: 7,
+  c: 1, // error (property) c: never
+  c: "Domesy", // error (property) c: never
+};
+```
 
 如果是相同的类型，合并后的类型也是此类型，那如果是不同的类型会如何：
 
@@ -489,26 +494,31 @@ console.log(num3) // D
 
 ### 同名非基础属性合并
 
-        interface A { a: number }
-        interface B { b: string }
+```typescript
+interface A {
+  a: number;
+}
+interface B {
+  b: string;
+}
 
-        interface C {
-            x: A
-        }
-        interface D {
-            x: B
-        }
-        type allProps = C & D
+interface C {
+  x: A;
+}
+interface D {
+  x: B;
+}
+type allProps = C & D;
 
-        const Info: allProps = {
-          x: {
-            a: 7,
-            b: '小杜杜'
-          }
-        }
+const Info: allProps = {
+  x: {
+    a: 7,
+    b: "小杜杜",
+  },
+};
 
-        console.log(Info) // { x: { "a": 7, "b": "小杜杜" }}
-    复制代码
+console.log(Info); // { x: { "a": 7, "b": "小杜杜" }}
+```
 
 我们来看看案例，对于混入多个类型时，若存在相同的成员，且成员类型为非基本数据类型，那么是可以成功合。
 
@@ -524,87 +534,89 @@ console.log(num3) // D
 
 需要注意的是： 在成员属性中，如果不给默认值,并且不使用是会报错的，如果不想报错就给如 **!**，如：`name4!:string`
 
-        class Info {
-          //静态属性
-          static name1: string = 'Domesy'
+```typescript
+class Info {
+  //静态属性
+  static name1: string = "Domesy";
 
-          //成员属性，实际上是通过public上进行修饰，只是省略了
-          nmae2:string = 'Hello' //ok
-          name3:string //error
-          name4!:string //ok 不设置默认值的时候必须加入 !
+  //成员属性，实际上是通过public上进行修饰，只是省略了
+  nmae2: string = "Hello"; //ok
+  name3: string; //error
+  name4!: string; //ok 不设置默认值的时候必须加入 !
 
-          //构造方法
-          constructor(_name:string){
-            this.name4 = _name
-          }
+  //构造方法
+  constructor(_name: string) {
+    this.name4 = _name;
+  }
 
-          //静态方法
-          static getName = () => {
-            return '我是静态方法'
-          }
+  //静态方法
+  static getName = () => {
+    return "我是静态方法";
+  };
 
-          //成员方法
-          getName4 = () => {
-            return `我是成员方法:${this.name4}`
-          }
+  //成员方法
+  getName4 = () => {
+    return `我是成员方法:${this.name4}`;
+  };
 
-          //get 方法
-          get name5(){
-            return this.name4
-          }
+  //get 方法
+  get name5() {
+    return this.name4;
+  }
 
-          //set 方法
-          set name5(name5){
-            this.name4 = name5
-          }
-        }
+  //set 方法
+  set name5(name5) {
+    this.name4 = name5;
+  }
+}
 
-        const setName = new Info('你好')
-        console.log(Info.name1) //  "Domesy"
-        console.log(Info.getName()) // "我是静态方法"
-        console.log(setName.getName4()) // "我是成员方法:你好"
-    复制代码
+const setName = new Info("你好");
+console.log(Info.name1); //  "Domesy"
+console.log(Info.getName()); // "我是静态方法"
+console.log(setName.getName4()); // "我是成员方法:你好"
+```
 
 让我们看看上述代码翻译成 ES5 是什么样：
 
-        "use strict";
-        var Info = /** @class */ (function () {
-            //构造方法
-            function Info(_name) {
-                var _this = this;
-                //成员属性
-                this.nmae2 = 'Hello'; //ok
-                //成员方法
-                this.getName4 = function () {
-                    return "\u6211\u662F\u6210\u5458\u65B9\u6CD5:".concat(_this.name4);
-                };
-                this.name4 = _name;
-            }
-            Object.defineProperty(Info.prototype, "name5", {
-                //get 方法
-                get: function () {
-                    return this.name4;
-                },
-                //set 方法
-                set: function (name5) {
-                    this.name4 = name5;
-                },
-                enumerable: false,
-                configurable: true
-            });
-            //静态属性
-            Info.name1 = 'Domesy';
-            //静态方法
-            Info.getName = function () {
-                return '我是静态方法';
-            };
-            return Info;
-        }());
-        var setName = new Info('你好');
-        console.log(Info.name1); //  "Domesy" 
-        console.log(Info.getName()); // "我是静态方法" 
-        console.log(setName.getName4()); // "我是成员方法:你好" 
-    复制代码
+```js
+"use strict";
+var Info = /** @class */ (function () {
+  //构造方法
+  function Info(_name) {
+    var _this = this;
+    //成员属性
+    this.nmae2 = "Hello"; //ok
+    //成员方法
+    this.getName4 = function () {
+      return "\u6211\u662F\u6210\u5458\u65B9\u6CD5:".concat(_this.name4);
+    };
+    this.name4 = _name;
+  }
+  Object.defineProperty(Info.prototype, "name5", {
+    //get 方法
+    get: function () {
+      return this.name4;
+    },
+    //set 方法
+    set: function (name5) {
+      this.name4 = name5;
+    },
+    enumerable: false,
+    configurable: true,
+  });
+  //静态属性
+  Info.name1 = "Domesy";
+  //静态方法
+  Info.getName = function () {
+    return "我是静态方法";
+  };
+  return Info;
+})();
+var setName = new Info("你好");
+console.log(Info.name1); //  "Domesy"
+console.log(Info.getName()); // "我是静态方法"
+console.log(setName.getName4()); // "我是成员方法:你好"
+```
 
 ## 私有字段(#)
 
@@ -617,30 +629,29 @@ console.log(num3) // D
 - 不能在私有字段上使用 TypeScript 可访问性修饰符（如 public 或 private）；
 - 私有字段不能在包含的类之外访问，甚至不能被检测到。
 
-      class Info {
-        #name: string; //私有字段
-        getName: string;
+```typescript
+class Info {
+  #name: string; //私有字段
+  getName: string;
 
-        constructor(name: string) {
-          this.#name = name;
-          this.getName = name
-        }
+  constructor(name: string) {
+    this.#name = name;
+    this.getName = name;
+  }
 
-        setName() {
-          return `我的名字是${this.#name}`
-        }
-      }
+  setName() {
+    return `我的名字是${this.#name}`;
+  }
+}
 
-      let myName = new Info("Domesy");
+let myName = new Info("Domesy");
 
-
-      console.log(myName.setName()) // "我的名字是Domesy"
-      console.log(myName.getName) // ok "Domesy"
-      console.log(myName.#name) // error
-      // Property '#name' is not accessible outside class 'Info'
-      // because it has a private identifier.(18013)
-
-  复制代码
+console.log(myName.setName()); // "我的名字是Domesy"
+console.log(myName.getName); // ok "Domesy"
+console.log(myName.#name); // error
+// Property '#name' is not accessible outside class 'Info'
+// because it has a private identifier.(18013)
+```
 
 ## 只读属性（readonly）
 
@@ -649,22 +660,22 @@ console.log(num3) // D
 - `readonly`实际上只是在`编译阶段`进行代码检查
 - 被`radonly`修饰的词只能在 `constructor`阶段修改，其他时刻不允许修改
 
-      class Info {
-        public readonly name: string; // 只读属性
-        name1:string
+```typescript
+class Info {
+  public readonly name: string; // 只读属性
+  name1: string;
 
-        constructor(name: string) {
-          this.name = name;
-          this.name1 = name;
-        }
+  constructor(name: string) {
+    this.name = name;
+    this.name1 = name;
+  }
 
-        setName(name:string) {
-          this.name = name // error
-          this.name1 = name; // ok
-        }
-      }
-
-  复制代码
+  setName(name: string) {
+    this.name = name; // error
+    this.name1 = name; // ok
+  }
+}
+```
 
 ## 继承（extends）
 
@@ -672,48 +683,49 @@ console.log(num3) // D
 
 这里又个`super`字段，给不知道的小伙伴说说，其作用是**调用父类上的属性和方法**
 
-        // 父类
-        class Person {
-          name: string
-          age: number
+```typescript
+// 父类
+class Person {
+  name: string;
+  age: number;
 
-          constructor(name: string, age:number){
-            this.name = name
-            this.age = age
-          }
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
 
-          getName(){
-            console.log(`我的姓名是：${this.name}`)
-            return this.name
-          }
+  getName() {
+    console.log(`我的姓名是：${this.name}`);
+    return this.name;
+  }
 
-          setName(name: string){
-            console.log(`设置姓名为：${name}`)
-            this.name = name
-          }
-        }
+  setName(name: string) {
+    console.log(`设置姓名为：${name}`);
+    this.name = name;
+  }
+}
 
-        // 子类
-        class Child extends Person {
-          tel: number
-          constructor(name: string, age: number, tel:number){
-            super(name, age)
-            this.tel = tel
-          }
+// 子类
+class Child extends Person {
+  tel: number;
+  constructor(name: string, age: number, tel: number) {
+    super(name, age);
+    this.tel = tel;
+  }
 
-          getTel(){
-            console.log(`电话号码是${this.tel}`)
-            return this.tel
-          }
-        }
+  getTel() {
+    console.log(`电话号码是${this.tel}`);
+    return this.tel;
+  }
+}
 
-        let res = new Child("Domesy", 7 , 123456)
-        console.log(res) // Child {."name": "Domesy", "age": 7, "no": 1 }
-        console.log(res.age) // 7
-        res.setName('小杜杜') // "设置姓名为：小杜杜"
-        res.getName() //   "我的姓名是：小杜杜"
-        res.getTel() //  "电话号码是123456"
-    复制代码
+let res = new Child("Domesy", 7, 123456);
+console.log(res); // Child {."name": "Domesy", "age": 7, "no": 1 }
+console.log(res.age); // 7
+res.setName("小杜杜"); // "设置姓名为：小杜杜"
+res.getName(); //   "我的姓名是：小杜杜"
+res.getTel(); //  "电话号码是123456"
+```
 
 ## 修饰符
 
@@ -723,36 +735,35 @@ console.log(num3) // D
 - **protected**：类中、子类内的任何地方都能调用,但**外部不能调用**
 - **private**：类中可以调用，子类内的任何地方、外部**均不可调用**
 
-      class Person {
-        public name: string
-        protected age: number
-        private tel: number
+```typescript
+class Person {
+  public name: string;
+  protected age: number;
+  private tel: number;
 
-        constructor(name: string, age:number, tel: number){
-          this.name = name
-          this.age = age
-          this.tel = tel
-        }
-      }
+  constructor(name: string, age: number, tel: number) {
+    this.name = name;
+    this.age = age;
+    this.tel = tel;
+  }
+}
 
-      class Child extends Person {
-        constructor(name: string, age: number, tel: number) {
-          super(name, age, tel);
-        }
+class Child extends Person {
+  constructor(name: string, age: number, tel: number) {
+    super(name, age, tel);
+  }
 
-        getName(){
-          console.log(`我的名字叫${this.name},年龄是${this.age}`) // ok name 和 age可以
-          console.log(`电话是${this.tel}`) // error 报错 原因是 tel 拿不出来
-        }
-      }
+  getName() {
+    console.log(`我的名字叫${this.name},年龄是${this.age}`); // ok name 和 age可以
+    console.log(`电话是${this.tel}`); // error 报错 原因是 tel 拿不出来
+  }
+}
 
-
-      const res = new Child('Domesy', 7, 123456)
-      console.log(res.name) // ok Domesy
-      console.log(res.age) // error
-      console.log(res.tel) // error
-
-  复制代码
+const res = new Child("Domesy", 7, 123456);
+console.log(res.name); // ok Domesy
+console.log(res.age); // error
+console.log(res.tel); // error
+```
 
 ## abstract
 
