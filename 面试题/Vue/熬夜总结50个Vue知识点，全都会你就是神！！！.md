@@ -654,8 +654,8 @@ props: {
             1, 2, 3, 4, 5
           ].indexOf(value) !== -1
     }
-    }
   }
+}
 ```
 
 ### 38\. watch 的 immediate 属性有什么用？
@@ -962,10 +962,7 @@ methods: {
 ```html
 <div v-for="item" in list>{{item}}</div>
 
-computed() { 
-    list() { 
-        return [1, 2, 3, 4, 5, 6, 7].filter(item => item !== 3) 
-    }
+computed() { list() { return [1, 2, 3, 4, 5, 6, 7].filter(item => item !== 3) }
 }
 ```
 

@@ -198,12 +198,12 @@ tips：简而言之就是计算机不能用二进制精确存储所有数，比�
 
 ```js
 <script type="text/javascript">
-  let str = new String("hello world") //console.log(str instanceof String); → true 
-  str = "hello world" //console.log(str instanceof String); → false 
-  let num = new Number(44) //console.log(num instanceof Number); → true
-  num = 44 //console.log(num instanceof Number); → false 
-  let bool = new Boolean(true) //console.log(bool instanceof Boolean); → true
-  bool = true //console.log(bool instanceof Boolean); → false
+  let str = new String("hello world") //console.log(str instanceof String); →
+  true str = "hello world" //console.log(str instanceof String); → false let num
+  = new Number(44) //console.log(num instanceof Number); → true num = 44
+  //console.log(num instanceof Number); → false let bool = new Boolean(true)
+  //console.log(bool instanceof Boolean); → true bool = true //console.log(bool
+  instanceof Boolean); → false
 </script>
 ```
 
@@ -230,10 +230,8 @@ tips：简而言之就是计算机不能用二进制精确存储所有数，比�
 
 ```js
 <script type="text/javascript">
-  let str; 
-  console.log(typeof str, str === undefined); //'undefined', true 
-  let str2 = null; 
-  console.log(typeof str2, str2 === null); // 'object', true
+  let str; console.log(typeof str, str === undefined); //'undefined', true let
+  str2 = null; console.log(typeof str2, str2 === null); // 'object', true
 </script>
 ```
 
@@ -409,8 +407,8 @@ typeof NaN === "number"; //true
 
 **（5）宽松相等和严格相等**
 
-宽松相等允许进行强制类型转换，而严格相等不允许。
-
+宽松相等（loose equals，\==）允许进行强制类型转换，而严格相等（strict equals，=\==）不允许。
+tips:常见的==误区==是“\== 检查值是否相等，=== 检查值和类型是否相等”。
 **① 字符串与数字**
 
 - 转换为数字然后比较
@@ -452,7 +450,7 @@ Object.keys(obj).length === 0;
 ## 13、手写题：获取 url 参数 getUrlParams(url)
 
 ```js
-//封装函数getUrlParams, 将URL地址的参数解析为对象-
+//封装函数getUrlParams, 将URL地址的参数解析为对象
 function getUrlParams(url) {
   let obj = {};
 
@@ -473,7 +471,7 @@ function getUrlParams(url) {
 // 测试代码
 
 let URL = "https://www.sogou.com/web?ie=UTF-8&query=搜索内容&_em=3";
--console.log(getUrlParams(URL));
+console.log(getUrlParams(URL));
 ```
 
 ## 14、数组能够调用的函数有哪些？
@@ -535,7 +533,7 @@ console.log(Array.prototype.isPrototypeOf(arr));
 ```js
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 arr.sort(() => Math.random() - 0.5);
-//利用sort，返回结果为大于等于0时被交换位置，小于0时交换位置。-
+//利用sort，返回结果为大于等于0时被交换位置，小于0时交换位置。
 ```
 
 ## 18、手写题：数组去重操作
@@ -556,7 +554,7 @@ function removeRepeat2(arr) {
   return [...new Set(arr)];
 }
 
-// 第三种方法：利用 indexOf 函数-
+// 第三种方法：利用 indexOf 函数
 function removeRepeat3(arr) {
   let new_arr = [];
 
@@ -1545,146 +1543,157 @@ document.addEventListener("DOMContentLoaded", function () {
 */
 
 let $ = {
-	createXHR: function() {
-		if(window.XMLHttpRequest) {
-			return new XMLHttpRequest()
-		} else {
-			return new ActiveXObject()
-		} 
-	},
-	get: function(url, data, callback, dataType) {
-		let dataType = dataType.toLowerCase()
-		if(data) {
-			url += '?'
-			Object.keys(data).forEach(key => url += `${key}=${data[key]}&`)
-			url = url.slice(0, -1)
-		}
-		let xhr = this.createXHR()
+  createXHR: function () {
+    if (window.XMLHttpRequest) {
+      return new XMLHttpRequest();
+    } else {
+      return new ActiveXObject();
+    }
+  },
+  get: function (url, data, callback, dataType) {
+    let dataType = dataType.toLowerCase();
+    if (data) {
+      url += "?";
+      Object.keys(data).forEach((key) => (url += `${key}=${data[key]}&`));
+      url = url.slice(0, -1);
+    }
+    let xhr = this.createXHR();
 
-		xhr.open('get', url)
-		xhr.send()
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState === 4) {
-				if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-					let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText
-					callback(res, xhr.status, xhr)
-				}
-			}
-		}
-	},
-	post: function(url, data, callback, dataType) {
-		let dataType = dataType.toLowerCase()
+    xhr.open("get", url);
+    xhr.send();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+          let res =
+            dataType === "json"
+              ? JSON.parse(xhr.responseText)
+              : xhr.responseText;
+          callback(res, xhr.status, xhr);
+        }
+      }
+    };
+  },
+  post: function (url, data, callback, dataType) {
+    let dataType = dataType.toLowerCase();
 
-		let xhr = this.createXHR()
+    let xhr = this.createXHR();
 
-		let str = ''
-		if(data) {
-			Object.keys(data).forEach(key => str += `${key}=${data[key]}&`)
-			str = str.slice(0, -1)
-		}
-		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
-		xhr.send(str)
-		xhr.onreadystatechange = function() {
-			if(xhr.readyState === 4) {
-				if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-					let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText
-					callback(res, xhr.status, xhr)
-				}
-			}
-		}
-	},
-	ajax: function(params) {
-		// 初始化参数
-		let type = params.type ? params.type.toLowerCase() : 'get'
-		let isAsync = params.isAsync ? params.isAsync : 'true'
-		let url = params.url
-		let data = params.data ? params.data : {}
-		let dataType = params.dataType.toLowerCase()
+    let str = "";
+    if (data) {
+      Object.keys(data).forEach((key) => (str += `${key}=${data[key]}&`));
+      str = str.slice(0, -1);
+    }
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(str);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+          let res =
+            dataType === "json"
+              ? JSON.parse(xhr.responseText)
+              : xhr.responseText;
+          callback(res, xhr.status, xhr);
+        }
+      }
+    };
+  },
+  ajax: function (params) {
+    // 初始化参数
+    let type = params.type ? params.type.toLowerCase() : "get";
+    let isAsync = params.isAsync ? params.isAsync : "true";
+    let url = params.url;
+    let data = params.data ? params.data : {};
+    let dataType = params.dataType.toLowerCase();
 
-		let xhr = this.createXHR()
-		
-		let str = ''
-		
-		// 拼接字符串
-		Object.keys(data).forEach(key => str += `${key}=${data[key]}&`)
-		str = str.slice(0, -1)
-		
-		if(type === 'get') url += `?${str}`;
+    let xhr = this.createXHR();
 
-		return new Promise((resolve, reject) => {
-			// 创建请求
-			xhr.open(type, url, isAsync)
+    let str = "";
 
-			if(type === 'post') {
-				xhr.setRequestHeader('Content-Type', 'application/x-www-form-rulencoded')
-				xhr.send(str)
-			} else {
-				xhr.send()
-			}
+    // 拼接字符串
+    Object.keys(data).forEach((key) => (str += `${key}=${data[key]}&`));
+    str = str.slice(0, -1);
 
-			xhr.onreadystatechange = function() {
-				if(xhr.readyState === 4) {
-					if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-						let res = dataType === 'json' ? JSON.parse(xhr.responseText) : xhr.responseText
-						resolve(res) // 请求成功，返回数据
-					} else {
-						reject(xhr.status) // 请求失败，返回状态码
-					}
-				}
-			}
-		})	
-	}
-}
+    if (type === "get") url += `?${str}`;
 
+    return new Promise((resolve, reject) => {
+      // 创建请求
+      xhr.open(type, url, isAsync);
+
+      if (type === "post") {
+        xhr.setRequestHeader(
+          "Content-Type",
+          "application/x-www-form-rulencoded"
+        );
+        xhr.send(str);
+      } else {
+        xhr.send();
+      }
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+            let res =
+              dataType === "json"
+                ? JSON.parse(xhr.responseText)
+                : xhr.responseText;
+            resolve(res); // 请求成功，返回数据
+          } else {
+            reject(xhr.status); // 请求失败，返回状态码
+          }
+        }
+      };
+    });
+  },
+};
 ```
 
 ## 9、手写题：手写 Promise 原理
 
 ```js
-class MyPromise{
-    constructor(fn){
-        this.resolvedCallbacks = [];
-        this.rejectCallbacks = [];
-        
-        // pending 即在等待状态
-        this.state = 'PENDING';
-        this.value = '';
-        
-        fn(this.resolve.bind(this), this.reject.bind(this));
+class MyPromise {
+  constructor(fn) {
+    this.resolvedCallbacks = [];
+    this.rejectCallbacks = [];
+
+    // pending 即在等待状态
+    this.state = "PENDING";
+    this.value = "";
+
+    fn(this.resolve.bind(this), this.reject.bind(this));
+  }
+
+  resolve(value) {
+    if (this.state === "PENDING") {
+      this.state = "RESOLVED";
+      this.value = value;
+
+      this.resolvedCallbacks.map((cb) => cb(value));
+    }
+  }
+
+  reject(value) {
+    if (this.state === "PENDING") {
+      this.state = "REJECTED";
+      this.value = value;
+
+      this.rejectCallbacks.map((cb) => cb(value));
+    }
+  }
+
+  then(onFulfilled, onRejected) {
+    if (this.state === "PENDING") {
+      this.resolvedCallbacks.map((cb) => cb(onFulfilled));
+      this.rejectCallbacks.map((cb) => cb(onRejected));
     }
 
-    resolve(value){
-        if(this.state === 'PENDING'){
-            this.state = 'RESOLVED';
-            this.value = value;
-
-            this.resolvedCallbacks.map(cb => cb(value));
-        }
+    if (this.state === "RESOLVED") {
+      onFulfilled(this.value);
     }
 
-    reject(value){
-        if(this.state === 'PENDING'){
-            this.state = 'REJECTED';
-            this.value = value;
-
-            this.rejectCallbacks.map(cb => cb(value));
-        }
+    if (this.state === "REJECTED") {
+      onRejected(this.value);
     }
-
-    then(onFulfilled, onRejected){
-        if(this.state === 'PENDING'){
-            this.resolvedCallbacks.map(cb => cb(onFulfilled));
-            this.rejectCallbacks.map(cb => cb(onRejected));
-        }
-
-        if(this.state === 'RESOLVED'){
-            onFulfilled(this.value);
-        }
-
-        if(this.state === 'REJECTED'){
-            onRejected(this.value);
-        }
-    }
+  }
 }
 ```
 
@@ -1702,44 +1711,42 @@ class MyPromise{
 // 函数then是Promise中的一个方法，它会在Promise处于fulfill状态时调用触发
 // resolve和reject是默认传入的函数参数
 new Promise((resolve, reject) => {
-    setTimeout(() => {
-        // 在Promise中调用resolve函数，会使Promise变为fulfill状态
-        // resolve函数可以传入一个参数，作为then函数的默认传入参数
-        resolve('成功');
-    }, 1000);
-})
-.then(data => {
-    console.log(data); //结果输出成功
+  setTimeout(() => {
+    // 在Promise中调用resolve函数，会使Promise变为fulfill状态
+    // resolve函数可以传入一个参数，作为then函数的默认传入参数
+    resolve("成功");
+  }, 1000);
+}).then((data) => {
+  console.log(data); //结果输出成功
 });
 
 /*----------------------------------------------------------------- */
 // 函数 .catch()
 // 函数catch是Promise的一个方法。它会在Promise处于reject状态时调用触发
 new Promise((resolve, reject) => {
-    setTimeout(() => {
-        // 在Promise调用reject函数，会使Promise变为reject状态
-        // reject函数可以传入一个参数，作为catch函数的默认传入参数
-        reject('失败');
-    }, 1000)
-})
-.catch(err => {
-    console.log(err); //结果输出：失败
-})
+  setTimeout(() => {
+    // 在Promise调用reject函数，会使Promise变为reject状态
+    // reject函数可以传入一个参数，作为catch函数的默认传入参数
+    reject("失败");
+  }, 1000);
+}).catch((err) => {
+  console.log(err); //结果输出：失败
+});
 
 /*----------------------------------------------------------------- */
 // 函数.finally()
 // 函数finally是Promise中的一个方法，它会在Promise的最后触发，无论Promise处于什么状态
 new Promise((resolve, reject) => {
-    setTimeout(() => {
-       resolve('成功啦！')
-    },1000)
+  setTimeout(() => {
+    resolve("成功啦！");
+  }, 1000);
 })
-.then(data => {
+  .then((data) => {
     console.log(data);
-})
-.finally(() => {
-    console.log('Promise结束');
-})
+  })
+  .finally(() => {
+    console.log("Promise结束");
+  });
 
 /* 
     结果输出：成功啦！
@@ -1750,42 +1757,41 @@ new Promise((resolve, reject) => {
 // 函数all()
 // 函数all是Promise中的一个方法，它用于将多个promise实例，包装成一个新的promise实例
 Promise.all([
-    new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('我是第一个异步请求的数据');
-        });
-    }, 1000),
-    new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('我是第二个异步请求的数据');
-        }, 1000);
-    })
-])
-.then(results => {
-    console.log(results); // ['我是第一个异步请求的数据', '我是第二个异步请求的数据']
-})
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("我是第一个异步请求的数据");
+    });
+  }, 1000),
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("我是第二个异步请求的数据");
+    }, 1000);
+  }),
+]).then((results) => {
+  console.log(results); // ['我是第一个异步请求的数据', '我是第二个异步请求的数据']
+});
 
 /*----------------------------------------------------------------- */
 // 实际应用
-let string1 = 'I am';
+let string1 = "I am";
 new Promise((resolve, reject) => {
-    setTimeout(() => {
-        let string2 = string1 + 'Monday';
-        resolve(string2);
-    }, 1000);
+  setTimeout(() => {
+    let string2 = string1 + "Monday";
+    resolve(string2);
+  }, 1000);
 })
-.then(data => {
+  .then((data) => {
     return new Promise((resolve, reject) => {
-        let string3 = data + 'in CSDN';
-        resolve(string3);
-    })
-})
-.then(data => {
+      let string3 = data + "in CSDN";
+      resolve(string3);
+    });
+  })
+  .then((data) => {
     console.log(data);
-})
-.finally(() => {
-    console.log('Promise结束');
-})
+  })
+  .finally(() => {
+    console.log("Promise结束");
+  });
 
 /*
     输出结果：
@@ -1811,45 +1817,43 @@ new Promise((resolve, reject) => {
 
 ```js
 //封装节流函数，实现节流
-function throttle(func, delay=500) {
-    let timer = null;
-    let status = false;
+function throttle(func, delay = 500) {
+  let timer = null;
+  let status = false;
 
-    return function (...args) {
-        
-        if(status) return;
-        
-        status = true;
+  return function (...args) {
+    if (status) return;
 
-        timer = setTimeout(() => {
-            func.apply(this, args)
-            status = false
-        }, delay);
-    }
+    status = true;
+
+    timer = setTimeout(() => {
+      func.apply(this, args);
+      status = false;
+    }, delay);
+  };
 }
 ```
 
 ### （2）手写防抖函数
 
-**防抖**：一段时间内连续触发，不执行，直到超出限定时间执行最后一次。—— 如：`input` 、 `scroll` 滚动
+**防抖**：一段时间内连续触发，不执行，直到超出限定时间执行最后一次（再通俗点，就是防止抖动，比如手一直抖，一秒点击了60次按钮，但是规定一秒内只能点一次按钮，那么这些点击只能看成一次，按钮的函数只执行一次）。—— 如：`input` 、 `scroll` 滚动
 
 通俗来讲，防抖是从频繁触发执行变为最后一次才执行。
 
 ```js
 //封装防抖函数，实现防抖
-function denounce(func, delay=500){
-    let timer = null;
-    return function(...args){
-        
-        // 如果有值，清除定时器，之后继续执行
-        if(timer){
-            clearTimeout(timer);
-        }
-
-        timer = setTimeout(() => {
-            func.apply(this, args);
-        },delay);
+function denounce(func, delay = 500) {
+  let timer = null;
+  return function (...args) {
+    // 如果有值，清除定时器，之后继续执行
+    if (timer) {
+      clearTimeout(timer);
     }
+
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
 ```
 
@@ -1866,28 +1870,29 @@ function denounce(func, delay=500){
 **代码实现：**
 
 ```js
-let img = document.getElementsByTagName('img'); // 获取img标签相关的
+let img = document.getElementsByTagName("img"); // 获取img标签相关的
 let num = img.length; // 记录有多少张图片
 let count = 0; // 计数器，从第一张图片开始计数
 
 lazyload(); // 首次加载别忘了加载图片
 
 function lazyload() {
-    let viewHeight = document.documentElement.clientHeight; // clientHeight 获取屏幕可视区域的高度
-    let scrollHeight = document.documentElement.scrollTop || document.body.scrollTop; // 滚动条卷去的高度
-    for (let i = 0; i < num; i++) {
-        // 元素现在已经出现在视觉区域中
-        if (img[i].offsetTop < scrollHeight + viewHeight) {
-            // 当src不存在时，跳出本轮循环，继续下一轮
-            if (img[i].getAttribute('src') !== 'default.jpg') {
-                continue;
-            } else {
-                // 当src属性存在时，获取src的值，并将其赋值给img
-                img[i].src = img[i].getAttribute('data-src');
-                count++;
-            }
-        }
+  let viewHeight = document.documentElement.clientHeight; // clientHeight 获取屏幕可视区域的高度
+  let scrollHeight =
+    document.documentElement.scrollTop || document.body.scrollTop; // 滚动条卷去的高度
+  for (let i = 0; i < num; i++) {
+    // 元素现在已经出现在视觉区域中
+    if (img[i].offsetTop < scrollHeight + viewHeight) {
+      // 当src不存在时，跳出本轮循环，继续下一轮
+      if (img[i].getAttribute("src") !== "default.jpg") {
+        continue;
+      } else {
+        // 当src属性存在时，获取src的值，并将其赋值给img
+        img[i].src = img[i].getAttribute("data-src");
+        count++;
+      }
     }
+  }
 }
 ```
 
@@ -1904,7 +1909,7 @@ function lazyload() {
 `forEach()` 方法对数组的每个元素执行一次给定的函数。原生 `API` 具体解析如下：
 
 ```js
-arr.forEach(function(currentValue, currentIndex, arr) {}, thisArg)
+arr.forEach(function (currentValue, currentIndex, arr) {}, thisArg);
 
 //currentValue  必需。当前元素
 //currentIndex  可选。当前元素的索引
@@ -1916,37 +1921,37 @@ arr.forEach(function(currentValue, currentIndex, arr) {}, thisArg)
 
 ```js
 Array.prototype.myForEach = function (fn, thisArg) {
-    if (typeof fn !== 'function') {
-        throw new Error('参数必须为函数');
-    }
-    if (!Array.isArray(this)) {
-        throw new Error('只能对数组使用forEach方法');
-    }
-    let arr = this;
-    for (let i = 0; i < arr.length; i++) {
-        fn.call(thisArg, arr[i], i, arr);
-    }
-}
+  if (typeof fn !== "function") {
+    throw new Error("参数必须为函数");
+  }
+  if (!Array.isArray(this)) {
+    throw new Error("只能对数组使用forEach方法");
+  }
+  let arr = this;
+  for (let i = 0; i < arr.length; i++) {
+    fn.call(thisArg, arr[i], i, arr);
+  }
+};
 
 // 测试
 let arr = [1, 2, 3, 4, 5];
 arr.myForEach((item, index) => {
-    console.log(item, index);
+  console.log(item, index);
 });
 
 // 测试 thisArg
 function Counter() {
-    this.sum = 0;
-    this.count = 0;
+  this.sum = 0;
+  this.count = 0;
 }
 
 // 因为 thisArg 参数（this）传给了forEach()，每次调用时，它都被传给 callback 函数，作为它的 this 值
 Counter.prototype.add = function (array) {
-    array.myForEach(function (entry) {
-        this.sum += entry;
-        ++this.count;
-    }, this);
-}
+  array.myForEach(function (entry) {
+    this.sum += entry;
+    ++this.count;
+  }, this);
+};
 
 const obj = new Counter();
 obj.add([2, 5, 9]);
@@ -1962,29 +1967,33 @@ console.log(obj.sum); // 16 === (2 + 5 + 9)
 `map` 函数会依次处理数组中的每一个元素，并返回一个新的数组，且对原来的数组不会产生影响。
 
 ```js
-array.map(function(currentValue,index,arr){})
+array.map(function (currentValue, index, arr) {});
 ```
 
 **代码实现：**
 
 ```js
 Array.prototype.myMap = function (arr, mapCallback) {
-    // 检查参数是否正确
-    if (!Array.isArray(arr) || !Array.length || typeof mapCallback !== 'function') {
-        return [];
-    } else {
-        let result = [];
-        for (let i = 0; len = arr.length; i++) {
-            result.push(mapCallback(arr[i], i, arr));
-        }
-        return result;
+  // 检查参数是否正确
+  if (
+    !Array.isArray(arr) ||
+    !Array.length ||
+    typeof mapCallback !== "function"
+  ) {
+    return [];
+  } else {
+    let result = [];
+    for (let i = 0; (len = arr.length); i++) {
+      result.push(mapCallback(arr[i], i, arr));
     }
-}
+    return result;
+  }
+};
 
 // 测试
 let arr = [1, 2, 3, 4, 5];
 arr.map((item, index) => {
-    console.log(item * 2);
+  console.log(item * 2);
 }); // 2, 4, 6, 8, 10
 ```
 
@@ -1995,33 +2004,33 @@ arr.map((item, index) => {
 `filter()` 方法返回**执行结果为 true 的项组成的数组**。
 
 ```js
-arr.filter(function(item, index, arr){}, context)
+arr.filter(function (item, index, arr) {}, context);
 ```
 
 **代码实现：**
 
 ```js
 Array.prototype.myFilter = function (fn, context) {
-    if (typeof fn !== 'function') {
-        throw new Error(`${fn} is not a function`);
-    }
+  if (typeof fn !== "function") {
+    throw new Error(`${fn} is not a function`);
+  }
 
-    let arr = this;
-    let temp = [];
+  let arr = this;
+  let temp = [];
 
-    for (let i = 0; i < arr.length; i++) {
-        let result = fn.call(context, arr[i], i, arr);
-        // 判断条件是否为真
-        if (result) {
-            temp.push(arr[i]);
-        }
+  for (let i = 0; i < arr.length; i++) {
+    let result = fn.call(context, arr[i], i, arr);
+    // 判断条件是否为真
+    if (result) {
+      temp.push(arr[i]);
     }
-    return temp;
-}
+  }
+  return temp;
+};
 
 // 测试
-let arr = [1, 2, 3, 4, 5, 'A', 'B', 'C'];
-console.log(arr.myFilter((item) => typeof item === 'string')); // [ 'A', 'B', 'C' ]
+let arr = [1, 2, 3, 4, 5, "A", "B", "C"];
+console.log(arr.myFilter((item) => typeof item === "string")); // [ 'A', 'B', 'C' ]
 ```
 
 ### （4）reduce
@@ -2033,45 +2042,45 @@ console.log(arr.myFilter((item) => typeof item === 'string')); // [ 'A', 'B', 'C
 - 整体返回 `res` 累加值
 
 ```js
-arr.reduce((res,cur, index, arr) => res+cur, 0)
+arr.reduce((res, cur, index, arr) => res + cur, 0);
 ```
 
 **代码实现：**
 
 ```js
 /**
- * 
+ *
  * @param {fn} callback res→代表累加值，cur→目前值，index→第几个，arr→调用reduce的数组
  * @param {*} initialValue 初始化参数(可选)
  */
 
 Array.prototype.myReduce = function (cb, initValue) {
-    if (!Array.isArray(this)) {
-        throw new TypeError("not a array");
-    }
-    // 数组为空，并且有初始值，报错
-    if (this.length === 0 && arguments.length < 2) {
-        throw new TypeError('Reduce of empty array with no initial value');
-    }
-    let arr = this;
-    let res = null;
-    // 判断有没有初始值
-    if (arguments.length > 1) {
-        res = initValue;
-    } else {
-        res = arr.splice(0, 1)[0]; //没有就取第一个值
-    }
-    arr.forEach((item, index) => {
-        res = cb(res, item, index, arr); // cb 每次执行完都会返回一个新的 res值，覆盖之前的 res
-    })
-    return res;
+  if (!Array.isArray(this)) {
+    throw new TypeError("not a array");
+  }
+  // 数组为空，并且有初始值，报错
+  if (this.length === 0 && arguments.length < 2) {
+    throw new TypeError("Reduce of empty array with no initial value");
+  }
+  let arr = this;
+  let res = null;
+  // 判断有没有初始值
+  if (arguments.length > 1) {
+    res = initValue;
+  } else {
+    res = arr.splice(0, 1)[0]; //没有就取第一个值
+  }
+  arr.forEach((item, index) => {
+    res = cb(res, item, index, arr); // cb 每次执行完都会返回一个新的 res值，覆盖之前的 res
+  });
+  return res;
 };
 
 // 测试结果
 let arr = [1, 2, 3, 4];
 let result = arr.myReduce((res, cur) => {
-    return res + cur;
-})
+  return res + cur;
+});
 console.log(result); // 10
 ```
 
@@ -2083,26 +2092,26 @@ console.log(result); // 10
 
 ```js
 const jsonp = ({ url, params, callbackName }) => {
-    const generateUrl = () => {
-        let dataSrc = '';
-        for (let key in params) {
-            if (params.hasOwnProperty(key)) {
-                dataSrc += `${key}=${params[key]}&`;
-            }
-        }
-        dataSrc += `callback=${callbackName}`;
-        return `${url}?${dataSrc}`;
+  const generateUrl = () => {
+    let dataSrc = "";
+    for (let key in params) {
+      if (params.hasOwnProperty(key)) {
+        dataSrc += `${key}=${params[key]}&`;
+      }
     }
-    return new Promise((resolve, reject) => {
-        const scriptElement = document.createElement('script')
-        scriptElement.src = generateUrl()
-        document.body.appendChild(scriptElement)
-        window[callbackName] = data => {
-            resolve(data)
-            document.removeChild(scriptElement)
-        }
-    })
-}
+    dataSrc += `callback=${callbackName}`;
+    return `${url}?${dataSrc}`;
+  };
+  return new Promise((resolve, reject) => {
+    const scriptElement = document.createElement("script");
+    scriptElement.src = generateUrl();
+    document.body.appendChild(scriptElement);
+    window[callbackName] = (data) => {
+      resolve(data);
+      document.removeChild(scriptElement);
+    };
+  });
+};
 ```
 
 ### （2）Object.create
@@ -2111,56 +2120,56 @@ const jsonp = ({ url, params, callbackName }) => {
 
 `Object.creat(object[,propertiesObject])` ，用于创建一个新对象，且这个新对象继承 `object` 的属性。第二个参数 `propertyObject` 也是对象，是一个可选参数，它旨在为新创建的对象指定**属性对象**。该属性对象可能包含以下值：
 
-| 属性 | 说明 |
-| ----- | ----- |
+| 属性         | 说明                                                                         |
+| ------------ | ---------------------------------------------------------------------------- |
 | configurable | 表示新创建的对象是否是可配置的，即对象的属性是否可以被删除或修改，默认 false |
-| enumerable | 对象属性是否可枚举的，即是否可以枚举，默认 false |
-| writable | 对象是否可写，是否或以为对象添加新属性，默认 false |
-| get | 对象 getter 函数，默认 undefined |
-| set | 对象 setter 函数，默认 undefined |
+| enumerable   | 对象属性是否可枚举的，即是否可以枚举，默认 false                             |
+| writable     | 对象是否可写，是否或以为对象添加新属性，默认 false                           |
+| get          | 对象 getter 函数，默认 undefined                                             |
+| set          | 对象 setter 函数，默认 undefined                                             |
 
 **代码实现：**
 
 ```js
 /**
- * 
+ *
  * @param {*} proto 新创建对象的原型对象
  * @param {*} propertyObject 要定义其可枚举属性或修改的属性描述符的对象
- * @returns 
+ * @returns
  */
 Object.create2 = function (proto, propertyObject = undefined) {
-    if (typeof proto !== 'object' && typeof proto !== 'function') {
-        throw new TypeError('Object prototype may only be an Object or null.')
-    }
-    // 创建一个空的构造函数 F
-    function F() { }
-    // F 原型指向 proto
-    F.prototype = proto
-    // 创建 F 的实例
-    const obj = new F()
-    // propertiesObject有值则调用 Object.defineProperties
-    if (propertyObject != undefined) {
-        Object.defineProperties(obj, propertyObject)
-    }
-    if (proto === null) {
-        // 创建一个没有原型对象的对象，Object.create(null)
-        obj.__proto__ = null
-    }
-    // 返回 这个 obj
-    return obj
-}
+  if (typeof proto !== "object" && typeof proto !== "function") {
+    throw new TypeError("Object prototype may only be an Object or null.");
+  }
+  // 创建一个空的构造函数 F
+  function F() {}
+  // F 原型指向 proto
+  F.prototype = proto;
+  // 创建 F 的实例
+  const obj = new F();
+  // propertiesObject有值则调用 Object.defineProperties
+  if (propertyObject != undefined) {
+    Object.defineProperties(obj, propertyObject);
+  }
+  if (proto === null) {
+    // 创建一个没有原型对象的对象，Object.create(null)
+    obj.__proto__ = null;
+  }
+  // 返回 这个 obj
+  return obj;
+};
 
 const person = {
-    name: 'monday',
-    printIntroduction: function() {
-        console.log(`My name is ${this.name}, and my age is ${this.age}`);
-    }
+  name: "monday",
+  printIntroduction: function () {
+    console.log(`My name is ${this.name}, and my age is ${this.age}`);
+  },
 };
 
 const me = Object.create2(person);
 
-me.name = 'Tuesday'; 
-me.age = 18; 
+me.name = "Tuesday";
+me.age = 18;
 
 me.printIntroduction();
 ```
@@ -2175,21 +2184,21 @@ me.printIntroduction();
 
 ```js
 Object.assign2 = function (target, ...source) {
-    if (target == null) {
-        throw new TypeError('Cannot convert undefined or null to object');
-    }
-    let res = Object(target);
-    source.forEach(function (obj) {
-        if (obj != null) {
-            for (let key in obj) {
-                if (obj.hasOwnProperty(key)) {
-                    res[key] = obj[key];
-                }
-            }
+  if (target == null) {
+    throw new TypeError("Cannot convert undefined or null to object");
+  }
+  let res = Object(target);
+  source.forEach(function (obj) {
+    if (obj != null) {
+      for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+          res[key] = obj[key];
         }
-    })
-    return res;
-}
+      }
+    }
+  });
+  return res;
+};
 
 const target = { a: 1, b: 2 };
 const source = { b: 4, c: 5 };
@@ -2207,41 +2216,41 @@ console.log(returnedTarget); // { a: 1, b: 4, c: 5 }
 
 ```js
 class Subject {
-    constructor(name) {
-        this.name = name; // 被观察者的名字
-        this.message = '今天是晴天'; // 存放一个值
-        this.observers = []; // 存放所有观察者
-    }
+  constructor(name) {
+    this.name = name; // 被观察者的名字
+    this.message = "今天是晴天"; // 存放一个值
+    this.observers = []; // 存放所有观察者
+  }
 
-    on(observer) {
-        this.observers.push(observer);
-    }
+  on(observer) {
+    this.observers.push(observer);
+  }
 
-    triggle(data) {
-        this.message = data;
-        this.observers.forEach(item => item.update(data));
-    }
+  triggle(data) {
+    this.message = data;
+    this.observers.forEach((item) => item.update(data));
+  }
 }
 
 class Observer {
-    constructor(name) {
-        this.name = name;
-    }
-    update(newDate) {
-        console.log(`我是观察者${this.name}: ${newDate}`);
-    }
+  constructor(name) {
+    this.name = name;
+  }
+  update(newDate) {
+    console.log(`我是观察者${this.name}: ${newDate}`);
+  }
 }
 
 // 测试代码
-let subject = new Subject('message');
+let subject = new Subject("message");
 
-let o1 = new Observer('小红');
-let o2 = new Observer('小明');
+let o1 = new Observer("小红");
+let o2 = new Observer("小明");
 
 subject.on(o1); // 我是观察者小红: 明天会下雨
 subject.on(o2); // 我是观察者小明: 明天会下雨
 
-subject.triggle('明天会下雨');
+subject.triggle("明天会下雨");
 ```
 
 ## 😉 八、结束语

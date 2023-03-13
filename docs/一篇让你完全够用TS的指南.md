@@ -69,7 +69,7 @@ $ tsc test.ts
 
 ## 基本类型
 
-```
+```ts
 //字符串
 let str: string = "Domesy"
 

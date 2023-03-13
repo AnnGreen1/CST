@@ -207,6 +207,7 @@ v3：https://github1s.com/vuejs/core/blob/HEAD/packages/compiler-core/src/codege
 ### 可能的追问
 
 1.  setup 和 created 谁先执行？
+setup先执行
 2.  setup 中为什么没有 beforeCreate 和 created？
 
 ---
@@ -510,7 +511,7 @@ const props = defineProps(['initialCounter'])
 const counter = ref(props.initialCounter)
 ```
 
-- **这个 prop 以一种原始的值传入且需要进行转换。**在这种情况下，最好使用这个 prop 的值来定义一个计算属性：
+- **这个 prop 以一种原始的值传入且需要进行转换。** 在这种情况下，最好使用这个 prop 的值来定义一个计算属性：
 
 ```js
 const props = defineProps(['size'])
@@ -687,7 +688,7 @@ https://github1s.com/vuejs/core/blob/HEAD/packages/reactivity/src/ref.ts#L67-L68
 
     ![图片](https://image.cubox.pro/article/2022061015591816232/23547.jpg)
 
-    image-20220209153820845
+
 
 4.  挂载过程结束后，vue 程序进入更新流程。如果某些响应式数据发生变化，将会引起组件重新 render，此时就会生成新的 vdom，和上一次的渲染结果 diff 就能得到变化的地方，从而转换为最小量的 dom 操作，高效更新视图。
 
