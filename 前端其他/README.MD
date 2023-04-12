@@ -20,6 +20,7 @@ Sass
 Hooks
 websocket
 ECharts
+highcharts
 Weex
 Grunt
 gulp
@@ -39,3 +40,8 @@ AntDesign
 WebAssembly
 Svelte
 webGPU
+sea.js
+PhotoShop
+GIS
+Cesium
+OpenLayers

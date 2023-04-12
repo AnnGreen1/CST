@@ -3,6 +3,7 @@ import { createRouter, createWebHistory,createWebHashHistory, RouteRecordRaw } f
 import commonRoute from "./routes/commonroute";
 import typescriptaxios from "./routes/typescriptaxios";
 import typescript from "./routes/TypeScript";
+import tips from "./routes/Tips";
 
 const router = createRouter({
      // createWebHashHistory:hash模式; createWebHistory:历史模式; createMemoryHistory:ssr
@@ -10,7 +11,8 @@ const router = createRouter({
   routes: [ 
     ...commonRoute,
     ...typescriptaxios,
-    ...typescript
+    ...typescript,
+    ...tips
   ] as unknown as RouteRecordRaw[]
 });
 export default router
