@@ -1,4 +1,11 @@
 #include <stdio.h>
+/**
+ * @name 顺序查找
+ * @description 查找成功，返回索引位置；查找失败，返回-1；
+ * @param nums:number[]
+ * @param target:number
+ * @return index:number
+ */
 int BinarySearch(int nums[], int target)
 {
     int low = 0;
@@ -28,6 +35,9 @@ int BinarySearch(int nums[], int target)
 
 int main()
 {
+    /**
+     * @example
+     */
     int nums[] = {-1, 0, 3, 4, 6, 10, 13, 14};
     int target = 3;
     int res = BinarySearch(nums, target);

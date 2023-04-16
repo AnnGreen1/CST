@@ -1,5 +1,5 @@
 /**
- * @name 折半查找（二分查找）
+ * @name 分块查找
  * @description 查找成功，返回索引位置；查找失败，返回-1；
  * @param nums:number[]
  * @param target:number
