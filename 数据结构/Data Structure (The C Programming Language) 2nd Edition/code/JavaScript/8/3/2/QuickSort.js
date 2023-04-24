@@ -1,16 +1,32 @@
 /**
  * @name 快速排序
- * @description 查找成功，返回索引位置；查找失败，返回-1；
+ * @description
  * @param nums:number[]
  * @param target:number
  * @return index:number 
  */
-function QuickSort( nums ,  target ) {
-    
+function QuickSort(nums) {
+    let low = 0;
+    let high = nums.length - 1;
+    while(low<high){
+        if(nums[low]>nums[high]){
+            let temp = nums[low];
+            nums[low] = nums[high];
+            nums[high] = temp;
+            low++;
+            high--;
+        }else{
+            low++;
+        }
+        console.log(low);
+        console.log(high);
+        console.log(nums);
+    }
+    return nums;
 }
 
 /**
  * @example
  */
-let index = BinarySearch([-1,0,3,4,6,10,13,14],3);
+let index = QuickSort([49, 38, 65, 97, 76, 13, 27, 49]);
 console.log(index);
