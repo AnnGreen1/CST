@@ -10,6 +10,12 @@ const store = createStore({
   mutations: {
     increment (state) {
       state.count++
+    },
+    incrementPayload (state, n) {
+      state.count += n
+    },
+    incrementPayloadObject (state, obj) {
+      state.count = (state.count + obj.plus - obj.minus)*obj.multiple/obj.division;
     }
   }
 })

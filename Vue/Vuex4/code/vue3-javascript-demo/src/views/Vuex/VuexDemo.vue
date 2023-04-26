@@ -1,4 +1,5 @@
 <template>
+    {{ store.state.count }}
    <button @click="incrementFun">state.count++</button>
 </template>
 
