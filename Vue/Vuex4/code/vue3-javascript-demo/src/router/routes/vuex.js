@@ -28,5 +28,13 @@ const vuex = [
     name: "vuex-Mutation-MutationDemo",
     component: () => import("@/views/Vuex/Mutation/MutationDemo.vue"),
   },
+  /**
+   * Action
+   */
+  {
+    path: "/vuex/Action/ActionDemo",
+    name: "vuex-Action-ActionDemo",
+    component: () => import("@/views/Vuex/Action/ActionDemo.vue"),
+  },
 ];
 export default vuex;

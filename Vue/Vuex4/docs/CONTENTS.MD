@@ -1,19 +1,19 @@
 # Vuex4 docs
 与 Vue 3 匹配的 Vuex 4（https://vuex.vuejs.org/zh/） 的文档
 
-- 介绍
+- ✅介绍
     - Vuex是什么？
     - 安装
     - 开始
 - 核心概念
-    - State
-    - Getter
-    - Mutation
-    - Action
+    - ✅State
+    - ✅Getter
+    - ✅Mutation
+    - ✅Action
     - Module
 - 进阶
-    - 项目结构
-    - 组合式API
+    - ✅项目结构
+    - ✅组合式API
     - 插件
     - 严格模式
     - 表单处理
