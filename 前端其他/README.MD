@@ -57,6 +57,7 @@ SVG
 
 egg.js
 KOA
+express
 AntDesign
 WebAssembly
 
@@ -66,3 +67,9 @@ PhotoShop
 GIS
 Cesium
 OpenLayers
+
+animate
+gsap
+Lottie
+greensock
+pixijs
