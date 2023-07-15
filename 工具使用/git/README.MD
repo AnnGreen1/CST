@@ -26,3 +26,5 @@ GitFlow 重点解决的是由于源代码在开发过程中的各种冲突导致
 - feature：功能分支，必须从develop分支建立，开发完成后合并到develop分支。
 - release：发布分支，发布的时候用，一般测试时候发现的 bug 在该分支进行修复。从develop分支建立，完成后合并回develop与master分支。
 - hotfix：紧急修复线上 bug 使用，必须从master分支建立，完成后合并回develop与master分支。
+
+4. 当前分支合并到当前分支与解决冲突提交的区别？
