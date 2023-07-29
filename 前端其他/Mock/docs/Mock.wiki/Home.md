@@ -20,7 +20,7 @@
         [boolean](/nuysoft/Mock/wiki/Basic#randomboolean-min-max-current-),
         [natural](/nuysoft/Mock/wiki/Basic#randomnatural-min-max-),
         [integer](/nuysoft/Mock/wiki/Basic#randominteger-min-max-),
-        [float](/nuysoft/Mock/wiki/Basic#randomfloat-min-max-dmin-dmax-),
+        [float](/nuysoft/Mock/wiki/Basic#randomfloat-mi+n-max-dmin-dmax-),
         [character](/nuysoft/Mock/wiki/Basic#randomcharacter-pool-),
         [string](/nuysoft/Mock/wiki/Basic#randomstring-pool-min-max-),
         [range](/nuysoft/Mock/wiki/Basic#randomrange-start-stop-step-)

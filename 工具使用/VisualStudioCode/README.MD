@@ -4,6 +4,8 @@ eslint
 
 https://prettier.io/
 
+https://prettier.nodejs.cn/
+`.prettierrc`文件
 ```json
 {
   "printWidth": 80, //一行的字符数，如果超过会进行换行，默认为80
