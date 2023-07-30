@@ -128,7 +128,6 @@ var myDirective = Vue.directive('my-directive')
 
 ### 实例方法/事件
 
-
 ### 实例方法/声明周期
 
 
