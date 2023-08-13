@@ -1,20 +1,9 @@
 eslint
 
-## prttier
 
-https://prettier.io/
-
-https://prettier.nodejs.cn/
-`.prettierrc`文件
-```json
-{
-  "printWidth": 80, //一行的字符数，如果超过会进行换行，默认为80
-  "tabWidth": 2, //一个tab代表几个空格数，默认为80
-  "useTabs": false, //是否使用tab进行缩进，默认为false，表示用空格进行缩减
-  "singleQuote": false, //字符串是否使用单引号，默认为false，使用双引号
-  "semi": true, //行位是否使用分号，默认为true
-  "trailingComma": "none", //是否使用尾逗号，有三个可选值"<none|es5|all>"
-  "bracketSpacing": true, //对象大括号直接是否有空格，默认为true，效果：{ foo: bar }
-  "parser": "babylon" //代码的解析引擎，默认为babylon，与babel相同。
-}
-```
+Codeium 是一个人工智能驱动的代码完成工具。它支持超过20种语言，并与常用的IDE集成，个人用户永久免费。需要注册登陆后才能使用。
+Codiga 是一个平台，使开发人员能够更快地编写更好的代码。开发人员可以使用Codiga编码助手直接从他们的 IDE 生成、分发和重用代码片段。
+CodeWhisperer 亚马逊的CodeWhisperer通过基于自然语言注释和集成开发环境 (IDE) 中的代码生成代码建议来提高开发人员的工作效率。
+Kite 是另外一种基于机器学习的代码自动补全插件。它的目标是帮助开发者更快地编写高质量的代码, Kite 支持超过16种语言以及16种代码编辑器。
+Captain Stack 它使用 Google传输用户的搜索查询，然后从 StackOverFlow 和 Github Gist 收集答案，为用户自动完成填充，这个过程中不使用 AI。
+IntelliCode 是一种在 GitHub 項目样本上训练的实验性AI编码辅助工具。
