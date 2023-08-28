@@ -9,3 +9,18 @@ var data = Mock.mock({
 })
 // 输出结果
 console.log(JSON.stringify(data, null, 4))
+
+
+Mock.mock('http://localhost:3000/api/user', 'get', {
+    code: 200,
+    data: {
+        id: '@id',
+        name: '@name',
+        age: '@integer(20, 50)',
+    },
+});
+
+// 启动模拟数据拦截
+Mock.setup({
+    timeout: '200-600'
+});
