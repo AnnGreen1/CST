@@ -32,4 +32,5 @@ hash.put('university', 'AUST')
 hash.put('age', 18)
 console.log(hash.values());
 console.log(hash.get('age'));
-console.log(hash.remove('age'));
+hash.remove('age')
+console.log(hash.values());
