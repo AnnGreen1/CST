@@ -1,4 +1,4 @@
-# inner
+# issue
 1. 登录页验证码是怎么实现的？
 登录页验证码就是一张图片，不过`src`的值是图片`base64`编码。首次进入页面调用验证码图片接口`captchaImage`，返回一个`base64`编码及一个`uuid`，点击登录时把`uuid`和所填写的验证码内容返送给后端，通过校验验证码和`uuid`是否匹配检验验证码是否正确。同时点击验证码再次调用接口`captchaImage`。
 ```
@@ -11,6 +11,8 @@ RuoYi-Vue/ruoyi-ui/src/views/register.vue   line 80
 ```
 
 3. 记住密码功不能明文保存密码，使用 jsencrypt 实现加密，加密后存储在 Cookie 里
+前端加密与 crypto-js 和 JSEncrypt 的使用 
+https://juejin.cn/post/7128955031063101448
 ```
 RuoYi-Vue/ruoyi-ui/src/views/login.vue  line 152
 RuoYi-Vue/ruoyi-ui/src/utils/jsencrypt.js   line 22
@@ -27,6 +29,8 @@ RuoYi-Vue/ruoyi-ui/src/layout/index.vue   line 74
 
 6. vue路由的路径为空字符串什么意义？这和 `/` 有什么区别？
 `''` 是默认路由，`/` 是根路径
+Vue-router中path的值是空字符串，这是否等同与根目录？
+https://segmentfault.com/q/1010000042578477
 ```
 RuoYi-Vue/ruoyi-ui/src/router/index.js  line 68 - 85
 ```

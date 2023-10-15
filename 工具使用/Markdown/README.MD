@@ -29,6 +29,7 @@
 ---
 
 5、图片
+
 ![](https://avatars.githubusercontent.com/u/98733167?s=400&u=7ab438b9372fcb4f983471b7fc7bac13fea99a31&v=4)
 
 ---
@@ -217,3 +218,11 @@ O`<sub>`2`</sub>`
 26、用户输入指示
 
  使用<kbd>Ctrl</kbd>+<kbd>Shift</kbd>切换输入法。
+
+27、details和summary
+
+<details>
+  <summary>会直接展示的标题</summary>
+  
+  不会直接展示而折叠的其他主题内容。。。
+</details>
