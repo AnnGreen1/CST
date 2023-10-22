@@ -73,3 +73,6 @@ gsap
 Lottie
 greensock
 pixijs
+
+
+注释的规范使用，标注数据类型等  @xxxx  这种语法
