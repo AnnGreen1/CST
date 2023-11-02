@@ -12,10 +12,10 @@ Vue 使用一种基于 HTML 的模板语法，使我们能够声明式地将其�
 ```html
 <span>Message: {{ msg }}</span>
 ```
-双大括号标签会被替换为相应组件实例中 msg 属性的值。同时每次 msg 属性更改时它也会同步更新。
+双大括号标签会被替换为相应组件实例中 `msg` 属性的值。同时每次 `msg` 属性更改时它也会同步更新。
 
 ### 原始 HTML
-双大括号会将数据解释为纯文本，而不是 HTML。若想插入 HTML，你需要使用 v-html 指令：
+双大括号会将数据解释为纯文本，而不是 HTML。若想插入 HTML，你需要使用 `v-html` 指令：
 
 ```html
 <p>Using text interpolation: {{ rawHtml }}</p>

@@ -7,7 +7,7 @@
             原始 HTML， 使用<span v-html="rawHtml"></span>指令
         </div>
         <div class="demo-item">
-            布尔型 Attribute 绑定，使用<button :disabled="isButtonDisabled">v-bind</button>
+            布尔型 Attribute 绑定，使用<button :disabled="isButtonDisabled">v-bind</button><button :disabled="''">:disabled="''"</button>
         </div>
         <div class="demo-item">
             <div id="container" class="wrapper">

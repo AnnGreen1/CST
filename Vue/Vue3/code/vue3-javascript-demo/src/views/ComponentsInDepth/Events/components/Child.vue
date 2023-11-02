@@ -16,7 +16,7 @@
 /**
  * 如果一个原生事件的名字 (例如 click) 被定义在 emits 选项中，则监听器只会监听组件触发的 click 事件而不会再响应原生的 click 事件。
  */
-const emit = defineEmits(['msgParent', 'msgParentValue', 'msgParentValues'])
+// const emit = defineEmits(['msgParent', 'msgParentValue', 'msgParentValues'])
 function msgParent() {
     emit('msgParent')
 }

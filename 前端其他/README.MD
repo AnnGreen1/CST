@@ -75,4 +75,13 @@ greensock
 pixijs
 
 
+Prettier
+dprint
+eslint
+StyleLint
+Vitest
+jest
+SWC
+
+
 注释的规范使用，标注数据类型等  @xxxx  这种语法

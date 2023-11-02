@@ -40,12 +40,12 @@
         <div class="demo-item">
             <div>Selected: {{ selected }}</div>
 
-<select v-model="selected">
-  <option disabled value="">Please select one</option>
-  <option>A</option>
-  <option>B</option>
-  <option>C</option>
-</select>
+            <select v-model="selected">
+                <option disabled value="">Please select one</option>
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+            </select>
         </div>
     </div>
 </template>
@@ -64,5 +64,5 @@ function textarea() {
 const checked = ref(true)
 const checkedNames = ref([]);
 const picked = ref('')
-const selected  = ref('')
+const selected = ref('')
 </script>

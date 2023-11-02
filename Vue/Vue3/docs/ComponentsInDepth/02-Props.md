@@ -309,11 +309,26 @@ defineProps({
 <!-- 等同于传入 :disabled="false" -->
 <MyComponent />
 ```
-当一个 prop 被声明为允许多种类型时，例如：
+当一个 prop 被声明为允许多种类型时，Boolean 的转换规则也将被应用。然而，当同时允许 String 和 Boolean 时，有一种边缘情况——只有当 Boolean 出现在 String 之前时，Boolean 转换规则才适用：
 
 ```js
+// disabled 将被转换为 true
 defineProps({
   disabled: [Boolean, Number]
 })
+  
+// disabled 将被转换为 true
+defineProps({
+  disabled: [Boolean, String]
+})
+  
+// disabled 将被转换为 true
+defineProps({
+  disabled: [Number, Boolean]
+})
+  
+// disabled 将被解析为空字符串 (disabled="")
+defineProps({
+  disabled: [String, Boolean]
+})
 ```
-无论声明类型的顺序如何，`Boolean` 类型的特殊转换规则都会被应用。

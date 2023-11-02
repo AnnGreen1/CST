@@ -57,3 +57,26 @@ https://juejin.cn/post/6844903551089524744
 https://juejin.cn/post/7183584978972704805
 https://www.cnblogs.com/jyk/p/14607676.html
 https://juejin.cn/post/7183584978972704805
+
+10. 父组件kebab case格式的props可以在子组件里使用camelCase小驼峰接收？？？？
+```
+RuoYi-Vue/ruoyi-ui/src/components/HeadSearch/index.vue  line 6
+RuoYi-Vue/ruoyi-ui/src/components/SvgIcon/index.vue line 17
+```
+
+11. 绑定的样式对象的写法，使用一个 computed，属性值是函数使用模板字符串，属性名是带有连字符的使用''
+```
+RuoYi-Vue/ruoyi-ui/src/components/SvgIcon/index.vue line 45
+```
+
+12. `$listeners`是什么api？
+```
+RuoYi-Vue/ruoyi-ui/src/components/SvgIcon/index.vue line 1
+```
+
+13. vue2不是不支持多根节点的吗？为什么这个组件可以有一个div和一个svg？
+```
+RuoYi-Vue/ruoyi-ui/src/components/SvgIcon/index.vue line 1
+```
+
+14. 自定义指令`v-hasPremi`和v-if有什么区别？

@@ -137,7 +137,6 @@ import { createApp } from 'vue'
   }).mount('#app')
 </script>
 ```
-JSFiddle 中的示例
 
 你也可以在映射表中添加其他的依赖——但请务必确保你使用的是该库的 ES 模块版本。
 
@@ -149,7 +148,7 @@ JSFiddle 中的示例
 
 如果你更喜欢那些还不支持导入映射表的浏览器，你可以使用 es-module-shims 来进行 polyfill。
 
-生产环境中的注意事项
+##### 生产环境中的注意事项
 
 到目前为止示例中使用的都是 Vue 的开发构建版本——如果你打算在生产中通过 CDN 使用 Vue，请务必查看生产环境部署指南。
 
@@ -178,7 +177,7 @@ export default {
 
 要启动一个本地的 HTTP 服务器，请先安装 Node.js，然后从命令行在 HTML 文件所在文件夹下运行 npx serve。你也可以使用其他任何可以基于正确的 MIME 类型服务静态文件的 HTTP 服务器。
 
-可能你也注意到了，这里导入的组件模板是内联的 JavaScript 字符串。如果你正在使用 VSCode，你可以安装 es6-string-html 扩展，然后在字符串前加上一个前缀注释 /*html*/ 以高亮语法。
+可能你也注意到了，这里导入的组件模板是内联的 JavaScript 字符串。如果你正在使用 VSCode，你可以安装 es6-string-html 扩展，然后在字符串前加上一个前缀注释 /\*html\*/ 以高亮语法。
 
 #### 无需构建的组合式 API 用法
 组合式 API 的许多示例将使用 `<script setup>` 语法。如果你想在无需构建的情况下使用组合式 API，请参阅 `setup()` 选项。

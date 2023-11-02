@@ -27,6 +27,7 @@ watch(question, async (newQuestion, oldQuestion) => {
         answer.value = 'Thinking...'
         try {
             const res = await fetch('https://yesno.wtf/api')
+            console.log(res);
             answer.value = (await res.json()).answer
         } catch (error) {
             answer.value = 'Error! Could not reach the API. ' + error

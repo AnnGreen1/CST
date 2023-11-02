@@ -7,7 +7,8 @@
         <div class="demo-item">
             <input type="text" v-model="firstName"><br />
             <input type="text" v-model="lastName"><br />
-            {{ fullName  }}
+            <input type="text" v-model="fullName"><br />
+            {{ fullName }}
         </div>
     </div>
 </template>
@@ -35,14 +36,16 @@ const firstName = ref('John')
 const lastName = ref('Doe')
 
 const fullName = computed({
-  // getter
-  get() {
-    return firstName.value + ' ' + lastName.value
-  },
-  // setter
-  set(newValue) {
-    // 注意：我们这里使用的是解构赋值语法
-    [firstName.value, lastName.value] = newValue.split(' ')
-  }
+    // getter
+    get() {
+        console.log('get');
+        return firstName.value + ' ' + lastName.value
+    },
+    // setter
+    set(newValue) {
+        console.log('set');
+        // 注意：我们这里使用的是解构赋值语法
+        [firstName.value, lastName.value] = newValue.split(' ')
+    }
 })
 </script>

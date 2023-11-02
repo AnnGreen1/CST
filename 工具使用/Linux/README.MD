@@ -50,3 +50,10 @@ cat file1 从第一个字节开始正向查看文件的内容
 tac file1 从最后一行开始反向查看一个文件的内容
 cat -n file1 标示文件的行数
 ```
+
+
+VMware虚拟机连不上网络，最详细排查解决方案
+https://blog.csdn.net/weixin_45416439/article/details/127809817
+
+
+https://developer.aliyun.com/article/760687

@@ -64,5 +64,13 @@ const ComponentsInDepth = [
     name: "ComponentsInDepth-Slots-Slots",
     component: () => import("@/views/ComponentsInDepth/Slots/Slots.vue"),
   },
+  /**
+   * Provide Inject
+   */
+  {
+    path: "/ComponentsInDepth/ProvideInject/RootView",
+    name: "ComponentsInDepth-ProvideInject-RootView",
+    component: () => import("@/views/ComponentsInDepth/ProvideInject/RootView.vue"),
+  },
 ];
 export default ComponentsInDepth;
