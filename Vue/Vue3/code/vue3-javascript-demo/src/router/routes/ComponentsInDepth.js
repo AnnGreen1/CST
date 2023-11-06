@@ -72,5 +72,13 @@ const ComponentsInDepth = [
     name: "ComponentsInDepth-ProvideInject-RootView",
     component: () => import("@/views/ComponentsInDepth/ProvideInject/RootView.vue"),
   },
+  /**
+   * Async Components
+   */
+  {
+    path: "/ComponentsInDepth/AsyncComponents/RouteView",
+    name: "ComponentsInDepth-AsyncComponents-RouteView",
+    component: () => import("@/views/ComponentsInDepth/AsyncComponents/RouteView.vue"),
+  },
 ];
 export default ComponentsInDepth;

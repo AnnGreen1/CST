@@ -84,4 +84,22 @@ jest
 SWC
 
 
+VUEUSE
+https://alfred-skyblue.gitee.io/
+https://vueuse.org/
+https://www.vueusejs.com/
+
+
 注释的规范使用，标注数据类型等  @xxxx  这种语法
+
+
+##### 组件库
+
+element-plus
+官网只有ts的例子
+
+vant
+naive-ui
+
+antd-vue
+官网具有ts和js两种例子
