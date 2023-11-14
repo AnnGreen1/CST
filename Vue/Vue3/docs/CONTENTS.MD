@@ -25,7 +25,7 @@ vuejs/core: https://github.com/vuejs/core
     - 插槽
     - 依赖注入
     - 异步组件
-- 逻辑复用
+- ✅逻辑复用
     - 组合式函数
     - 自定义指令
     - 插件

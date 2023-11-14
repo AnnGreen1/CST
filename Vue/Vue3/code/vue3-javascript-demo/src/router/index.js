@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import commonroute from './routes/commonroute'
 import Essentials from './routes/Essentials'
 import ComponentsInDepth from './routes/ComponentsInDepth'
+import Reusability from './routes/Reusability'
 import Dev from './routes/Dev'
 
 const router = createRouter({
@@ -30,6 +31,7 @@ const router = createRouter({
     ...commonroute,
     ...Essentials,
     ...ComponentsInDepth,
+    ...Reusability,
     ...Dev
   ]
 })
