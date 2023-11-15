@@ -50,6 +50,15 @@ cat file1 从第一个字节开始正向查看文件的内容
 tac file1 从最后一行开始反向查看一个文件的内容
 cat -n file1 标示文件的行数
 ```
+12、关机与重启
+```
+shutdown -h now 立即关机
+shutdown -r now 立即重启
+shutdown -h 10:00 10点关机
+shutdown -r 10:00 10点重启
+shutdown –h +10 十分钟后关机
+shutdown –r +10 系统十分钟后重启
+```
 
 
 VMware虚拟机连不上网络，最详细排查解决方案
