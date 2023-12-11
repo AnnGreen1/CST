@@ -96,7 +96,14 @@ git log
 ```
 git stash
 ```
+20、统计代码行数
+```
+// 不限时间
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
 
+// 限制起始日期
+git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git log --author="$name" --since="2023-01-01" --until="2023-12-31" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf "added lines: %s, removed lines: %s, total lines: %s\n", add, subs, loc }' -; done
+```
 其他还未整理
 ```
 git branch 查看本地所有分支

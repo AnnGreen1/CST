@@ -11,3 +11,6 @@ https://github.com/biubiubiu01/vue3-bigData
 
 
 https://github.com/baimingxuan/vue-admin-design
+
+
+https://vangleer.github.io/es-big-screen/#/screen
