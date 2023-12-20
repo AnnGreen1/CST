@@ -73,7 +73,8 @@ gsap
 Lottie
 greensock
 pixijs
-
+flexible.js
+autofit.js
 
 Prettier
 dprint
