@@ -54,3 +54,8 @@ git stash branch // 从最新stash创建分支
 链接：https://juejin.cn/post/7049242305844215844
 来源：稀土掘金
 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+tips:添加备注信息
+```
+git stash save "Your stash message" --include-untracked
+```

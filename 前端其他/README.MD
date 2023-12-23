@@ -75,6 +75,7 @@ greensock
 pixijs
 flexible.js
 autofit.js
+flv.js
 
 Prettier
 dprint
