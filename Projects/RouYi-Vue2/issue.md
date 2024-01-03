@@ -96,3 +96,10 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 
 RuoYi-Vue/ruoyi-ui/src/store/modules/permission.js line 136
 ```
+
+16. router-link 是如何实现的，其内部是如何封装的？想要新标签页打开一个路由能使用 router-link 进行改造后实现吗？
+```
+RuoYi-Vue/ruoyi-ui/src/views/system/dict/index.vue line 20
+```
+
+17. 数据监控这个模块是怎么实现的？整个都没看懂。还没看。

@@ -37,3 +37,25 @@ https://juejin.cn/post/7205882710333931577
 
 若依前后端分离框架学习-2：登录过程
 https://blog.csdn.net/liuzixin_lzx/article/details/113172451
+
+--------------------------------
+
+若依开发文档（书栈网）
+https://www.bookstack.cn/books/ruoyi
+
+--------------------------------
+
+CSDN若依社区
+https://ruoyi.csdn.net/
+
+--------------------------------
+
+请问数据监控（若依3.4 ）页面进入时需要输入用户名和密码
+https://gitee.com/y_project/RuoYi-Vue/issues/I3SC2W
+
+--------------------------------
+
+若依前后端分离框架
+https://blog.csdn.net/liuzixin_lzx/category_10841584.html
+
+--------------------------------
