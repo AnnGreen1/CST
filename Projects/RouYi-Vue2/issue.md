@@ -103,3 +103,7 @@ RuoYi-Vue/ruoyi-ui/src/views/system/dict/index.vue line 20
 ```
 
 17. 数据监控这个模块是怎么实现的？整个都没看懂。还没看。
+
+18. elementUI 表格里开启 show-overflow-tooltip ，这里的tooltip是怎么实现的？需要 v-if 判断，之后还要手动截取这么麻烦吗？
+
+19. Corn 表达式是什么？

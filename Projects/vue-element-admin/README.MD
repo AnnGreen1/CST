@@ -8,3 +8,9 @@
 
 文档地址：https://panjiachen.gitee.io/vue-element-admin-site/zh/
 https://panjiachen.github.io/vue-element-admin-site/zh/
+
+
+https://gitee.com/panjiachen/vue-element-admin
+
+作者亲自写的文档说明
+https://juejin.cn/post/6844903476661583880

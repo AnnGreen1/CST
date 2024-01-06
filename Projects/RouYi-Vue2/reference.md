@@ -59,3 +59,8 @@ https://gitee.com/y_project/RuoYi-Vue/issues/I3SC2W
 https://blog.csdn.net/liuzixin_lzx/category_10841584.html
 
 --------------------------------
+
+若依项目
+https://blog.csdn.net/felix_hyfy/category_9922982.html
+
+--------------------------------
