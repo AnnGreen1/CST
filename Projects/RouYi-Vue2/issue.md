@@ -107,3 +107,71 @@ RuoYi-Vue/ruoyi-ui/src/views/system/dict/index.vue line 20
 18. elementUI 表格里开启 show-overflow-tooltip ，这里的tooltip是怎么实现的？需要 v-if 判断，之后还要手动截取这么麻烦吗？
 
 19. Corn 表达式是什么？
+前端必备的定时任务技能 - Cron + node-schedule
+作者：TinssonTai
+链接：https://juejin.cn/post/7163608389233147918
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+21. `:export`是什么语法？（其实有英文注释）
+
+`:export {}` 不是 SCSS 的语法。实际上，`:export {}` 是 CSS Modules 的语法，用于导出模块中的样式规则。
+
+在 CSS Modules 中，可以使用 `:export` 来导出模块中的样式规则，这样其他模块就可以引用这些样式规则。例如，一个包含了 `button` 样式规则的模块可以这样导出：
+
+```css
+:export {
+  button: buttonClassName;
+}
+```
+
+其他模块可以使用 `button` 样式规则，就像这样：
+
+```css
+@value button from './button.module.css';
+
+.myButton {
+  composes: button from global;
+  /* 其他样式规则 */
+}
+```
+
+在上面的例子中，`:export` 用于导出 `button` 样式规则，然后在另一个模块中使用 `@value` 来引用这个样式规则。
+
+需要注意的是，CSS Modules 是一种用于管理 CSS 样式的技术，它允许你在项目中使用局部作用域的 CSS 样式，并且提供了一种模块化的方式来引用和重用样式规则。`:export` 是 CSS Modules 提供的语法之一。
+```
+RuoYi-Vue/ruoyi-ui/src/assets/styles/variabls.scss line 43
+```
+
+22. SCSS混入（@mixin）从来没使用过
+SCSS 混入语法
+https://sass-lang.com/guide/#mixins
+```
+RuoYi-Vue/ruoyi-ui/src/assets/styles/btn.scss line 8
+```
+
+23. `~@`在SCSS中可以使用是为什么？SCSS文档有提到吗？是编译器的支持吗？直接使用一个`~`又是如何得到支持的呢？
+```
+RuoYi-Vue/ruoyi-ui/src/assets/styles/btn.scss line 27 & 29
+```
+
+24. text-rendering 是什么属性？
+定义浏览器渲染引擎如何渲染字体。浏览器会在速度、清晰度、几何精度之间进行权衡。
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-rendering
+
+25. SCSS 的 @if @else @else if ，又是从来没用过的。
+
+```
+RuoYi-Vue/ruoyi-ui/src/assets/styles/mixin.scss line 36 - 70
+```
+
+26. `!important` 之前不一定需要有空格隔开？
+```
+RuoYi-Vue/ruoyi-ui/src/assets/styles/ruoyi.scss line 274
+```
+
+27. `$route.matched`是什么？
+https://v3.router.vuejs.org/zh/api/#%E8%B7%AF%E7%94%B1%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7
+```
+RuoYi-Vue/ruoyi-ui/src/components/Breadcrumb/index.vue line 41
+```

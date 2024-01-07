@@ -27,7 +27,7 @@ ruoyi-ui
 │  │  ├─ login.js
 │  │  ├─ menu.js
 │  │  ├─ monitor
-│  │  │  ├─ cache.js
+│  │  │  ├─ cache.js                                            // @views/monitor/cache 文件夹下两个页面的接口
 │  │  │  ├─ job.js
 │  │  │  ├─ jobLog.js
 │  │  │  ├─ logininfor.js
@@ -162,9 +162,9 @@ ruoyi-ui
 │  │     ├─ transition.scss
 │  │     └─ variables.scss
 │  ├─ components                                            // 封装组件
-│  │  ├─ Breadcrumb
+│  │  ├─ Breadcrumb                                         // 面包屑
 │  │  │  └─ index.vue
-│  │  ├─ Crontab
+│  │  ├─ Crontab                                            // Cron 表达式生成器（没完全看懂）
 │  │  │  ├─ day.vue
 │  │  │  ├─ hour.vue
 │  │  │  ├─ index.vue
@@ -324,8 +324,8 @@ ruoyi-ui
 │     ├─ login.vue
 │     ├─ monitor
 │     │  ├─ cache
-│     │  │  ├─ index.vue
-│     │  │  └─ list.vue
+│     │  │  ├─ index.vue                      // 系统监控 - 缓存监控 的页面  
+│     │  │  └─ list.vue                      // 系统监控 - 缓存列表 的页面
 │     │  ├─ druid
 │     │  │  └─ index.vue
 │     │  ├─ job
