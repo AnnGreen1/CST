@@ -29,16 +29,16 @@ vuejs/core: https://github.com/vuejs/core
     - 组合式函数
     - 自定义指令
     - 插件
-- 内置组件
+- ✅内置组件
     - Transition
     - TransitionGroup
     - KeepAlive
     - Teleport
     - Suspense
 - 应用规模化
-    - 单文件组件
-    - 工具链
-    - 路由
+    - ✅单文件组件
+    - ✅工具链
+    - ✅路由
     - 状态管理
     - 测试
     - 服务端渲染（SSR）

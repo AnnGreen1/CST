@@ -5,6 +5,7 @@ import commonroute from './routes/commonroute'
 import Essentials from './routes/Essentials'
 import ComponentsInDepth from './routes/ComponentsInDepth'
 import Reusability from './routes/Reusability'
+import BuiltInComponents from './routes/BuiltInComponents'
 import Dev from './routes/Dev'
 
 const router = createRouter({
@@ -32,6 +33,7 @@ const router = createRouter({
     ...Essentials,
     ...ComponentsInDepth,
     ...Reusability,
+    ...BuiltInComponents,
     ...Dev
   ]
 })

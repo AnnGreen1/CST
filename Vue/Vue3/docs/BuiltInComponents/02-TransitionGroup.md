@@ -95,3 +95,7 @@ function onEnter(el, done) {
   })
 }
 ```
+
+##### 参考
+
+- [`<TransitionGroup>` API 参考](https://cn.vuejs.org/api/built-in-components.html#transitiongroup)
