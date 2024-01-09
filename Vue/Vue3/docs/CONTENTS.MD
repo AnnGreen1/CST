@@ -35,10 +35,10 @@ vuejs/core: https://github.com/vuejs/core
     - KeepAlive
     - Teleport
     - Suspense
-- 应用规模化
-    - ✅单文件组件
-    - ✅工具链
-    - ✅路由
+- ✅应用规模化
+    - 单文件组件
+    - 工具链
+    - 路由
     - 状态管理
     - 测试
     - 服务端渲染（SSR）
