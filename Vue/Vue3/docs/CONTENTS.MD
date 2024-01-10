@@ -17,11 +17,11 @@ vuejs/core: https://github.com/vuejs/core
     - 侦听器
     - 模板引用
     - 组件基础
-- 深入组件
-    - ✅注册
-    - ✅Props
-    - ✅事件
-    - 透传 Attributes（继续从 禁用 Attributes 继承 看）
+- ✅深入组件
+    - 注册
+    - Props
+    - 事件
+    - 透传 Attributes
     - 插槽
     - 依赖注入
     - 异步组件
@@ -47,8 +47,8 @@ vuejs/core: https://github.com/vuejs/core
     - 性能优化
     - 无障碍访问
     - 安全
-- TypeScript
-    - ✅总览
+- ✅TypeScript
+    - 总览
     - TS与组合式API
     - TS与选项式API
 - 进阶主题
@@ -69,7 +69,7 @@ vuejs/core: https://github.com/vuejs/core
         - 响应式：工具
         - 响应式：核心
         - 响应式：进阶
-        - 声明周期钩子
+        - 生命周期钩子
     - 选项式API
         - 状态选项
         - 渲染选项
