@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 import commonroute from './routes/commonroute'
+import ComponentsInDepth from './routes/ComponentsInDepth'
 import API from './routes/API'
 
 Vue.use(VueRouter)
@@ -30,6 +31,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/JavascriptAxios.vue')
   },
   ...commonroute,
+  ...ComponentsInDepth,
   ...API
 ]
 

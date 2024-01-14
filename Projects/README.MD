@@ -14,3 +14,28 @@ https://github.com/baimingxuan/vue-admin-design
 
 
 https://vangleer.github.io/es-big-screen/#/screen
+
+SCUI管理系统
+https://gitee.com/lolicode/scui
+https://lolicode.gitee.io/scui-doc/demo/#/dashboard
+https://lolicode.gitee.io/scui-doc/
+
+
+
+admin work pro
+https://gitee.com/qingqingxuan/admin-work
+http://x.vueadminwork.com/#/login?redirect=/index/home
+
+
+vue-pure-admin
+https://github.com/pure-admin/vue-pure-admin
+https://gitee.com/yiming_chang/vue-pure-admin
+https://yiming_chang.gitee.io/pure-admin-doc/
+
+
+
+Vben Admin
+https://doc.vvbin.cn/
+https://github.com/vbenjs/vue-vben-admin
+https://gitee.com/annsion/vue-vben-admin
+https://github.com/vbenjs/vue-vben-admin
