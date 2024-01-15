@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 
 import commonroute from './routes/commonroute'
 import ComponentsInDepth from './routes/ComponentsInDepth'
+import ReusabilityAndComposition from './routes/ReusabilityAndComposition'
 import API from './routes/API'
 
 Vue.use(VueRouter)
@@ -32,6 +33,7 @@ const routes = [
   },
   ...commonroute,
   ...ComponentsInDepth,
+  ...ReusabilityAndComposition,
   ...API
 ]
 

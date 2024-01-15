@@ -1,6 +1,6 @@
 # Vue2 docs
 vuejs/vue: https://github.com/vuejs/vue
-- 基础
+- ✅基础
     - 安装
     - 介绍
     - Vue实例
@@ -12,7 +12,7 @@ vuejs/vue: https://github.com/vuejs/vue
     - 事件处理
     - 表单输入绑定
     - 组件基础
-- 深入了解组件组件
+- ✅深入了解组件组件
     - 组件注册
     - Prop
     - 自定义事件
