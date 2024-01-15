@@ -14,6 +14,15 @@
                 <p>Here's some contact info</p>
             </template>
         </named-slots>
+
+        <scoped-slots>
+            <!-- 从文件的写法上来看，这里好像属于父组件鹅作用域，但是通过这种方法确实是访问到了子组件作用域-->
+            <template v-slot:default="slotProps">
+                {{ slotProps.user.firstName }}
+            </template>
+        </scoped-slots>
+        <!--另一种缩写语法-->
+        <scoped-slots v-slot:default="slotProps">{{ slotProps.user.firstName }}</scoped-slots>
     </div>
 </template>
 

@@ -7,6 +7,10 @@ import './style/index.scss'
 Vue.config.productionTip = false
 
 new Vue({
+  // $root 访问根实例
+  data: {
+    foo: 1
+  },
   router,
   render: h => h(App)
 }).$mount('#app')
