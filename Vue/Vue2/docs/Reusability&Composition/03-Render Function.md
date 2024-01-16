@@ -383,7 +383,7 @@ on: {
 |   修饰键：`.ctrl`, `.alt`, `.shift`, `.meta`  |	i`f (!event.ctrlKey) return` (将 `ctrlKey` 分别修改为 `altKey`、`shiftKey` 或者 `metaKey`)    |
 
 这里是一个使用所有修饰符的例子：
-
+```js
 on: {
   keyup: function (event) {
 
@@ -403,16 +403,18 @@ on: {
 
   }
 }
-插槽
-你可以通过 this.$slots 访问静态插槽的内容，每个插槽都是一个 VNode 数组：
-
+```
+#### 插槽
+你可以通过 `this.$slots` 访问静态插槽的内容，每个插槽都是一个 VNode 数组：
+```js
 render: function (createElement) {
   // `<div><slot></slot></div>`
 
   return createElement('div', this.$slots.default)
 }
-也可以通过 this.$scopedSlots 访问作用域插槽，每个作用域插槽都是一个返回若干 VNode 的函数：
-
+```
+也可以通过 `this.$scopedSlots` 访问作用域插槽，每个作用域插槽都是一个返回若干 VNode 的函数：
+```js
 props: ['message'], 
 render: function (createElement) {
   // `<div><slot :text="message"></slot></div>`
@@ -425,8 +427,9 @@ render: function (createElement) {
 
   ])
 }
-如果要用渲染函数向子组件中传递作用域插槽，可以利用 VNode 数据对象中的 scopedSlots 字段：
-
+```
+如果要用渲染函数向子组件中传递作用域插槽，可以利用 VNode 数据对象中的 `scopedSlots` 字段：
+```js
 render: function (createElement) {
   // `<div><child v-slot="props"><span>{{ props.text }}</span></child></div>`
 
@@ -445,9 +448,10 @@ render: function (createElement) {
 
   ])
 }
-JSX
-如果你写了很多 render 函数，可能会觉得下面这样的代码写起来很痛苦：
-
+```
+### JSX
+如果你写了很多 `render` 函数，可能会觉得下面这样的代码写起来很痛苦：
+```js
 createElement(
   'anchored-heading', {
 
@@ -462,13 +466,15 @@ createElement(
 
   ]
 )
+```
 特别是对应的模板如此简单的情况下：
-
+```html
 <anchored-heading :level="1">
   <span>Hello</span> world!
 </anchored-heading>
-这就是为什么会有一个 Babel 插件，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
-
+```
+这就是为什么会有一个 [Babel 插件](https://github.com/vuejs/jsx)，用于在 Vue 中使用 JSX 语法，它可以让我们回到更接近于模板的语法上。
+```js
 import AnchoredHeading from './AnchoredHeading.vue'
 
 new Vue({
@@ -483,13 +489,14 @@ new Vue({
 
   }
 })
-将 h 作为 createElement 的别名是 Vue 生态系统中的一个通用惯例，实际上也是 JSX 所要求的。从 Vue 的 Babel 插件的 3.4.0 版本开始，我们会在以 ES2015 语法声明的含有 JSX 的任何方法和 getter 中 (不是函数或箭头函数中) 自动注入 const h = this.$createElement，这样你就可以去掉 (h) 参数了。对于更早版本的插件，如果 h 在当前作用域中不可用，应用会抛错。
+```
+> 将 `h` 作为 `createElement` 的别名是 Vue 生态系统中的一个通用惯例，实际上也是 JSX 所要求的。从 Vue 的 Babel 插件的 3.4.0 版本开始，我们会在以 ES2015 语法声明的含有 JSX 的任何方法和 getter 中 (不是函数或箭头函数中) 自动注入 `const h = this.$createElement`，这样你就可以去掉 `(h)` 参数了。对于更早版本的插件，如果 `h` 在当前作用域中不可用，应用会抛错。
 
 要了解更多关于 JSX 如何映射到 JavaScript，请阅读使用文档。
 
-函数式组件
-之前创建的锚点标题组件是比较简单，没有管理任何状态，也没有监听任何传递给它的状态，也没有生命周期方法。实际上，它只是一个接受一些 prop 的函数。在这样的场景下，我们可以将组件标记为 functional，这意味它无状态 (没有响应式数据)，也没有实例 (没有 this 上下文)。一个函数式组件就像这样：
-
+### 函数式组件
+之前创建的锚点标题组件是比较简单，没有管理任何状态，也没有监听任何传递给它的状态，也没有生命周期方法。实际上，它只是一个接受一些 prop 的函数。在这样的场景下，我们可以将组件标记为 `functional`，这意味它无状态 (没有响应式数据)，也没有实例 (没有 `this` 上下文)。一个**函数式组件**就像这样：
+```js
 Vue.component('my-component', {
   functional: true, 
   // Props 是可选的
@@ -506,34 +513,37 @@ Vue.component('my-component', {
 
   }
 })
-注意：在 2.3.0 之前的版本中，如果一个函数式组件想要接收 prop，则 props 选项是必须的。在 2.3.0 或以上的版本中，你可以省略 props 选项，所有组件上的 attribute 都会被自动隐式解析为 prop。
-
-当使用函数式组件时，该引用将会是 HTMLElement，因为他们是无状态的也是无实例的。
+```
+> **注意：在 2.3.0 之前的版本中，如果一个函数式组件想要接收 prop，则 `props` 选项是必须的。在 2.3.0 或以上的版本中，你可以省略 `props` 选项，所有组件上的 attribute 都会被自动隐式解析为 prop。**
+> 
+> **当使用函数式组件时，该引用将会是 HTMLElement，因为他们是无状态的也是无实例的。**
 
 在 2.5.0 及以上版本中，如果你使用了单文件组件，那么基于模板的函数式组件可以这样声明：
-
+```html
 <template functional>
 </template>
-组件需要的一切都是通过 context 参数传递，它是一个包括如下字段的对象：
+```
+组件需要的一切都是通过 `context` 参数传递，它是一个包括如下字段的对象：
 
-props：提供所有 prop 的对象
-children：VNode 子节点的数组
-slots：一个函数，返回了包含所有插槽的对象
-scopedSlots：(2.6.0+) 一个暴露传入的作用域插槽的对象。也以函数形式暴露普通插槽。
-data：传递给组件的整个数据对象，作为 createElement 的第二个参数传入组件
-parent：对父组件的引用
-listeners：(2.3.0+) 一个包含了所有父组件为当前组件注册的事件监听器的对象。这是 data.on 的一个别名。
-injections：(2.3.0+) 如果使用了 inject 选项，则该对象包含了应当被注入的 property。
-在添加 functional: true 之后，需要更新我们的锚点标题组件的渲染函数，为其增加 context 参数，并将 this.$slots.default 更新为 context.children，然后将 this.level 更新为 context.props.level。
+- `props`：提供所有 prop 的对象
+- `children`：VNode 子节点的数组
+- `slots`：一个函数，返回了包含所有插槽的对象
+- `scopedSlots`：(2.6.0+) 一个暴露传入的作用域插槽的对象。也以函数形式暴露普通插槽。
+- `data`：传递给组件的整个数据对象，作为 `createElement` 的第二个参数传入组件
+- `parent`：对父组件的引用
+- `listeners`：(2.3.0+) 一个包含了所有父组件为当前组件注册的事件监听器的对象。这是 `data.on` 的一个别名。
+- `injections`：(2.3.0+) 如果使用了 `inject` 选项，则该对象包含了应当被注入的 property。
+
+在添加 `functional: true` 之后，需要更新我们的锚点标题组件的渲染函数，为其增加 `context` 参数，并将 `this.$slots.default` 更新为 `context.children`，然后将 `this.level` 更新为 `context.props.level`。
 
 因为函数式组件只是函数，所以渲染开销也低很多。
 
 在作为包装组件时它们也同样非常有用。比如，当你需要做这些时：
 
-程序化地在多个组件中选择一个来代为渲染；
-在将 children、props、data 传递给子组件之前操作它们。
-下面是一个 smart-list 组件的例子，它能根据传入 prop 的值来代为渲染更具体的组件：
-
+- 程序化地在多个组件中选择一个来代为渲染；
+- 在将 `children`、`props`、`data` 传递给子组件之前操作它们。
+下面是一个 `smart-list` 组件的例子，它能根据传入 prop 的值来代为渲染更具体的组件：
+```js
 var EmptyList = { /* ... */ }
 var TableList = { /* ... */ }
 var OrderedList = { /* ... */ }
@@ -570,11 +580,12 @@ Vue.component('smart-list', {
 
   }
 })
-向子元素或子组件传递 attribute 和事件
+```
+#### 向子元素或子组件传递 attribute 和事件
 在普通组件中，没有被定义为 prop 的 attribute 会自动添加到组件的根元素上，将已有的同名 attribute 进行替换或与其进行智能合并。
 
 然而函数式组件要求你显式定义该行为：
-
+```js
 Vue.component('my-functional-button', {
   functional: true, 
   render: function (createElement, context) {
@@ -584,10 +595,11 @@ Vue.component('my-functional-button', {
 
   }
 })
-通过向 createElement 传入 context.data 作为第二个参数，我们就把 my-functional-button 上面所有的 attribute 和事件监听器都传递下去了。事实上这是非常透明的，以至于那些事件甚至并不要求 .native 修饰符。
+```
+通过向 `createElement` 传入 `context.data` 作为第二个参数，我们就把 `my-functional-button` 上面所有的 attribute 和事件监听器都传递下去了。事实上这是非常透明的，以至于那些事件甚至并不要求 `.native` 修饰符。
 
-如果你使用基于模板的函数式组件，那么你还需要手动添加 attribute 和监听器。因为我们可以访问到其独立的上下文内容，所以我们可以使用 data.attrs 传递任何 HTML attribute，也可以使用 listeners (即 data.on 的别名) 传递任何事件监听器。
-
+如果你使用基于模板的函数式组件，那么你还需要手动添加 attribute 和监听器。因为我们可以访问到其独立的上下文内容，所以我们可以使用 `data.attrs` 传递任何 HTML attribute，也可以使用 `listeners` (即 `data.on` 的别名) 传递任何事件监听器。
+```html
 <template functional>
   <button
 
@@ -601,9 +613,10 @@ Vue.component('my-functional-button', {
 
   </button>
 </template>
-slots() 和 children 对比
-你可能想知道为什么同时需要 slots() 和 children。slots().default 不是和 children 类似的吗？在一些场景中，是这样——但如果是如下的带有子节点的函数式组件呢？
-
+```
+### `slots()` 和 `children` 对比
+你可能想知道为什么同时需要 `slots()` 和 `children`。`slots().default` 不是和 `children` 类似的吗？在一些场景中，是这样——但如果是如下的带有子节点的函数式组件呢？
+```html
 <my-functional-component>
   <p v-slot:foo>
 
@@ -612,7 +625,8 @@ slots() 和 children 对比
   </p>
   <p>second</p>
 </my-functional-component>
-对于这个组件，children 会给你两个段落标签，而 slots().default 只会传递第二个匿名段落标签，slots().foo 会传递第一个具名段落标签。同时拥有 children 和 slots()，因此你可以选择让组件感知某个插槽机制，还是简单地通过传递 children，移交给其它组件去处理。
+```
+对于这个组件，`children` 会给你两个段落标签，而 `slots().default` 只会传递第二个匿名段落标签，`slots().foo` 会传递第一个具名段落标签。同时拥有 `children` 和 `slots()`，因此你可以选择让组件感知某个插槽机制，还是简单地通过传递 `children`，移交给其它组件去处理。
 
-模板编译
+### 模板编译
 你可能会有兴趣知道，Vue 的模板实际上被编译成了渲染函数。这是一个实现细节，通常不需要关心。但如果你想看看模板的功能具体是怎样被编译的，可能会发现会非常有意思。下面是一个使用 Vue.compile 来实时编译模板字符串的简单示例：
