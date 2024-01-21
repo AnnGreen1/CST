@@ -39,3 +39,11 @@ https://doc.vvbin.cn/
 https://github.com/vbenjs/vue-vben-admin
 https://gitee.com/annsion/vue-vben-admin
 https://github.com/vbenjs/vue-vben-admin
+
+
+Geeker Admin
+https://gitee.com/HalseySpicy/Geeker-Admin
+
+
+码云GVP开源项目 12k star Uniapp + ElementUI 功能强大 支持多语言、二开方便！
+https://gitee.com/ZhongBangKeJi

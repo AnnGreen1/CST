@@ -28,7 +28,7 @@ vuejs/vue: https://github.com/vuejs/vue
     - 渲染函数 & JSX
     - 插件
     - 过滤器
-- 工具
+- ✅工具
     - 单文件组件
     - 测试
     - TypeScript支持
