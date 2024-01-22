@@ -22,6 +22,10 @@ https://lolicode.gitee.io/scui-doc/
 
 
 
+https://mp.weixin.qq.com/s/22qbS86yzAVb9Qhh9_Xa9g
+
+
+
 admin work pro
 https://gitee.com/qingqingxuan/admin-work
 http://x.vueadminwork.com/#/login?redirect=/index/home
