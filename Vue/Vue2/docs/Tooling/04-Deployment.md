@@ -73,8 +73,8 @@ browserify: {
 }
 ```
 **Rollup**
-使用 @rollup/plugin-replace：
-
+使用 [@rollup/plugin-replace](https://github.com/rollup/plugins/tree/master/packages/replace)：
+```js
 const replace = require('@rollup/plugin-replace')
 rollup({
   // ...
@@ -84,20 +84,22 @@ rollup({
     })
   ]
 }).then(...)
-模板预编译
+```
+### 模板预编译
 当使用 DOM 内模板或 JavaScript 内的字符串模板时，模板会在运行时被编译为渲染函数。通常情况下这个过程已经足够快了，但对性能敏感的应用还是最好避免这种用法。
 
 预编译模板最简单的方式就是使用单文件组件——相关的构建设置会自动把预编译处理好，所以构建好的代码已经包含了编译出来的渲染函数而不是原始的模板字符串。
 
-如果你使用 webpack，并且喜欢分离 JavaScript 和模板文件，你可以使用 vue-template-loader，它也可以在构建过程中把模板文件转换成为 JavaScript 渲染函数。
+如果你使用 webpack，并且喜欢分离 JavaScript 和模板文件，你可以使用 [vue-template-loader](https://github.com/ktsn/vue-template-loader)，它也可以在构建过程中把模板文件转换成为 JavaScript 渲染函数。
 
-提取组件的 CSS
-当使用单文件组件时，组件内的 CSS 会以 <style> 标签的方式通过 JavaScript 动态注入。这有一些小小的运行时开销，如果你使用服务端渲染，这会导致一段“无样式内容闪烁 (fouc)”。将所有组件的 CSS 提取到同一个文件可以避免这个问题，也会让 CSS 更好地进行压缩和缓存。
+### 提取组件的 CSS
+当使用单文件组件时，组件内的 CSS 会以 `<style>` 标签的方式通过 JavaScript 动态注入。这有一些小小的运行时开销，如果你使用服务端渲染，这会导致一段“无样式内容闪烁 (fouc)”。将所有组件的 CSS 提取到同一个文件可以避免这个问题，也会让 CSS 更好地进行压缩和缓存。
 
 查阅这个构建工具各自的文档来了解更多：
 
-webpack + vue-loader (vue-cli 的 webpack 模板已经预先配置好)
-Browserify + vueify
-Rollup + rollup-plugin-vue
-跟踪运行时错误
-如果在组件渲染时出现运行错误，错误将会被传递至全局 Vue.config.errorHandler 配置函数 (如果已设置)。利用这个钩子函数来配合错误跟踪服务是个不错的主意。比如 Sentry，它为 Vue 提供了官方集成。
+- [webpack + vue-loader](https://vue-loader.vuejs.org/zh-cn/configurations/extract-css.html) (vue-cli 的 webpack 模板已经预先配置好)
+- [Browserify + vueify](https://github.com/vuejs/vueify#css-extraction)
+- [Rollup + rollup-plugin-vue](https://vuejs.github.io/rollup-plugin-vue/#/en/2.3/?id=custom-handler)
+
+### 跟踪运行时错误
+如果在组件渲染时出现运行错误，错误将会被传递至全局 `Vue.config.errorHandler` 配置函数 (如果已设置)。利用这个钩子函数来配合错误跟踪服务是个不错的主意。比如 Sentry，它为 Vue 提供了官方集成。
