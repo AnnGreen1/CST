@@ -6,6 +6,8 @@ import commonroute from './routes/commonroute'
 import ComponentsInDepth from './routes/ComponentsInDepth'
 import ReusabilityAndComposition from './routes/ReusabilityAndComposition'
 import API from './routes/API'
+import Examples from './routes/Examples'
+import CookBook from './routes/CookBook'
 
 Vue.use(VueRouter)
 
@@ -34,7 +36,9 @@ const routes = [
   ...commonroute,
   ...ComponentsInDepth,
   ...ReusabilityAndComposition,
-  ...API
+  ...API,
+  ...Examples,
+  ...CookBook
 ]
 
 const router = new VueRouter({
