@@ -115,3 +115,6 @@ babel
 vuecli
 eslint
 electron
+
+pug
+https://pugjs.org/api/getting-started.html
