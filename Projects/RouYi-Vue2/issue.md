@@ -175,3 +175,37 @@ https://v3.router.vuejs.org/zh/api/#%E8%B7%AF%E7%94%B1%E5%AF%B9%E8%B1%A1%E5%B1%9
 ```
 RuoYi-Vue/ruoyi-ui/src/components/Breadcrumb/index.vue line 41
 ```
+
+28. https://quilljs.com/ 一个富文本框的使用？
+https://quilljs.com/
+```
+RuoYi-Vue/ruoyi-ui/src/components/FileUpload/index.vue
+```
+
+29. 字符串的length属性表示的是什么长度？不同编码下字符串的字节长度有什么区别？输入框的length属性限制的又是什么长度？
+字符串的length属性表示的是字符串的 UTF-16 码元长度（https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/length）。
+```js
+/**
+ * @param {string} input value
+ * @returns {number} output value
+ * 这个函数主要用于计算字符串在 UTF-8 编码下的字节长度，特别适用于需要限制字符长度的场景，比如在输入框中限制字符长度或者在处理网络请求时需要限制传输数据的大小。
+ */
+export function byteLength(str) {
+  // returns the byte length of an utf8 string
+  let s = str.length
+  for (var i = str.length - 1; i >= 0; i--) {
+    const code = str.charCodeAt(i)
+    if (code > 0x7f && code <= 0x7ff) s++
+    else if (code > 0x7ff && code <= 0xffff) s += 2
+    if (code >= 0xDC00 && code <= 0xDFFF) i--
+  }
+  return s
+}
+```
+```
+RuoYi-Vue/ruoyi-ui/src/utils/index.js line 89
+```
+
+30. 是怎么通过 KeepAlive 实现页面缓存的，和组件名有关系吗？
+
+31. 总结权限角色系统的实现，对照之前微信收藏的一篇文章，分析一下。
