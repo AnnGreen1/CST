@@ -15,4 +15,6 @@ git checkout main
 ```
 git merge dev
 ```
-5、推到仓库
+![](./imgs/Snipaste_2024-03-20_21-09-04.png)
+5、解决冲突，比如选择采用当前更改
+6、add->commit->推到仓库
