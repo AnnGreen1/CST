@@ -64,3 +64,23 @@ https://blog.csdn.net/liuzixin_lzx/category_10841584.html
 https://blog.csdn.net/felix_hyfy/category_9922982.html
 
 --------------------------------
+
+ubuntu18部署ruoyi前后端分离版
+https://blog.csdn.net/shaoming314/article/details/122526382
+
+--------------------------------
+
+Ubuntu环境docker部署若依RuoYi-Cloud【保姆级】
+https://blog.csdn.net/qq_43325994/article/details/136824692
+
+--------------------------------
+
+Linux虚拟机-docker部署若依前后端分离版本（RuoYi-Vue）(1)
+https://blog.csdn.net/2401_84181145/article/details/137575051
+
+--------------------------------
+
+万字讲解SpringBoot+Vue前后端分离项目原生部署
+https://cloud.tencent.com/developer/article/2388098
+
+--------------------------------
