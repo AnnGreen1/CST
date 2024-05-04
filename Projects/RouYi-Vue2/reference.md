@@ -84,3 +84,18 @@ https://blog.csdn.net/2401_84181145/article/details/137575051
 https://cloud.tencent.com/developer/article/2388098
 
 --------------------------------
+
+若依管理系统RuoYi-Vue（一）：项目启动和菜单创建
+https://www.cnblogs.com/kuangdaoyizhimei/p/14372719.html
+
+--------------------------------
+
+若依管理系统RuoYi-Vue（二）：权限系统设计详解
+https://www.cnblogs.com/kuangdaoyizhimei/p/14419180.html
+
+--------------------------------
+
+若依管理系统RuoYi-Vue（三）：代码生成器原理和实战
+https://www.cnblogs.com/kuangdaoyizhimei/p/14452736.html
+
+--------------------------------
