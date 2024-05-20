@@ -85,19 +85,22 @@ RuoYi-Vue/ruoyi-ui/src/components/SvgIcon/index.vue line 1
 ```
 
 14. 自定义指令`v-hasPremi`和v-if有什么区别？
-自定义指令通过`el.parentNode.removeChild(el)`实现，这和 v-if 移除 dom 有什么区别？v-if 底层是怎么移除 dom 的？这可能直接去看 v-if 的源码更合适。
+自定义指令通过 `el.parentNode.removeChild(el)` 实现，这和 v-if 移除 dom 有什么区别？v-if 底层是怎么移除 dom 的？这可能直接去看 v-if 的源码更合适。
+
 ```
 RuoYi-Vue/ruoyi-ui/src/directive/permission/hasPermi.js
 ```
 
 15. 数组的`forEach`函数不止一个参数，可以直接拿到索引的。
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
 ```
 
 RuoYi-Vue/ruoyi-ui/src/store/modules/permission.js line 136
 ```
 
 16. router-link 是如何实现的，其内部是如何封装的？想要新标签页打开一个路由能使用 router-link 进行改造后实现吗？
+
 ```
 RuoYi-Vue/ruoyi-ui/src/views/system/dict/index.vue line 20
 ```
@@ -115,13 +118,13 @@ RuoYi-Vue/ruoyi-ui/src/views/system/dict/index.vue line 20
 
 21. `:export`是什么语法？（其实有英文注释）
 
-`:export {}` 不是 SCSS 的语法。实际上，`:export {}` 是 CSS Modules 的语法，用于导出模块中的样式规则。
+`:export {}` 不是 SCSS 的语法。实际上， `:export {}` 是 CSS Modules 的语法，用于导出模块中的样式规则。
 
 在 CSS Modules 中，可以使用 `:export` 来导出模块中的样式规则，这样其他模块就可以引用这些样式规则。例如，一个包含了 `button` 样式规则的模块可以这样导出：
 
 ```css
 :export {
-  button: buttonClassName;
+    button: buttonClassName;
 }
 ```
 
@@ -131,14 +134,15 @@ RuoYi-Vue/ruoyi-ui/src/views/system/dict/index.vue line 20
 @value button from './button.module.css';
 
 .myButton {
-  composes: button from global;
-  /* 其他样式规则 */
+    composes: button from global;
+    /* 其他样式规则 */
 }
 ```
 
-在上面的例子中，`:export` 用于导出 `button` 样式规则，然后在另一个模块中使用 `@value` 来引用这个样式规则。
+在上面的例子中， `:export` 用于导出 `button` 样式规则，然后在另一个模块中使用 `@value` 来引用这个样式规则。
 
-需要注意的是，CSS Modules 是一种用于管理 CSS 样式的技术，它允许你在项目中使用局部作用域的 CSS 样式，并且提供了一种模块化的方式来引用和重用样式规则。`:export` 是 CSS Modules 提供的语法之一。
+需要注意的是，CSS Modules 是一种用于管理 CSS 样式的技术，它允许你在项目中使用局部作用域的 CSS 样式，并且提供了一种模块化的方式来引用和重用样式规则。 `:export` 是 CSS Modules 提供的语法之一。
+
 ```
 RuoYi-Vue/ruoyi-ui/src/assets/styles/variabls.scss line 43
 ```
@@ -146,11 +150,13 @@ RuoYi-Vue/ruoyi-ui/src/assets/styles/variabls.scss line 43
 22. SCSS混入（@mixin）从来没使用过
 SCSS 混入语法
 https://sass-lang.com/guide/#mixins
+
 ```
 RuoYi-Vue/ruoyi-ui/src/assets/styles/btn.scss line 8
 ```
 
 23. `~@`在SCSS中可以使用是为什么？SCSS文档有提到吗？是编译器的支持吗？直接使用一个`~`又是如何得到支持的呢？
+
 ```
 RuoYi-Vue/ruoyi-ui/src/assets/styles/btn.scss line 27 & 29
 ```
@@ -166,24 +172,28 @@ RuoYi-Vue/ruoyi-ui/src/assets/styles/mixin.scss line 36 - 70
 ```
 
 26. `!important` 之前不一定需要有空格隔开？
+
 ```
 RuoYi-Vue/ruoyi-ui/src/assets/styles/ruoyi.scss line 274
 ```
 
 27. `$route.matched`是什么？
 https://v3.router.vuejs.org/zh/api/#%E8%B7%AF%E7%94%B1%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7
+
 ```
 RuoYi-Vue/ruoyi-ui/src/components/Breadcrumb/index.vue line 41
 ```
 
 28. https://quilljs.com/ 一个富文本框的使用？
 https://quilljs.com/
+
 ```
 RuoYi-Vue/ruoyi-ui/src/components/FileUpload/index.vue
 ```
 
 29. 字符串的length属性表示的是什么长度？不同编码下字符串的字节长度有什么区别？输入框的length属性限制的又是什么长度？
 字符串的length属性表示的是字符串的 UTF-16 码元长度（https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/length）。
+
 ```js
 /**
  * @param {string} input value
@@ -191,17 +201,18 @@ RuoYi-Vue/ruoyi-ui/src/components/FileUpload/index.vue
  * 这个函数主要用于计算字符串在 UTF-8 编码下的字节长度，特别适用于需要限制字符长度的场景，比如在输入框中限制字符长度或者在处理网络请求时需要限制传输数据的大小。
  */
 export function byteLength(str) {
-  // returns the byte length of an utf8 string
-  let s = str.length
-  for (var i = str.length - 1; i >= 0; i--) {
-    const code = str.charCodeAt(i)
-    if (code > 0x7f && code <= 0x7ff) s++
-    else if (code > 0x7ff && code <= 0xffff) s += 2
-    if (code >= 0xDC00 && code <= 0xDFFF) i--
-  }
-  return s
+    // returns the byte length of an utf8 string
+    let s = str.length
+    for (var i = str.length - 1; i >= 0; i--) {
+        const code = str.charCodeAt(i)
+        if (code > 0x7f && code <= 0x7ff) s++
+        else if (code > 0x7ff && code <= 0xffff) s += 2
+        if (code >= 0xDC00 && code <= 0xDFFF) i--
+    }
+    return s
 }
 ```
+
 ```
 RuoYi-Vue/ruoyi-ui/src/utils/index.js line 89
 ```
@@ -209,3 +220,15 @@ RuoYi-Vue/ruoyi-ui/src/utils/index.js line 89
 30. 是怎么通过 KeepAlive 实现页面缓存的，和组件名有关系吗？
 
 31. 总结权限角色系统的实现，对照之前微信收藏的一篇文章，分析一下。
+
+32. 可以在安装有依赖库的项目中随意使用依赖库中的样式吗（例如直接在一个不是组件库内部组件的标签上直接使用组件库中的类名）？可以实现预期效果吗？为什么？有什么有优缺点？
+可以，比如如下两个按钮会具有相同的样式。
+
+```html
+<template>
+    <div>
+        <el-button>按钮</el-button>
+        <button class="el-button el-button-default">模拟按钮</button>
+    </div>
+</template>
+```

@@ -95,7 +95,7 @@ plus-ui
 ├─ README.md
 ├─ src
 │  ├─ animate.ts
-│  ├─ api
+│  ├─ api                                                                       ✅ api及其类型
 │  │  ├─ demo
 │  │  │  ├─ demo
 │  │  │  │  ├─ index.ts
@@ -295,7 +295,7 @@ plus-ui
 │  │     ├─ transition.scss
 │  │     └─ variables.module.scss
 │  ├─ components
-│  │  ├─ Breadcrumb
+│  │  ├─ Breadcrumb                                                             ✅ 面包屑导航，和 ruoyi-vue 逻辑相同，但是换用了组合式                                                 
 │  │  │  └─ index.vue
 │  │  ├─ BuildCode
 │  │  │  ├─ index.vue
@@ -389,7 +389,7 @@ plus-ui
 │  │  │     └─ search.vue
 │  │  └─ index.vue
 │  ├─ main.ts
-│  ├─ permission.ts
+│  ├─ permission.ts                                                             // ✅ 一个全局的 router.beforeEach() 
 │  ├─ plugins
 │  │  ├─ auth.ts
 │  │  ├─ cache.ts
@@ -400,7 +400,7 @@ plus-ui
 │  │  └─ tab.ts
 │  ├─ router
 │  │  └─ index.ts
-│  ├─ settings.ts
+│  ├─ settings.ts                                                               // ✅ 默认配置对象
 │  ├─ store
 │  │  ├─ index.ts
 │  │  └─ modules

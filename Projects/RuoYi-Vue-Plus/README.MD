@@ -2,6 +2,7 @@
 
 后端：https://gitee.com/dromara/RuoYi-Vue-Plus
 前端：https://gitee.com/JavaLionLi/plus-ui
+文档：https://plus-doc.dromara.org/
 
 vite4 + vue3 + ts + elementplus 重新实现了一遍 RuoYi-Vue2
 
