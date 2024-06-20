@@ -68,6 +68,7 @@ AntDesign
 WebAssembly
 
 webGPU
+JSDOC
 sea.js
 PhotoShop
 GIS
@@ -127,3 +128,29 @@ https://pugjs.org/api/getting-started.html
 
 音视频
 可视化
+
+ady.js
+qs
+js-cookie
+flv.js
+vConsole
+Animate.css
+animejs
+lodash.js3
+mescroll.js
+Chart.js
+
+
+BabylonJS
+3D渲染引擎
+
+WebRTC
+Web Work
+
+Web Speech api
+
+gasp（一个动画库）
+tresjs
+Babylon.js
+
+graphQL

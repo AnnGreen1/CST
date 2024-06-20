@@ -11,8 +11,8 @@
 </template>
 
 <script setup>
-import { useOptionCounterStore } from '@/stores/index'
-const store = useOptionCounterStore()
+import { useSetupCounterStore } from '@/stores/index'
+const store = useSetupCounterStore()
 console.log(store.count);
 console.log(store.double);
 function incrementFun(){

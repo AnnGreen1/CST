@@ -152,6 +152,15 @@ git log --format='%aN' | sort -u | while read name; do echo -en "$name\t"; git l
 git config core.ignorecase false 
 ```
 
+22、删除本地分支并同步到远程仓库，把远程分支也删了
+```
+// 1、删除本地分支
+git branch -d branch_name
+
+// 2、删除远程分支
+git push origin --delete branch_name
+```
+
 其他还未整理
 
 ```

@@ -307,7 +307,7 @@ plus-ui
 │  │  ├─ FileUpload
 │  │  │  └─ index.vue
 │  │  ├─ Hamburger
-│  │  │  └─ index.vue
+│  │  │  └─ index.vue                                                           // ✅ 切换 sidebar 的图片，通过旋转 svg 图片实现切换
 │  │  ├─ HeaderSearch
 │  │  │  └─ index.vue
 │  │  ├─ IconSelect
@@ -378,7 +378,7 @@ plus-ui
 │  │  │  ├─ Sidebar
 │  │  │  │  ├─ index.vue
 │  │  │  │  ├─ Link.vue
-│  │  │  │  ├─ Logo.vue
+│  │  │  │  ├─ Logo.vue                                                         // ✅ sidebar 的 logo 组件部分
 │  │  │  │  └─ SidebarItem.vue
 │  │  │  ├─ SocialCallback
 │  │  │  │  └─ index.vue
@@ -407,7 +407,7 @@ plus-ui
 │  │     ├─ app.ts
 │  │     ├─ dict.ts
 │  │     ├─ notice.ts
-│  │     ├─ permission.ts
+│  │     ├─ permission.ts                                                       // ✅ 核心，生成路由及权限
 │  │     ├─ settings.ts
 │  │     ├─ tagsView.ts
 │  │     └─ user.ts
@@ -449,7 +449,7 @@ plus-ui
 │     │  ├─ 401.vue
 │     │  └─ 404.vue
 │     ├─ index.vue
-│     ├─ login.vue
+│     ├─ login.vue                                                              // ✅ 登录页
 │     ├─ monitor
 │     │  ├─ admin
 │     │  │  └─ index.vue

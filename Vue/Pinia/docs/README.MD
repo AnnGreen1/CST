@@ -1,0 +1,16 @@
+- ✅介绍
+    - Pinia 是什么
+    - 开始
+- ✅核心概念
+    - 定义 Store
+    - State
+    - Getter
+    - Action
+    - 插件
+    - 组件外的 Store
+- ✅服务端渲染（SSR）
+- ✅手册
+- API
+    - pinia
+    - @pinia/nuxt
+    - @pinia/testing

@@ -79,11 +79,36 @@ plus-ui/src/main.ts line 3 - 5
 15. await-to-js 的基本使用
 https://www.npmjs.com/package/await-to-js
 使用参考：https://juejin.cn/post/7010213752242962439
+
 ```
 plus-ui/src/views/login.vue line 74
 ```
 
 16. 可以在安装有依赖库的项目中随意使用依赖库中的样式吗（例如直接在一个不是组件库内部组件的标签上直接使用组件库中的类名）？可以实现预期效果吗？为什么？有什么有优缺点？
 
+17. SvgIcon 组件到底是怎么实现的？
 
 前端工程化之SvgIcon组件：https://juejin.cn/post/7063415079928070157
+
+18. storeToRefs 是什么？
+
+```
+plus-ui/src/layout/components/NavBar.vue line 105
+```
+
+19. const newNotice = ref(<number>0);与const newNotice = ref<number>(0)有什么区别？
+GPT回答：这两种方式本质上是相同的，都是使用泛型指定了ref中存储的数据类型为number。在现代的TypeScript版本中，这两种写法都是合法且等效的，没有区别。第一种写法是TypeScript中的类型断言，用于明确告诉编译器变量的类型，而第二种写法则是直接使用泛型指定类型。选择哪种写法取决于个人喜好和代码风格。
+
+```
+plus-ui/src/layout/components/NavBar.vue line 106
+```
+
+20. 这是什么语法？
+
+```js
+const searchMenuRef = ref < InstanceType < typeof SearchMenu >> ();
+```
+
+```
+plus-ui/src/layout/components/NavBar.vue line 118
+```
