@@ -112,3 +112,6 @@ const searchMenuRef = ref < InstanceType < typeof SearchMenu >> ();
 ```
 plus-ui/src/layout/components/NavBar.vue line 118
 ```
+
+21. 15. 为什么看到这个项目的单文件组件 script 标签上可以写 name 属性？从来没听说过 Vue3 有这种语法？
+参考  Vue3 setup 如何添加name：https://juejin.cn/post/7171343547495350302

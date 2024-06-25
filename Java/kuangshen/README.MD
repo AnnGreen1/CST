@@ -1,7 +1,8 @@
 # 狂神说Java
+
 他人笔记：https://github.com/AnnGreen1/Blog-Java?tab=readme-ov-file
 [https://www.kuangstudy.com/course?cid=1](https://www.kuangstudy.com/course?cid=1)
-- 01 Java SE
+* 01 Java SE
     - 01 聊聊编程这条路
         - 01 前言01：解决大家的问题
         - 02 前言02：Java和Python的抉择
@@ -40,7 +41,7 @@
         - 12 JavaDoc生成文档
     - 05 流程控制学习
         - 01 用户交互Scanner
-        - ✅02 Scanner进阶使用
+        - 02 Scanner进阶使用
         - 03 顺序结构
         - 04 if选择结构
         - 05 Switch选择结构
@@ -49,7 +50,20 @@
         - 08 For循环详解
         - 09 打印九九乘法表
     - 06 方法详解
+        - 01 什么是方法
+        - 02 方法的定义和调用
+        - 03 方法的重载
+        - 04 命令行传递参
+        - 05 可变参数
+        - 06 递归讲解
     - 07 数组详解
+        - 01 什么是数组
+        - 02 数组的声明和创建
+        - 03 三种初始化及内存分析
+        - ✅04 下标越界及小结
+        - 05 数组的使用
+        - 06 二维数组
+        - 07 Arrays类讲解
     - 08 面向对象编程
     - 09 异常处理详解
     - 10 Java常用类学习
@@ -61,21 +75,21 @@
     - 16 注解和反射
     - 17 JUC并发编程
     - 18 JVM深入研究
-- 02 前端基础
-- 03 MySQL
-- 04 JavaWeb
+* 02 前端基础
+* 03 MySQL
+* 04 JavaWeb
     - 01 web的基本概念
     - 02 web服务器讲解
     - 03 Tomcat详解
     - 04 HTTP协议详解
     - 05 Maven环境搭建
     - 06 IDEA中的Maven操作
-- 05 SSM框架
+* 05 SSM框架
     - 01 MyBatis详解
     - 02 Spring详解
     - 03 SpringMVC详解
-- 06 大前端进阶
-- 07 微服务开发
+* 06 大前端进阶
+* 07 微服务开发
     - 01 SpringBoot详解
     - 02 MyBatisPlus详解
     - 03 SpringBootWeb开发
@@ -83,8 +97,8 @@
     - 05 Dubbo/Zookeeper初识
     - 06 SpringCloud Netfix
     - 07 SpringCloud Alibaba
-- 08 Linux运维
-- 09 常用中间件
-- 10 企业常用第三方技术
-- 11 源码探究、设计模式学习
-- 12 走近企业、项目实战
+* 08 Linux运维
+* 09 常用中间件
+* 10 企业常用第三方技术
+* 11 源码探究、设计模式学习
+* 12 走近企业、项目实战
