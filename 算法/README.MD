@@ -13,6 +13,9 @@ https://visualgo.net/zh/sorting
 https://algorithm-visualizer.org/
 
 
+https://github.com/ConardLi/awesome-coding-js
+
+https://github.com/trekhleb/javascript-algorithms
 
 https://github.com/MisterBooo/LeetCodeAnimation
 

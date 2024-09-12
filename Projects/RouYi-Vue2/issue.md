@@ -145,6 +145,7 @@ RuoYi-Vue/ruoyi-ui/src/views/system/dict/index.vue line 20
 
 ```
 RuoYi-Vue/ruoyi-ui/src/assets/styles/variabls.scss line 43
+RuoYi-Vue/ruoyi-ui/src/layout/components/Sidebar/index.vue line 33
 ```
 
 22. SCSS混入（@mixin）从来没使用过
@@ -232,3 +233,13 @@ RuoYi-Vue/ruoyi-ui/src/utils/index.js line 89
     </div>
 </template>
 ```
+
+33. 这个 IframeToggele 组件有什么作用？怎么使用？
+```
+RuoYi-Vue/ruoyi-ui/src/layout/components/IframeToggle/index.vue
+RuoYi-Vue/ruoyi-ui/src/layout/components/AppMain.vue line 14
+```
+
+34. SVGIcon 组件的构建与使用
+https://segmentfault.com/a/1190000041720143
+https://github.com/AnnGreen1/article/issues/54

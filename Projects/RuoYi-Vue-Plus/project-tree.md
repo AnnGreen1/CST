@@ -95,7 +95,7 @@ plus-ui
 ├─ README.md
 ├─ src
 │  ├─ animate.ts
-│  ├─ api                                                                       ✅ api及其类型
+│  ├─ api                                                                       ✅ api及其类型（都使用 interface 定义）
 │  │  ├─ demo
 │  │  │  ├─ demo
 │  │  │  │  ├─ index.ts
@@ -295,7 +295,7 @@ plus-ui
 │  │     ├─ transition.scss
 │  │     └─ variables.module.scss
 │  ├─ components
-│  │  ├─ Breadcrumb                                                             ✅ 面包屑导航，和 ruoyi-vue 逻辑相同，但是换用了组合式                                                 
+│  │  ├─ Breadcrumb                                                             // ✅ 面包屑导航，和 ruoyi-vue 逻辑相同，但是换用了组合式                                                 
 │  │  │  └─ index.vue
 │  │  ├─ BuildCode
 │  │  │  ├─ index.vue
@@ -370,24 +370,24 @@ plus-ui
 │  │  │  ├─ index.ts
 │  │  │  ├─ InnerLink
 │  │  │  │  └─ index.vue
-│  │  │  ├─ Navbar.vue
-│  │  │  ├─ notice
+│  │  │  ├─ Navbar.vue                                                          // 导航栏
+│  │  │  ├─ notice                                                              // 通知公告组件
 │  │  │  │  └─ index.vue
 │  │  │  ├─ Settings
-│  │  │  │  └─ index.vue
+│  │  │  │  └─ index.vue                                                        // 布局设置组件 
 │  │  │  ├─ Sidebar
-│  │  │  │  ├─ index.vue
+│  │  │  │  ├─ index.vue                                                        // 使用 logo 组件和 el-menu 实现侧边栏
 │  │  │  │  ├─ Link.vue
 │  │  │  │  ├─ Logo.vue                                                         // ✅ sidebar 的 logo 组件部分
-│  │  │  │  └─ SidebarItem.vue
+│  │  │  │  └─ SidebarItem.vue                                                  // 使用递归，实现多层菜单，使用了 Link 组件
 │  │  │  ├─ SocialCallback
 │  │  │  │  └─ index.vue
 │  │  │  ├─ TagsView
 │  │  │  │  ├─ index.vue
 │  │  │  │  └─ ScrollPane.vue
 │  │  │  └─ TopBar
-│  │  │     └─ search.vue
-│  │  └─ index.vue
+│  │  │     └─ search.vue                                                       // 全局搜索组件，在 Navbar.vue 组件中使用
+│  │  └─ index.vue                                                              // layout 组件，使用了 Sidebar、Navbar、TagsView、AppMain、Settings
 │  ├─ main.ts
 │  ├─ permission.ts                                                             // ✅ 一个全局的 router.beforeEach() 
 │  ├─ plugins
@@ -448,7 +448,7 @@ plus-ui
 │     ├─ error
 │     │  ├─ 401.vue
 │     │  └─ 404.vue
-│     ├─ index.vue
+│     ├─ index.vue                                                              // ✅ 首页
 │     ├─ login.vue                                                              // ✅ 登录页
 │     ├─ monitor
 │     │  ├─ admin
@@ -466,7 +466,7 @@ plus-ui
 │     │     └─ index.vue
 │     ├─ redirect
 │     │  └─ index.vue
-│     ├─ register.vue
+│     ├─ register.vue                                                           // ✅ 注册页
 │     ├─ system
 │     │  ├─ client
 │     │  │  └─ index.vue
@@ -478,7 +478,7 @@ plus-ui
 │     │  │  ├─ data.vue
 │     │  │  └─ index.vue
 │     │  ├─ menu
-│     │  │  └─ index.vue
+│     │  │  └─ index.vue                                                        // ✅
 │     │  ├─ notice
 │     │  │  └─ index.vue
 │     │  ├─ oss
@@ -487,22 +487,22 @@ plus-ui
 │     │  ├─ post
 │     │  │  └─ index.vue
 │     │  ├─ role
-│     │  │  ├─ authUser.vue
-│     │  │  ├─ index.vue
-│     │  │  └─ selectUser.vue
+│     │  │  ├─ authUser.vue                                                     // ✅
+│     │  │  ├─ index.vue                                                        // ✅
+│     │  │  └─ selectUser.vue                                                   // ✅
 │     │  ├─ tenant
 │     │  │  └─ index.vue
 │     │  ├─ tenantPackage
 │     │  │  └─ index.vue
 │     │  └─ user
-│     │     ├─ authRole.vue
-│     │     ├─ index.vue
+│     │     ├─ authRole.vue                                                     // ✅
+│     │     ├─ index.vue                                                        // ✅
 │     │     └─ profile
-│     │        ├─ index.vue
-│     │        ├─ resetPwd.vue
-│     │        ├─ thirdParty.vue
-│     │        ├─ userAvatar.vue
-│     │        └─ userInfo.vue
+│     │        ├─ index.vue                                                     // ✅
+│     │        ├─ resetPwd.vue                                                  // ✅
+│     │        ├─ thirdParty.vue                                                // ✅
+│     │        ├─ userAvatar.vue                                                // ✅
+│     │        └─ userInfo.vue                                                  // ✅
 │     ├─ tool
 │     │  ├─ build
 │     │  │  └─ index.vue

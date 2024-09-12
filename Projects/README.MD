@@ -66,3 +66,28 @@ https://github.com/suruibuas/eui
 需要理解gogogcode怎么编译的
 
 https://fantastic-admin.gitee.io/
+
+
+Naive Ui Admin
+https://docs.naiveadmin.com/
+
+Soybean Admin
+https://docs.soybeanjs.cn/zh/
+
+
+vue naive admin
+https://gitee.com/isme-admin/vue-naive-admin
+https://www.isme.top/
+https://admin.isme.top/
+
+vue bag admin
+https://github.com/hangjob/vue-bag-admin
+
+nova admin
+https://github.com/chansee97/nova-admin
+
+
+
+tsx-naive admin
+
+zce/fearless
