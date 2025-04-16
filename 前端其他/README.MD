@@ -170,3 +170,5 @@ yarn
 tensorflow
 
 opencv
+
+cocos
