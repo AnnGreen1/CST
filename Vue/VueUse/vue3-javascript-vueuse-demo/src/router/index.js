@@ -10,6 +10,10 @@ const router = createRouter({
             name: 'home',
             component: HomeView
         },
+        {
+            path: '/use-user-media/demo', 
+            component: () => import('../views/useUserMedia/Demo.vue'),
+        },
     ]
 })
 
