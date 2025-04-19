@@ -1,18 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
-import Hello from './Hello';
-import EventHandling from './EventHandling';
-import RenderElement from './RenderElement'
+import Hello from "./Hello";
+import EventHandling from "./EventHandling";
+import RenderElement from "./RenderElement";
 
-import JSX from './JSX';
-import Expression from './Expression';
+import JSX from "./JSX";
+import Expression from "./Expression";
+
+import Style from "./Style";
+import Comment from "./Comment";
+import Array from "./Array";
+import Props from "./Props/Props";
+import DestructProps from "./Props/DestructureProps";
+import ClassCom from "./ClassCom";
+import LifeCycle from "./LifeCycle";
+import Events from "./Props/Events";
+import ConditionRendering from "./ConditionalRendering";
+import RenderingLists from "./RenderingLists";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
+  function onAnswerNo(e) {
+    console.log("onAnswerNo", e);
+  }
+
+  function onAnswerYes(e) {
+    console.log("onAnswerYes", e);
+  }
   return (
     <>
       <div>
@@ -45,8 +63,28 @@ function App() {
       <JSX />
 
       <Expression />
+
+      <Style />
+
+      <Comment />
+
+      <Array />
+
+      <Props name="React" />
+
+      <DestructProps firstName="Tim" lastName="Cook" />
+
+      <ClassCom />
+
+      <LifeCycle />
+
+      <Events onYes={onAnswerYes} onNo={onAnswerNo} />
+
+      <ConditionRendering num="3" />
+
+      <RenderingLists />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
