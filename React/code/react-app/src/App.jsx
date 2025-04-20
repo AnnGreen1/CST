@@ -3,13 +3,13 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import Hello from "./Hello";
 import EventHandling from "./EventHandling";
 import RenderElement from "./RenderElement";
-
 import JSX from "./JSX";
 import Expression from "./Expression";
-
 import Style from "./Style";
 import Comment from "./Comment";
 import Array from "./Array";
@@ -20,6 +20,14 @@ import LifeCycle from "./LifeCycle";
 import Events from "./Props/Events";
 import ConditionRendering from "./ConditionalRendering";
 import RenderingLists from "./RenderingLists";
+import FormInputBindings from "./FormInputBindings";
+import Fetch from "./Fetch";
+import Ref from "./Ref";
+import Home from "./Home";
+import About from "./About";
+import router from "./router/index.jsx";
+import { RouterProvider, Link } from "react-router-dom";
+import CSS from "./style/css.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -55,34 +63,26 @@ function App() {
       </p>
       <Hello />
       <Hello></Hello>
-
       <EventHandling />
-
       <RenderElement />
-
       <JSX />
-
       <Expression />
-
       <Style />
-
       <Comment />
-
       <Array />
-
       <Props name="React" />
-
       <DestructProps firstName="Tim" lastName="Cook" />
-
       <ClassCom />
-
       <LifeCycle />
-
       <Events onYes={onAnswerYes} onNo={onAnswerNo} />
-
       <ConditionRendering num="3" />
-
       <RenderingLists />
+      <FormInputBindings />
+      <Fetch />
+      <Ref />
+      <CSS />
+
+      <RouterProvider router={router} />
     </>
   );
 }
