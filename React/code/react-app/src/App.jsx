@@ -28,6 +28,7 @@ import About from "./About";
 import router from "./router/index.jsx";
 import { RouterProvider, Link } from "react-router-dom";
 import CSS from "./style/css.jsx";
+import Sass from "./style/sass.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -81,6 +82,7 @@ function App() {
       <Fetch />
       <Ref />
       <CSS />
+      <Sass />
 
       <RouterProvider router={router} />
     </>
