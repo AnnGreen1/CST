@@ -32,6 +32,7 @@ import Sass from "./style/sass.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
+  let [char, setChar] = useState("!");
 
   function onAnswerNo(e) {
     console.log("onAnswerNo", e);
@@ -42,7 +43,7 @@ function App() {
   }
   return (
     <>
-      <div>
+      {/* <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -71,7 +72,8 @@ function App() {
       <Style />
       <Comment />
       <Array />
-      <Props name="React" />
+      <Props name={"React" + char} />
+      <button onClick={() => setChar((char += "!"))}>!</button>
       <DestructProps firstName="Tim" lastName="Cook" />
       <ClassCom />
       <LifeCycle />
@@ -82,7 +84,7 @@ function App() {
       <Fetch />
       <Ref />
       <CSS />
-      <Sass />
+      <Sass /> */}
 
       <RouterProvider router={router} />
     </>
