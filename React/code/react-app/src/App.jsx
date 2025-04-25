@@ -1,30 +1,30 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
+// import "./App.css";
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Hello from "./Hello";
-import EventHandling from "./EventHandling";
-import RenderElement from "./RenderElement";
-import JSX from "./JSX";
-import Expression from "./Expression";
-import Style from "./Style";
-import Comment from "./Comment";
-import Array from "./Array";
-import Props from "./Props/Props";
-import DestructProps from "./Props/DestructureProps";
-import ClassCom from "./ClassCom";
-import LifeCycle from "./LifeCycle";
-import Events from "./Props/Events";
-import ConditionRendering from "./ConditionalRendering";
-import RenderingLists from "./RenderingLists";
-import FormInputBindings from "./FormInputBindings";
-import Fetch from "./Fetch";
-import Ref from "./Ref";
-import Home from "./Home";
-import About from "./About";
+import Hello from "./hello.jsx";
+import EventHandling from "./event-handling.jsx";
+import RenderElement from "./render-element.jsx";
+import JSX from "./jsx.jsx";
+import Expression from "./expression.jsx";
+import Style from "./style.jsx";
+import Comment from "./comment.jsx";
+import Array from "./array.jsx";
+import Props from "./props/props.jsx";
+import DestructProps from "./props/destructure-props.jsx";
+import ClassCom from "./class-com.jsx";
+import LifeCycle from "./life-cycle.jsx";
+import Events from "./props/events.jsx";
+import ConditionRendering from "./conditional-rendering.jsx";
+import RenderingLists from "./rendering-lists.jsx";
+import FormInputBindings from "./form-input-bindings.jsx";
+import Fetch from "./fetch.jsx";
+import Ref from "./ref.jsx";
+import Home from "./home.jsx";
+import About from "./about.jsx";
 import router from "./router/index.jsx";
 import { RouterProvider, Link } from "react-router-dom";
 import CSS from "./style/css.jsx";
@@ -43,7 +43,7 @@ function App() {
   }
   return (
     <>
-      {/* <div>
+      <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
@@ -63,7 +63,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <Hello />
+      {/* <Hello />
       <Hello></Hello>
       <EventHandling />
       <RenderElement />
@@ -85,7 +85,6 @@ function App() {
       <Ref />
       <CSS />
       <Sass /> */}
-
       <RouterProvider router={router} />
     </>
   );

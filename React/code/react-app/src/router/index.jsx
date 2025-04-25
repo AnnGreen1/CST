@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../layout";
-import Home from "../Home";
-import About from "../About";
-import TicTacToe from "../views/tic-tac-toe"
+import Home from "../home";
+import About from "../about";
+import TicTacToe from "../views/tic-tac-toe/index"
 
 const router = createBrowserRouter([
   {
