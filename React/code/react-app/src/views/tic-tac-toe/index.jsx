@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import './style.css'
+import { useState } from "react";
+import "./style.css";
 
 function Square({ value, onSquareClick }) {
   return (
@@ -9,6 +9,7 @@ function Square({ value, onSquareClick }) {
   );
 }
 
+/** xIsNext squares 棋盘当前的状态 onPlay */
 function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
     if (calculateWinner(squares) || squares[i]) {
@@ -16,9 +17,9 @@ function Board({ xIsNext, squares, onPlay }) {
     }
     const nextSquares = squares.slice();
     if (xIsNext) {
-      nextSquares[i] = 'X';
+      nextSquares[i] = "X";
     } else {
-      nextSquares[i] = 'O';
+      nextSquares[i] = "O";
     }
     onPlay(nextSquares);
   }
@@ -26,9 +27,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = "Winner: " + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
   return (
@@ -54,17 +55,17 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 
 export default function Game() {
-  const [history, setHistory] = useState([Array(9).fill(null)]);
-  const [currentMove, setCurrentMove] = useState(0);
+  const [history, setHistory] = useState([Array(9).fill(null)]); // 一个二维数组，能够记录每一步棋盘的变化
+  const [currentMove, setCurrentMove] = useState(0); // 当前展示的历史的索引
   const xIsNext = currentMove % 2 === 0;
-  const currentSquares = history[currentMove];
+  const currentSquares = history[currentMove]; // 当前棋盘的状态数据
 
   function handlePlay(nextSquares) {
     const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
     setHistory(nextHistory);
     setCurrentMove(nextHistory.length - 1);
   }
-
+  /**  切换棋盘状态到具体第几步 */
   function jumpTo(nextMove) {
     setCurrentMove(nextMove);
   }
@@ -72,9 +73,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = "Go to move #" + move;
     } else {
-      description = 'Go to game start';
+      description = "Go to game start"; // 第一个按钮功能是展示游戏初始状态
     }
     return (
       <li key={move}>
@@ -96,6 +97,7 @@ export default function Game() {
 }
 
 function calculateWinner(squares) {
+  // 所有获胜情况的枚举
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -106,6 +108,7 @@ function calculateWinner(squares) {
     [0, 4, 8],
     [2, 4, 6],
   ];
+  // 判断是否符合某一种获胜情况
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
