@@ -1,36 +1,64 @@
 import { createBrowserRouter } from "react-router-dom";
+import { lazy } from "react";
 import Layout from "../layout";
-import Home from "../home";
-import About from "../about";
-import TicTacToe from "../views/tic-tac-toe/index";
-import Test from "../views/test/index";
-import FilterableProductTable from "../views/filterable-product-table/index"
+// import Home from "../home";
+// import About from "../about";
+import TicTacToe from "../views/quick-start/tic-tac-toe/index";
+import FilterableProductTable from "../views/quick-start/filterable-product-table/index";
+import UpdatingArraysInState from "../views/adding-interactivity/updating-arrays-in-state/index";
 
-const router = createBrowserRouter([
+// src/routes.js
+import { defineRoutes } from "./router-utils.jsx";
+
+export const routes = defineRoutes([
   {
-    path: "/",
-    element: <Home />,
+    path: "/home",
+    element: () => import("../Home"),
   },
   {
-    path: "home",
-    element: <Home />,
+    path: "/about",
+    element: () => import("../About"),
+  },
+  /**
+   * 快速入门
+   */
+  {
+    path: "/quick-start/tic-tac-toe",
+    element: () => import("../views/quick-start/tic-tac-toe/index"),
   },
   {
-    path: "about",
-    element: <About />,
+    path: "/quick-start/filterable-product-table",
+    element: () =>
+      import("../views/quick-start/filterable-product-table/index"),
+  },
+  /**
+   * 添加交互
+   */
+  {
+    path: "/quick-start/tic-tac-toe",
+    element: () => import("../views/quick-start/tic-tac-toe/index"),
   },
   {
-    path: "tic-tac-toe",
-    element: <TicTacToe />,
+    path: "/quick-start/filterable-product-table",
+    element: () =>
+      import("../views/quick-start/filterable-product-table/index"),
+  },
+  /**
+   * 状态管理
+   */
+  // 用 State 响应输入
+  {
+    path: "/managing-state/reacting-to-input-with-state/index",
+    element: () =>
+      import("../views/managing-state/reacting-to-input-with-state/index"),
   },
   {
-    path: "test",
-    element: <Test />,
-  },
-  {
-    path: "filterable-product-table",
-    element: <FilterableProductTable />,
+    path: "/quick-start/filterable-product-table",
+    element: () =>
+      import("../views/quick-start/filterable-product-table/index"),
   },
 ]);
+
+const router = createBrowserRouter(routes);
 
 export default router;

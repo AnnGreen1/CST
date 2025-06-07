@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState("");
-  const [inStockOnly, setInStockOnly] = useState(false);
+  const [inStockOnly, setInStockOnly] = useState(false); // 是否仅显示有库存的产品
 
   return (
     <div>
