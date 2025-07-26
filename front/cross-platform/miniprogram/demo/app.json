@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/base/base",
+    "pages/logs/logs",
+    "pages/test/test",
+    "pages/wxml/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom",
+    "navigationBarTitleText": "测试",
+    "navigationBarBackgroundColor": "#123333"
+  },
+  "style": "v2",
+  "renderer": "skyline",
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "list": [
+      {
+        "text": "logs",
+        "pagePath": "pages/logs/logs"
+      },
+      {
+        "text": "base",
+        "pagePath": "pages/base/base"
+      },
+      {
+        "text": "wxml",
+        "pagePath": "pages/wxml/index"
+      }
+    ]
+  }
+}

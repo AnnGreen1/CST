@@ -8,7 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Hello from "./hello.jsx";
 import EventHandling from "./event-handling.jsx";
 import RenderElement from "./render-element.jsx";
-import JSX from "./jsx.jsx";
+import JSX from "./views/describing-the-ui/writing-markup-with-jsx/JSX.jsx";
 import Expression from "./expression.jsx";
 import Style from "./style.jsx";
 import Comment from "./comment.jsx";
@@ -18,13 +18,10 @@ import DestructProps from "./props/destructure-props.jsx";
 import ClassCom from "./class-com.jsx";
 import LifeCycle from "./life-cycle.jsx";
 import Events from "./props/events.jsx";
-import ConditionRendering from "./conditional-rendering.jsx";
-import RenderingLists from "./rendering-lists.jsx";
+import RenderingLists from "./views/describing-the-ui/rendering-lists/rendering-lists.jsx";
 import FormInputBindings from "./form-input-bindings.jsx";
 import Fetch from "./fetch.jsx";
 import Ref from "./ref.jsx";
-import Home from "./home.jsx";
-import About from "./about.jsx";
 import router from "./router/index.jsx";
 import { RouterProvider, Link } from "react-router-dom";
 import CSS from "./style/css.jsx";
@@ -78,7 +75,6 @@ function App() {
       <ClassCom />
       <LifeCycle />
       <Events onYes={onAnswerYes} onNo={onAnswerNo} />
-      <ConditionRendering num="3" />
       <RenderingLists />
       <FormInputBindings />
       <Fetch />
