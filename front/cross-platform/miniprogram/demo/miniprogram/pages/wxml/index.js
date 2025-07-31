@@ -35,6 +35,12 @@ Component({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+
+    const appInstance = getApp()
+    console.log(appInstance.globaData)
+    console.log('onload')
+
+    
     const query = this.createSelectorQuery()
 
     console.log(query)

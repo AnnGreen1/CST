@@ -17,7 +17,6 @@
     "skyline": {
       "defaultDisplayBlock": true,
       "defaultContentBox": true,
-      "tagNameStyleIsolation": "legacy",
       "disableABTest": true,
       "sdkVersionBegin": "3.0.0",
       "sdkVersionEnd": "15.255.255"
@@ -30,15 +29,21 @@
     "list": [
       {
         "text": "logs",
-        "pagePath": "pages/logs/logs"
+        "pagePath": "pages/logs/logs",
+        "iconPath": "/assets/images/discover.png",
+        "selectedIconPath": "/assets/images/discover_on.png"
       },
       {
         "text": "base",
-        "pagePath": "pages/base/base"
+        "pagePath": "pages/base/base",
+        "iconPath": "/assets/images/interview.png",
+        "selectedIconPath": "/assets/images/interview_on.png"
       },
       {
         "text": "wxml",
-        "pagePath": "pages/wxml/index"
+        "pagePath": "pages/wxml/index",
+        "iconPath": "/assets/images/mine.png",
+        "selectedIconPath": "/assets/images/mine_on.png"
       }
     ]
   }
