@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import {
     LocalVideoTrack,
+    ParticipantEvent,
     RemoteParticipant,
     RemoteTrack,
     RemoteTrackPublication,
     Room,
-    RoomEvent
+    RoomEvent,
+    TrackPublication
 } from 'livekit-client';
 import { onUnmounted, ref, type Ref } from 'vue';
 import VideoComponent from './components/VideoComponent.vue';
@@ -22,7 +24,8 @@ type TrackInfo = {
 // let APPLICATION_SERVER_URL = '';
 // let LIVEKIT_URL = '';
 
-let APPLICATION_SERVER_URL = "http://192.168.16.148:6080/"
+let APPLICATION_SERVER_URL = "http://192.168.16.154:8080/"
+// let APPLICATION_SERVER_URL = "http://192.168.16.148:6080/"
 let LIVEKIT_URL = "wss://192-168-16-154.openvidu-local.dev:7443/"
 configureUrls();
 
@@ -62,10 +65,23 @@ async function joinRoom() {
     room.value.on(
         RoomEvent.TrackSubscribed,
         (_track: RemoteTrack, publication: RemoteTrackPublication, participant: RemoteParticipant) => {
+            console.log('TrackSubscribed', _track, publication, participant)
             remoteTracksMap.value.set(publication.trackSid, {
                 trackPublication: publication,
                 participantIdentity: participant.identity
             });
+
+            participant.on(ParticipantEvent.TrackMuted, (pub: TrackPublication) => {
+                console.log('TrackMuted', pub);
+                console.log(participant)
+                console.log(participant.identity)
+            })
+
+            participant.on(ParticipantEvent.TrackUnmuted, (pub: TrackPublication) => {
+                console.log('TrackUnmuted', pub);
+                console.log(participant)
+                console.log(participant.identity)
+            })
         }
     );
 
@@ -74,15 +90,26 @@ async function joinRoom() {
         remoteTracksMap.value.delete(publication.trackSid);
     });
 
-    // 自动检测正在发言的参与者，并在他们的发言状态发生变化时发送更新。为本地和远程参与者发送演讲者更新。这些事件在 Room 和 Participant 对象上触发，允许您在 UI 中识别当前发言人。
-    room.value.on(RoomEvent.ActiveSpeakersChanged, (speakers: Participant[]) => {
+
+    room.value.on(RoomEvent.RoomMetadataChanged, (speakers: Participant[]) => {
+
+        console.log('RoomEvent.RoomMetadataChanged  Speakers:', speakers);
         // Speakers contain all of the current active speakers
         // console.log('Active speakers:', speakers);
     });
 
 
+    room.value.on(RoomEvent.TrackUnsubscribed, (_track: RemoteTrack, publication: RemoteTrackPublication) => {
+        remoteTracksMap.value.delete(publication.trackSid);
+    });
+
+
     // 监听数据接收事件
-    room.value.on(RoomEvent.DataReceived, (payload, participant, kind) => {
+    room.value.on(RoomEvent.DataReceived, (payload, participant, kind, topic) => {
+
+        console.log('Received data from', payload, participant, kind, topic);
+
+
         try {
             // 将 Uint8Array 转换为字符串再解析为对象
             const text = new TextDecoder().decode(payload);
@@ -159,7 +186,9 @@ async function joinRoom() {
 
     try {
         // Get a token from your application server with the room name and participant name
-        const token = await getToken(roomName.value, participantName.value);
+        // const token = await getToken(roomName.value, participantName.value);
+
+        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOTY3NzcyMTg1NDkxMzY5OTg1IiwiaXNzIjoiZGV2a2V5IiwibmFtZSI6IjE5Njc3NzIxODU0OTEzNjk5ODUiLCJ2aWRlbyI6eyJyb29tSm9pbiI6dHJ1ZSwicm9vbSI6IjE5ODAxODAyMjY3NjY0NzkzNjIifSwic2lwIjp7fSwiZXhwIjoxNzYzMDIyOTk4LCJqdGkiOiIxOTY3NzcyMTg1NDkxMzY5OTg1In0.hhI5u1JkUSFCTogWy2EgV9GfIUi0aPrwbtvpn-XIYdQ'
 
         // Connect to the room with the LiveKit URL and the token
         await room.value.connect(LIVEKIT_URL, token);
@@ -167,6 +196,20 @@ async function joinRoom() {
         // Publish your camera and microphone
         await room.value.localParticipant.enableCameraAndMicrophone();
         localTrack.value = room.value.localParticipant.videoTrackPublications.values().next().value.videoTrack;
+
+        // room.value.localParticipant.on(ParticipantEvent.TrackMuted, (pub: TrackPublication) => {
+        //     console.log('TrackMuted', pub.track);
+        // })
+
+        // room.value.localParticipant.on(ParticipantEvent.TrackUnmuted, (pub: TrackPublication) => {
+        //     console.log('TrackUnmuted', pub.track);
+        // })
+
+        setMicrophoneEnabled(false)
+
+        // room.value.remoteParticipants[0].on(ParticipantEvent.TrackMuted, (pub: TrackPublication) => {
+        //     console.log('TrackMuted', pub.track);
+        // })
     } catch (error: any) {
         console.log('There was an error connecting to the room:', error.message);
         await leaveRoom();
@@ -419,6 +462,58 @@ const sendWsTTS = (text) => {
     }
 };
 
+// 新增：播放TTS到会议室
+const playTTSInRoom = async (text, voice = 'zhiyue') => {
+    try {
+        const response = await fetch('http://localhost:6082/play-tts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                roomName: roomName.value,
+                participantName: participantName.value,
+                text: text,
+                voice: voice
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to play TTS');
+        }
+
+        const result = await response.json();
+        console.log('TTS播放已启动:', result.message);
+    } catch (error) {
+        console.error('播放TTS时出错:', error);
+    }
+};
+
+// 新增：停止TTS播放
+const stopTTSInRoom = async () => {
+    try {
+        const response = await fetch('http://localhost:6082/stop-tts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                roomName: roomName.value
+            })
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to stop TTS');
+        }
+
+        const result = await response.json();
+        console.log('TTS播放已停止:', result.message);
+    } catch (error) {
+        console.error('停止TTS时出错:', error);
+    }
+};
 
 /** 生成32位随机字符串 */
 function generateUUID() {
@@ -448,6 +543,20 @@ const getHeader = () => {
         appkey: 'CVW7mjKfDxOSfhC7' // 应用密钥
     }
 }
+
+const setMicrophoneEnabled = async (enable) => {
+    try {
+        const currentEnable = room.value.localParticipant.isMicrophoneEnabled
+        console.log("当前麦克风状态：", enable)
+
+        await room.value.localParticipant.setMicrophoneEnabled(enable)
+
+        console.log(`${enable ? "开启" : "静音"}麦克风成功`)
+    } catch (error) {
+        console.error(`麦克风切换失败:`, error)
+    }
+}
+
 
 const streamTextTTS = async (voice = 'zhiyue') => {
     console.log("streamTextTTS...", voice)
@@ -535,10 +644,12 @@ onUnmounted(() => {
 * access to the endpoints.
 */
 async function getToken(roomName: string, participantName: string) {
-    const response = await fetch(APPLICATION_SERVER_URL + 'token', {
+    const response = await fetch(APPLICATION_SERVER_URL + 'system/interviewLeaderless/token', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJycHpxODJvWGhwSVRSRjVFb2tkWHBFcDN6NVdlbEs3ZyIsImNsaWVudGlkIjoiZTVjZDdlNDg5MWJmOTVkMWQxOTIwNmNlMjRhN2IzMmUiLCJ0ZW5hbnRJZCI6IjAwMDAwMCIsInVzZXJJZCI6MSwiZGVwdElkIjoxMDN9.sflayyZ_fpshjxRvZbbWM4jCW3OamRVFMeq8ef6nRQI',
+            'clientid': 'e5cd7e4891bf95d1d19206ce24a7b32e'
         },
         body: JSON.stringify({
             roomName,
@@ -557,48 +668,59 @@ async function getToken(roomName: string, participantName: string) {
 </script>
 
 <template>
-    <div v-if="!room" id="join">
-        <div id="join-dialog">
-            <h2>Join a Video Room</h2>
-            <form @submit.prevent="joinRoom">
-                <div>
-                    <label for="participant-name">Participant</label>
-                    <input v-model="participantName" id="participant-name" class="form-control" type="text" required />
-                </div>
-                <div>
-                    <label for="room-name">Room</label>
-                    <input v-model="roomName" id="room-name" class="form-control" type="text" required />
-                </div>
-                <button class="btn btn-lg btn-success" type="submit" :disabled="!roomName || !participantName">
-                    Join!
-                </button>
-            </form>
-        </div>
+<div v-if="!room" id="join">
+    <div id="join-dialog">
+        <h2>Join a Video Room</h2>
+        <form @submit.prevent="joinRoom">
+            <div>
+                <label for="participant-name">Participant</label>
+                <input v-model="participantName" id="participant-name" class="form-control" type="text" required />
+            </div>
+            <div>
+                <label for="room-name">Room</label>
+                <input v-model="roomName" id="room-name" class="form-control" type="text" required />
+            </div>
+            <button class="btn btn-lg btn-success" type="submit" :disabled="!roomName || !participantName">
+                Join!
+            </button>
+        </form>
     </div>
-    <div v-else id="room">
-        <div id="room-header">
-            <h2 id="room-title">{{ roomName }}</h2>
-            <button class="btn btn-danger" id="leave-room-button" @click="leaveRoom">Leave Room</button>
-        </div>
-        <div id="layout-container">
-            <VideoComponent v-if="localTrack" :track="localTrack" :participantIdentity="participantName"
-                :local="true" />
-            <template v-for="remoteTrack of remoteTracksMap.values()" :key="remoteTrack.trackPublication.trackSid">
-                <VideoComponent v-if="remoteTrack.trackPublication.kind === 'video'"
-                    :track="remoteTrack.trackPublication.videoTrack!"
-                    :participantIdentity="remoteTrack.participantIdentity" />
-                <AudioComponent v-else :track="remoteTrack.trackPublication.audioTrack!" hidden />
-            </template>
-        </div>
-        <div>
-            <button @click="sendTextAllAtOnce">sendText(一次性发送)</button>
-            <button
-                @click="sendAliTTSBlob('若要流式传输任何类型的二进制数据，请使用 streamBytes 方法打开流编写器。完成数据发送后，必须显式关闭流。')">sendAliTTSBlob(阿里tts固定文本)</button>
+</div>
+<div v-else id="room">
+    <div id="room-header">
+        <h2 id="room-title">{{ roomName }}</h2>
 
-            <button
-                @click="sendWsTTS('若要流式传输任何类型的二进制数据，请使用 streamBytes 方法打开流编写器。完成数据发送后，必须显式关闭流。赛力斯9月29日晚间公告，公司全资子公司赛力斯汽车拟以支付现金的方式购买华为技术有限公司持有的深圳引望智能技术有限公司10%股权，交易金额为115亿元。截至公告披露日，双方《股权转让协议》约定的第三笔付款先决条件已满足，受让方已向转让方支付完毕《股权转让协议》约定的第三笔转让价款人民币34.5亿元，受让方已支付完毕本次交易的全部对价。去年7月，赛力斯发布公告称，公司拟与引望及其股东协商投资入股事宜。同年8月，赛力斯发布公告，赛力斯汽车以支付现金的方式购买引望10%股权，交易金额为115亿元。')">sendAliTTSBlob(阿里tts固定文本)</button>
+        <button class="btn btn-danger" id="leave-room-button" @click="leaveRoom">Leave Room</button>
+    </div>
+    <div id="layout-container">
+        <VideoComponent v-if="localTrack" :track="localTrack" :participantIdentity="participantName" :local="true" />
+        <template v-for="remoteTrack of remoteTracksMap.values()" :key="remoteTrack.trackPublication.trackSid">
+            <VideoComponent v-if="remoteTrack.trackPublication.kind === 'video'"
+                :track="remoteTrack.trackPublication.videoTrack!" :participantIdentity="remoteTrack.participantIdentity"
+                :audio-muted="remoteTrack.trackPublication.audioTrack?.isMuted" />
+            <AudioComponent v-else :track="remoteTrack.trackPublication.audioTrack!" />
+            <!-- <AudioComponent v-else :track="remoteTrack.trackPublication.audioTrack!" hidden />             -->
+        </template>
+    </div>
+    <div>
+        <button @click=" setMicrophoneEnabled(false)"> setMicrophoneEnabled(false)</button>
+        <button @click=" setMicrophoneEnabled(true)"> setMicrophoneEnabled(true)</button>
+        <button @click="sendTextAllAtOnce">sendText(一次性发送)</button>
+        <button
+            @click="sendAliTTSBlob('若要流式传输任何类型的二进制数据，请使用 streamBytes 方法打开流编写器。完成数据发送后，必须显式关闭流。')">sendAliTTSBlob(阿里tts固定文本)</button>
+        <button
+            @click="sendWsTTS('若要流式传输任何类型的二进制数据，请使用 streamBytes 方法打开流编写器。完成数据发送后，必须显式关闭流。赛力斯9月29日晚间公告，公司全资子公司赛力斯汽车拟以支付现金的方式购买华为技术有限公司持有的深圳引望智能技术有限公司10%股权，交易金额为115亿元。截至公告披露日，双方《股权转让协议》约定的第三笔付款先决条件已满足，受让方已向转让方支付完毕《股权转让协议》约定的第三笔转让价款人民币34.5亿元，受让方已支付完毕本次交易的全部对价。去年7月，赛力斯发布公告称，公司拟与引望及其股东协商投资入股事宜。同年8月，赛力斯发布公告，赛力斯汽车以支付现金的方式购买引望10%股权，交易金额为115亿元。')">sendAliTTSBlob(阿里tts固定文本)</button>
+        <!-- 新增TTS控制按钮 -->
+        <div style="margin-top: 20px;">
+            <h3>会议室TTS播放</h3>
+            <textarea id="tts-text" placeholder="输入要播放的文本..." rows="3" cols="50"></textarea>
+            <div>
+                <button @click="playTTSInRoom(document.getElementById('tts-text').value)">播放TTS到会议室</button>
+                <button @click="stopTTSInRoom">停止TTS播放</button>
+            </div>
         </div>
     </div>
+</div>
 </template>
 
 <style scoped>

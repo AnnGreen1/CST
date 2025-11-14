@@ -7,9 +7,11 @@ const props = withDefaults(
         track: LocalVideoTrack | RemoteVideoTrack;
         participantIdentity: string;
         local?: boolean;
+        audioMuted?: boolean // 添加音频轨道的静音状态属
     }>(),
     {
-        local: false
+        local: false,
+        audioMuted: false
     }
 );
 
@@ -27,12 +29,12 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div :id="'camera-' + participantIdentity" class="video-container">
-        <div class="participant-data">
-            <p>{{ participantIdentity + (local ? ' (You)' : '') }}</p>
-        </div>
-        <video ref="videoElement" :id="track.sid"></video>
+<div :id="'camera-' + participantIdentity" class="video-container">
+    <div class="participant-data">
+        <p>{{ participantIdentity + (local ? ' (You)' : '') }}{{ audioMuted }}</p>
     </div>
+    <video ref="videoElement" :id="track.sid"></video>
+</div>
 </template>
 
 <style scoped>
