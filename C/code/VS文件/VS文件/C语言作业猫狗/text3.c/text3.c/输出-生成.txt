@@ -1,0 +1,7 @@
+﻿1>------ 已启动生成: 项目: text3.c, 配置: Debug Win32 ------
+1>  text3.c
+1>c:\users\administrator\desktop\新建文件夹 (2)\text3.c\text3.c\text3.c(12): warning C4476: 'printf' : unknown type field character '/' in format specifier
+1>c:\users\administrator\desktop\新建文件夹 (2)\text3.c\text3.c\text3.c(12): warning C4474: printf: 格式字符串中传递的参数太多
+1>  c:\users\administrator\desktop\新建文件夹 (2)\text3.c\text3.c\text3.c(12): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+1>  text3.c.vcxproj -> C:\Users\Administrator\Desktop\新建文件夹 (2)\text3.c\Debug\text3.c.exe
+========== 生成: 成功 1 个，失败 0 个，最新 0 个，跳过 0 个 ==========
