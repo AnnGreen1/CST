@@ -24,8 +24,8 @@ type TrackInfo = {
 // let APPLICATION_SERVER_URL = '';
 // let LIVEKIT_URL = '';
 
-let APPLICATION_SERVER_URL = "http://192.168.16.154:8080/"
-// let APPLICATION_SERVER_URL = "http://192.168.16.148:6080/"
+// let APPLICATION_SERVER_URL = "http://192.168.16.154:8080/"
+let APPLICATION_SERVER_URL = "http://192.168.16.110:6080/"
 let LIVEKIT_URL = "wss://192-168-16-154.openvidu-local.dev:7443/"
 configureUrls();
 
@@ -186,9 +186,9 @@ async function joinRoom() {
 
     try {
         // Get a token from your application server with the room name and participant name
-        // const token = await getToken(roomName.value, participantName.value);
+        const token = await getToken(roomName.value, participantName.value);
 
-        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOTY3NzcyMTg1NDkxMzY5OTg1IiwiaXNzIjoiZGV2a2V5IiwibmFtZSI6IjE5Njc3NzIxODU0OTEzNjk5ODUiLCJ2aWRlbyI6eyJyb29tSm9pbiI6dHJ1ZSwicm9vbSI6IjE5ODAxODAyMjY3NjY0NzkzNjIifSwic2lwIjp7fSwiZXhwIjoxNzYzMDIyOTk4LCJqdGkiOiIxOTY3NzcyMTg1NDkxMzY5OTg1In0.hhI5u1JkUSFCTogWy2EgV9GfIUi0aPrwbtvpn-XIYdQ'
+        // const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOTY3NzcyMTg1NDkxMzY5OTg1IiwiaXNzIjoiZGV2a2V5IiwibmFtZSI6IjE5Njc3NzIxODU0OTEzNjk5ODUiLCJ2aWRlbyI6eyJyb29tSm9pbiI6dHJ1ZSwicm9vbSI6IjE5ODAxODAyMjY3NjY0NzkzNjIifSwic2lwIjp7fSwiZXhwIjoxNzYzMDIyOTk4LCJqdGkiOiIxOTY3NzcyMTg1NDkxMzY5OTg1In0.hhI5u1JkUSFCTogWy2EgV9GfIUi0aPrwbtvpn-XIYdQ'
 
         // Connect to the room with the LiveKit URL and the token
         await room.value.connect(LIVEKIT_URL, token);
@@ -644,12 +644,10 @@ onUnmounted(() => {
 * access to the endpoints.
 */
 async function getToken(roomName: string, participantName: string) {
-    const response = await fetch(APPLICATION_SERVER_URL + 'system/interviewLeaderless/token', {
+    const response = await fetch(APPLICATION_SERVER_URL + 'token', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpblR5cGUiOiJsb2dpbiIsImxvZ2luSWQiOiJzeXNfdXNlcjoxIiwicm5TdHIiOiJycHpxODJvWGhwSVRSRjVFb2tkWHBFcDN6NVdlbEs3ZyIsImNsaWVudGlkIjoiZTVjZDdlNDg5MWJmOTVkMWQxOTIwNmNlMjRhN2IzMmUiLCJ0ZW5hbnRJZCI6IjAwMDAwMCIsInVzZXJJZCI6MSwiZGVwdElkIjoxMDN9.sflayyZ_fpshjxRvZbbWM4jCW3OamRVFMeq8ef6nRQI',
-            'clientid': 'e5cd7e4891bf95d1d19206ce24a7b32e'
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             roomName,

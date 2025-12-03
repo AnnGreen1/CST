@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref } from "vue";
+import Comp from "./comp.vue";
 const theme = {
   color: "pink",
 };
@@ -48,15 +49,18 @@ const object = { id: ref(1) }
 </script>
 
 <template>
-  <p @click="plus">hello</p>
-  {{ count + 1 }}
-  {{ object.id + 1 }}
-  {{ theme.color }}
+<p @click="plus">hello</p>
+{{ count + 1 }}
+{{ object.id + 1 }}
+{{ theme.color }}
+
+<Comp :type="1"></Comp>
 </template>
 
 <style scoped>
 p {
   color: v-bind("theme.color");
-  font-size: v-bind(`${size}px`) ;
+
+  font-size: v-bind(`$ { size}px`);
 }
 </style>

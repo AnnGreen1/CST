@@ -1,9 +1,10 @@
 <template>
-    <div>
-        <div class="common-style">
-            TypescriptAxios.vue
-        </div>
+<div>
+    <div class="common-style">
+        TypescriptAxios.vue
     </div>
+    <a href="./test.xlsx">test.xlsx</a>
+</div>
 </template>
 
 <script lang="ts" setup>

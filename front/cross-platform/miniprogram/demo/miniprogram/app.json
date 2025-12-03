@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/left/index",
+    "pages/mid/index" ,
+    "pages/right/index",
     "pages/base/base",
-    "pages/logs/logs",
-    "pages/test/test",
     "pages/wxml/index"
   ],
   "window": {
@@ -11,7 +12,6 @@
     "navigationBarTitleText": "测试",
     "navigationBarBackgroundColor": "#123333"
   },
-  "style": "v2",
   "renderer": "skyline",
   "rendererOptions": {
     "skyline": {
@@ -26,22 +26,23 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "tabBar": {
+    "custom": true,
     "list": [
       {
         "text": "logs",
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/left/index",
         "iconPath": "/assets/images/discover.png",
         "selectedIconPath": "/assets/images/discover_on.png"
       },
       {
         "text": "base",
-        "pagePath": "pages/base/base",
+        "pagePath": "pages/mid/index",
         "iconPath": "/assets/images/interview.png",
         "selectedIconPath": "/assets/images/interview_on.png"
       },
       {
         "text": "wxml",
-        "pagePath": "pages/wxml/index",
+        "pagePath": "pages/right/index",
         "iconPath": "/assets/images/mine.png",
         "selectedIconPath": "/assets/images/mine_on.png"
       }
