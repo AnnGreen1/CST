@@ -1,11 +1,5 @@
 # 前端其他
 
-Axios
-
-Flutter
-Electron
-ReactNative
-
 webpack
 Grunt
 gulp
@@ -55,10 +49,6 @@ Bootstrap
 Stylus
 rollup
 
-Angular
-Vue
-React
-Svelte
 
 SVG
 
@@ -103,17 +93,6 @@ https://www.vueusejs.com/
 注释的规范使用，标注数据类型等  @xxxx  这种语法
 
 
-##### 组件库
-
-element-plus
-官网只有ts的例子
-
-vant
-naive-ui
-
-antd-vue
-官网具有ts和js两种例子
-
 #### 配置工程师
 webpack
 vite
@@ -157,17 +136,7 @@ Babylon.js
 graphQL
 MapBox
 
-Unity/UE4
-蓝图
-C++
-
 esbuild
-
-npm 
-pnpm 
-yarn
-
-tensorflow
 
 opencv
 
