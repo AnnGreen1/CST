@@ -31,7 +31,7 @@
     "swc": false,
     "disableSWC": true,
     "disableUseStrict": false,
-    "useCompilerPlugins": false
+    "useCompilerPlugins": ["sass"]
   },
   "condition": {},
   "editorSetting": {

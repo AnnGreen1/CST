@@ -1,0 +1,35 @@
+@use "sass:math";
+
+// 定义一些变量
+$primary-color: #42b883;
+$secondary-color: #35495e;
+$font-size-large: 24px;
+$font-size-medium: 18px;
+$font-size-small: 14px;
+
+// 定义 Mixins
+@mixin button-style($bg-color: $primary-color, $text-color: white) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: $font-size-small;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+@mixin card-style {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background: white;
+}
+
+// 定义函数
+@function calculate-rem($size) {
+  @return math.div($size, 16px) * 1rem;
+}

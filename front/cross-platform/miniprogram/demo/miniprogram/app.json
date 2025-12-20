@@ -1,10 +1,33 @@
 {
   "pages": [
+    "pages/home/index",
+    "pages/app/index",
+    "pages/chat/index",
+    "pages/user/index",
     "pages/left/index",
-    "pages/mid/index" ,
+    "pages/mid/index",
     "pages/right/index",
     "pages/base/base",
-    "pages/wxml/index"
+    "pages/wxml/index",
+    "pages/app/event/index",
+    "pages/app/safe-area/index",
+    "pages/app/webview/index",
+    "pages/app/choose-media/index",
+    "pages/app/canvas/index",
+    "pages/app/download-file-open-document/index",
+    "pages/app/preview-image/index",
+    "pages/app/request/index",
+    "pages/app/sass/index",
+    "pages/app/component/index",
+    "pages/app/select-component/index",
+    "pages/app/login/index",
+    "pages/app/get-device-info/index",
+    "pages/app/page-style/index",
+    "pages/app/keep-state/index",
+    "pages/app/input/index",
+    "pages/app/checkbox/index",
+    "pages/app/bluetooth/index",
+    "pages/chat/test/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -12,7 +35,7 @@
     "navigationBarTitleText": "测试",
     "navigationBarBackgroundColor": "#123333"
   },
-  "renderer": "skyline",
+  "renderer": "webview",
   "rendererOptions": {
     "skyline": {
       "defaultDisplayBlock": true,
@@ -29,23 +52,24 @@
     "custom": true,
     "list": [
       {
-        "text": "logs",
-        "pagePath": "pages/left/index",
-        "iconPath": "/assets/images/discover.png",
-        "selectedIconPath": "/assets/images/discover_on.png"
+        "text": "home",
+        "pagePath": "pages/home/index"
       },
       {
-        "text": "base",
-        "pagePath": "pages/mid/index",
-        "iconPath": "/assets/images/interview.png",
-        "selectedIconPath": "/assets/images/interview_on.png"
+        "text": "app",
+        "pagePath": "pages/app/index"
       },
       {
-        "text": "wxml",
-        "pagePath": "pages/right/index",
-        "iconPath": "/assets/images/mine.png",
-        "selectedIconPath": "/assets/images/mine_on.png"
+        "text": "chat",
+        "pagePath": "pages/chat/index"
+      },
+      {
+        "text": "user",
+        "pagePath": "pages/user/index"
       }
     ]
+  },
+  "resolveAlias": {
+    "@/*": "/*"
   }
 }
