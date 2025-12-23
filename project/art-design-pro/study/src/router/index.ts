@@ -11,6 +11,7 @@ const routes = [
                 path: "index",
                 component: () => import("@/views/index.vue")
             },
+            // element-plus
             {
                 path: "element-plus/el-config-provider",
                 component: () => import("@/views/element-plus/el-config-provider.vue")
@@ -19,17 +20,23 @@ const routes = [
                 path: "element-plus/el-form",
                 component: () => import("@/views/element-plus/el-form.vue")
             },
+            // sass
+            {
+                path: "sass/at-use",
+                component: () => import("@/views/sass/at-use.vue")
+            },
             {
                 path: "font-face",
                 component: () => import("@/views/font-face.vue")
             },
+            // vue
+            {
+                path: "vue/bind-style",
+                component: () => import("@/views/vue/bind-style.vue")
+            },
             {
                 path: "media-variable",
                 component: () => import("@/views/media-variable.vue")
-            },
-            {
-                path: "sass/at-use",
-                component: () => import("@/views/sass/at-use.vue")
             },
             {
                 path: "svg-icon",
