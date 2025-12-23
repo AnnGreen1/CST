@@ -10,7 +10,7 @@ export const links: MenuItem[] = [
     name: "首页"
   },
   {
-    name: "Element Plus 组件",
+    name: "Element Plus",
     children: [
       {
         path: "/element-plus/el-config-provider",
@@ -23,6 +23,18 @@ export const links: MenuItem[] = [
     ]
   },
   {
+    name: "Sass",
+    children: [
+      { path: "/sass/at-use", name: "@use" }
+    ]
+  },
+  {
+    name: "Vue",
+    children: [
+      { path: "/vue/bind-style", name: "样式绑定" }
+    ]
+  },
+  {
     path: "/font-face",
     name: "font-face"
   },
@@ -30,12 +42,7 @@ export const links: MenuItem[] = [
     path: "/media-variable",
     name: "媒体查询变量"
   },
-  {
-    name: "Sass",
-    children: [
-      { path: "/sass/at-use", name: "@use" }
-    ]
-  },
+
   {
     path: "/svg-icon",
     name: "SvgIcon"
