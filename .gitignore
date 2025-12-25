@@ -429,3 +429,4 @@ FodyWeavers.xsd
 *.msm
 *.msp  
 miniprogram_npm/
+*.exe
