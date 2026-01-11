@@ -7,10 +7,10 @@
             "command": "gcc",
             "args": [
                 "-fdiagnostics-color=always",
-                "-g",
+                "-g", 
                 "${file}",
                 "-o",
-                "${file}.exe"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "group": {
                 "kind": "build",
