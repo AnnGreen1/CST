@@ -1,8 +1,10 @@
 #include <stdio.h>
-
 int main()
 {
-    int x, y;
-    scanf("%d%d", &x, &y);
-    printf("%d %d\n", x ,y);
+  int a[5] = {1, 2, 3, 4, 5};
+  printf("%p\n", a);
+  int *p = a;
+  printf("%p\n", p + 2);
+  printf("%d", *(p + 2));
+  return 0;
 }
