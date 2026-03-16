@@ -1,4 +1,0 @@
-<!--pages/user/index.wxml-->
-<t-navbar t-class-placeholder="t-navbar-placeholder" t-class-content="t-navbar-content" title="user"
-  t-class-title="nav-title" />
-<text>pages/user/index.wxml</text>

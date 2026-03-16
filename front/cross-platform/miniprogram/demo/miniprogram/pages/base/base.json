@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "select-comp": "./components/select",
-    "select-dropdown": "./components/select-v2"
-  }
-}

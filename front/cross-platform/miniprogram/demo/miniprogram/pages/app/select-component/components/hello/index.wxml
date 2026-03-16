@@ -1,4 +1,0 @@
-<view>
-  <view>Hello,{{name}}</view>
-  <text wx:for="{{hobby}}">{{ item }}</text>
-</view>

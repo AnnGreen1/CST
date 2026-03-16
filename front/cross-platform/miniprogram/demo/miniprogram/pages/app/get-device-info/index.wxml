@@ -1,2 +1,0 @@
-<!--pages/app/get-device-info/index.wxml-->
-<t-navbar left-arrow title="wx.getDeviceInfo" />

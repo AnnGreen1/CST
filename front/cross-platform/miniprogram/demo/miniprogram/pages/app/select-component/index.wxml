@@ -1,3 +1,0 @@
-<!--pages/app/select-component/index.wxml-->
-<t-navbar left-arrow title="this.selectComponent" />
-<hello-comp class="hello" name="tom"></hello-comp>

@@ -1,3 +1,0 @@
-<!--pages/app/sass/index.wxml-->
-<t-navbar left-arrow title="Sass" />
-<text class="sass">Sass</text>
